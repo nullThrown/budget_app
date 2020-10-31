@@ -14,3 +14,10 @@ An application meant to allow simple tracking of income and expenses. The layout
     ## Potentional Features 
 
     Along with the home and yearly pages, a plan page will hopefully be added as well. The plan page allows the user to set financial goals for the future. A financial goal may include hitting a specific amount within a certain category (groceries). The user will be prompted when the current amount is moving closer to goal.    
+
+
+
+
+    TEST OF THE NEW BRANCH 
+    TEST OF THE NEW BRANCH
+    TEST OF THE NEW BRANCH
