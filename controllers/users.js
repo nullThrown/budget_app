@@ -4,10 +4,22 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { body, validationResult } = require("express-validator");
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 // get sign up form
 exports.getSignUp = (req, res) => {
   res.render('sign-up-form');
 };
+
+
 
 passport.use(
   new LocalStrategy((email, password, done) => {
@@ -31,15 +43,7 @@ passport.use(
   })
 );
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 // post sign up form
 exports.postSignUp = [
@@ -51,17 +55,11 @@ exports.postSignUp = [
   (req, res, next) => {
     const errors = validationResult(req); 
 
-    bcrypt.hash(req.body.password, 10, (err, hashedPashword) => {
-      const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPashword
-      }).save(err => {
-        if(err){
-          return err
-        }
-      });
-    }); 
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    });
  
     if(!errors.isEmpty()) {
       res.render('sign-up-form', { user: user, errors: errors.array() })
@@ -84,17 +82,7 @@ exports.postSignUp = [
              };
           });
      }
-     bcrypt.hash(req.body.password, 10, (err, hashedPashword) => {
-      const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: hashedPashword
-      }).save(err => {
-        if(err){
-          return err
-        }
-      });
-    }); 
+     
   }
 
 ];
