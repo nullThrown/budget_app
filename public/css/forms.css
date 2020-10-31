@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+/* figure out sizing for containers --responsive */
+.main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-container {
+  width: 90%;
+  padding: 18px;
+  max-width: 480px;
+  border: 1px rgba(138, 164, 206, 0.418) solid;
+  border-radius: 8px;
+  background-color: rgba(159, 198, 248, 0.205);
+}
+
+.submit-btn {
+  padding: .4em;
+  display: block;
+  margin: 0 auto;
+}
+.spinner-wrapper {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  
+}

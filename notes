@@ -1,0 +1,49 @@
+
+
+// COLORS
+  //  rgb(30, 30, 30) -- SOFT BLACK
+  //  rgb(177, 177, 177) -- SOFT GREY
+  //  rgb(230, 230, 230) -- SOFT WHITE
+  //  rgb(192, 47, 29) -- RED -- GOOD FOR NEGATIVE MONEY
+  //  rgb(54, 109, 37) -- GREENISH -- GOOD FOR POSITIVE MONEY
+  //  rgb(85, 104, 192) -- soft blue
+  //  rgb(29, 47, 126) -- darker blue
+
+// create layout of information for home page 
+
+// CREATE ACCOUNT PAGE
+  // ALLOWS USER TO INPUT DATA 
+
+// HOME 
+  // 1ST ROW
+    //  LEFT BOX -- CONTAINS GENERAL BUDGET INFO
+      // MODAL OPENS TO ALLOW USER TO ADD EXPENDITURE 
+    //  MIDDLE BOX -- CONTAINS CHART WITH TOP LEFT DATA
+    //  RIGHT BOX -- CONTAINS MONTHLY SPECIFICS DATA SPENDING
+  // 2ND ROW
+    // LEFT BOX -- CONTAINS MONTHLY SPECIFIC EXPENDITURES
+    // MIDDLE BOX -- 
+  // 3RD ROW
+
+
+// YEARLY
+  // 1ST ROW -- SAME AS HOME PAGE 
+  // 2ND ROW -- YEARLY GRAPH COMPARING ALL CATEGORIES 
+  // 3RD ROW --  
+
+// PROFILE PAGE 
+  // CONTAINS INFO ABOUT USER -- CREATION DATE, EMAIL ADDRESS
+  // BENEATH ABOVE INFO -- ALLOWS USER TO EDIT PROFILE -- 
+  EMAIL ADDRESS, PASSWORD(maybe), BASIC INCOME INFORMATION -- 
+  SUCH AS TAKE HOME PAY, RENT/MORTAGE, ANY MONTHLY PAYABLE BILLS 
+
+// ADD A DEMO PAGE 
+  // LINKS TO LOGIN PAGE THAT BRINGS USER TO APP IN USER
+  // 
+
+
+
+ // create database
+    // create collection for users 
+    // connect database to main app 
+    // add new user upon sign up post 

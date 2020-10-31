@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+  
+  
+  <title>Home</title>
+</head>
+<body>
+  <%- include('includes/dashboard.ejs') %>
+  <main class="main-container">
+    <!-- FIRST ROW -->
+    <section class="row">
+      <!-- COLUMN -->
+      <div class="col-one card">
+        <div class="card-title-wrapper">
+          <h2 class="card-title">Budget</h2>
+        </div>
+        <div class="col-wrapper-one">
+          <p>Take Home Pay</p>
+          <span class="lt-green">$ <%= %></span>
+          <hr class="hr">
+          <p class="">Necessities Spent</p>
+          <span class="lt-red">$ <%- %></span>
+          <hr class="hr">
+          <p class="">Indulgent Spent<br /></p>
+          <span class="lt-red">$<%-  %></span>
+          <hr class="hr">
+          <p class="">Remaining funds<br /></p>
+          <span class="lt-green">$978</span>
+          <hr class="hr">
+          <button class="gen-btn add-btn">Add Expense</button> 
+        </div>
+      </div>
+      <!-- COLUMN -->
+      <div class="col-one card">
+        <div class="card-title-wrapper">
+          <h2 class="card-title">Chart</h2>
+        </div>
+        <i class="fas fa-chart-pie fa-10x flex-center"></i>
+      </div>
+      <!-- COLUMN -->
+    <div class="col-one card">
+      <div class="card-title-wrapper">
+        <h2 class="card-title">Month Specifics</h2>
+      </div>
+      <div class="col-wrapper-two">
+        <div>
+          <p class="mb-1">Home</p>
+          <span>$1200</span>
+        </div>
+        <div>
+          <p class="mb-1">Utilities</p>
+          <span>$347</span>
+        </div>
+        <div>
+          <p class="mb-1">Vehicle</p>
+          <span>$135</span>
+        </div>
+        <div>
+          <p class="mb-1">Groceries</p>
+          <span>$78</span>
+        </div>
+        <div>
+          <p class="mb-1">Restruantes/Bars</p>
+          <span>$275</span>
+        </div>
+        <div>
+          <p class="mb-1">Misceleneous</p>
+          <span>$113</span>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- SECOND ROW -->
+    <section class="row">
+      <!-- COLUMN -->
+      <div class="col-six card">
+        <div class="card-title-wrapper">
+          <h2 class="card-title">Monthly Specifics</h2>
+        </div> 
+        <div class="flex-center">
+          <div class="monthly-specs-btns-wrapper">
+            <button class="gen-btn">Home</button>
+            <button class="gen-btn">Utilities</button>
+            <button class="gen-btn">Vehicle</button>
+            <button class="gen-btn">Groceries</button>
+            <button class="gen-btn">Dining</button>
+            <button class="gen-btn">Misc.</button>
+          </div>  
+          <div class="col-wrapper-three col-five">
+            <h4>Posted</h4>
+            <h4>Date</h4>
+            <h4>Amount</h4>
+            <p>Masses</p>
+            <span>6-7-20</span><span>$23.44</span>
+            <p>Masses</p>
+            <span>6-7-20</span><span>$23.44</span>
+            <p>Masses</p>
+            <span>6-7-20</span><span>$23.44</span>
+            <p>Masses</p>
+            <span>6-7-20</span><span>$23.44</span>
+            <p>Masses</p>
+            <span>6-7-20</span><span>$23.44</span>
+          </div>
+        </div>  
+      </div>
+    </section>
+  </main>
+<script src="https://kit.fontawesome.com/0e80a7ec36.js" crossorigin="anonymous"></script>
+</body>
+</html>

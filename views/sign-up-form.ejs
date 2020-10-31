@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/forms.css">
+</head>
+
+<body>
+  <main class="main">
+    <div class="main-container">
+      <form class="sign-up-form" method="post">
+        <h2 class="form-title text-center mt-2 mb-4">Create an Account Here</h2>
+        
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="user-name" name="name" value="<%= 'undefined' == typeof user ? '' : user.name %>" required="true">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <% if(typeof emailErr !== 'undefined') { %>
+            <div class="alert alert-danger"> <%= emailErr %></div>
+          <% } %>  
+          <input type="email" class="form-control" id="user-email" name="email" value="<%= 'undefined' == typeof user ? '' : user.email %>">
+        </div>
+
+        
+          <div class="form-group">
+          <label for="password">Password</label>
+          <div class="mb-2 text-danger">
+            Password must be 8 or more characters
+           </div>
+          <input type="password" class="form-control" id="user-password" name="password" value="">
+        </div> 
+        
+         <!-- <p>password must be:</p> -->
+         <!-- <p>contain one symbol eg. (!@#$%)</p> -->
+         <!-- <p>contain one number</p> -->
+        <!-- CONFIRM PASSWORD BUTTON WILL BE ADDED LATER -->
+        <!-- <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+          <input type="password" class="form-control" id="user-confirm-password" name="confirmPassword" value="">
+        </div>  -->
+        <button type="submit" id="submit-form-btn" class="btn btn-primary submit-btn" name="button">Create Account</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>
