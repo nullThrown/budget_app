@@ -17,16 +17,23 @@
   <header class="header">
     <div class="header-wrapper">
       <i class="fas fa-kaaba fa-3x logo"></i>
-      <div class="login-wrapper">
-        <a href="" class="link-btn log-in-btn">Log In</a>
-        <a href="sign-up" class="link-btn sign-up-btn">Sign-Up</a>
-      </div>
+      <form action="">
+        <div class="login-wrapper">
+          <input type="text" name="email" id="" placeholder="email">
+          <input type="password" name="password" placeholder="password">
+          <button type="submit" class="link-btn log-in-btn">Log In</button>
+        </div>
+      </form>
+      <a href="sign-up" class="link-btn sign-up-btn">Sign-Up</a>
     </div>
   </header>
   <!-- HEADER END -->
 
   <!-- MAIN BEGIN -->
     <main class="main-container">
+      <% if(messages.error) { %>
+        <%= messages.error %> 
+      <% } %>
       <section class="row">
         <div class="card col-one">
           <h2 class="card-title text-center mt-3 mb-4">Track</h2>
@@ -35,7 +42,7 @@
             <p class="card-text">Report both income and expenditures and know exactly where your money is going.</p>
           </div>
         </div>
-  
+        
         <div class="card col-one">
           <h2 class="card-title text-center mt-3 mb-4">Simple</h2>
           <img class="card-img-top" src="/img/meeting.jpeg" alt="Card image cap">

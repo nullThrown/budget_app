@@ -4,44 +4,12 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { body, validationResult } = require("express-validator");
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 // get sign up form
 exports.getSignUp = (req, res) => {
   res.render('sign-up-form');
 };
-
-
-
-passport.use(
-  new LocalStrategy((email, password, done) => {
-    User.findOne({ email: email }, (err, user) => {
-      if (err) { 
-        return done(err);
-      };
-      if (!user) {
-        return done(null, false, { msg: "Incorrect username" });
-      }
-      bcrypt.compare(password, user.password, (err, res) => {
-        if (res) {
-          // passwords match! log user in
-          return done(null, user);
-        } else {
-          // passwords do not match!
-          return done(null, false, {msg: "Incorrect password"})
-        }
-      });
-    });
-  })
-);
 
 
 
@@ -58,8 +26,11 @@ exports.postSignUp = [
     const user = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
-    });
+    })
+
+    bcrypt.hash(req.body.password, 10, (err, hashedPashword) => {
+        user.password = hashedPashword;
+      });
  
     if(!errors.isEmpty()) {
       res.render('sign-up-form', { user: user, errors: errors.array() })
@@ -72,12 +43,12 @@ exports.postSignUp = [
              if (err) { return next(err); }
   
              if (found_email) {
-               res.render('sign-up-form', {user: user, emailErr: 'Email already in use'});
+               res.render('sign-up-form', {user: user, emailErr: 'Email  in use'});
              }
              else {
                user.save(function (err) {
                  if (err) { return next(err); }
-          
+                  res.redirect('/home');
                });
              };
           });
