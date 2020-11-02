@@ -41,6 +41,15 @@
 .sign-up-btn:hover {
   background-color: rgb(210, 210, 210);
 }
+.log-out-link {
+  color: rgb(250, 250, 250);
+  text-decoration: underline;
+  text-align: center;
+  transition-duration: 250ms;
+}
+.log-out-link:hover {
+  color: rgb(200, 200, 200);
+}
 
 /* HOME -USER- DASHBOARD */
 

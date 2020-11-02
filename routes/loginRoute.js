@@ -8,11 +8,12 @@ const router = express.Router();
 
 passport.use(
   
+  // initializing local strategy -- user validation
   new LocalStrategy({ usernameField: 'email',passwordField: 'password'},
   (email, password, done) => {
     User.findOne({ email: email }, (err, user) => {
       if (err) { 
-        return done(err);
+        return done(err); 
       };
       if (!user) {
         return done(null, false, { msg: "Incorrect username" });
@@ -29,12 +30,8 @@ passport.use(
 );  
  
 
-router.get('/', (req, res) => {
-  res.render('index');
-});
-
 router.post(
-  "/",
+  "/login",
   passport.authenticate("local", {
     successRedirect: "/home",
     failureRedirect: "/",
