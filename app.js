@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 // route imports
-const indexRoutes = require('./routes/index');
-const signupRoutes = require('./routes/forms');  
-const userProfileRoutes = require('./routes/user-profile');
+const indexRoutes = require('./routes/indexRoute');
+const signupRoutes = require('./routes/signupRoute'); 
+const loginRoutes = require('./routes/loginRoute');
+const logoutRoutes = require('./routes/logoutRoute');
+const userProfileRoutes = require('./routes/userProfileRoute');
  
 //models 
 const User = require('./models/user');
@@ -28,10 +30,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-app.use(function(req, res, next) {
-  res.locals.currentUser = req.user;
-  next();
-});
+
  
 
 app.use(express.json());
@@ -46,9 +45,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 
 app.use(indexRoutes);  
 app.use(signupRoutes);
+app.use(loginRoutes);
+app.use(logoutRoutes);
 app.use(userProfileRoutes);
 
 const port = process.env.port || 4000;

@@ -48,7 +48,7 @@ exports.postSignUp = [
              else {
                user.save(function (err) {
                  if (err) { return next(err); }
-                  res.redirect('/home');
+                  res.redirect('/profile-set-up');
                });
              };
           });
@@ -60,27 +60,69 @@ exports.postSignUp = [
 
 // get profile set up page
 exports.getProfileSetUp = (req, res) => {
-  res.render('profile');
+  console.log(res.locals.currentUser);
+  res.render('profile-set-up');
 };
 
 // post profile set up page
 exports.postProfileSetUp = (req, res) => {
-  const incomeSalary = req.body.salary;
-  const housingRent = req.body.housingRent;
-  const housingInsurance = req.body.housingInsurance;
-  const vehicleLoan = req.body.vehicleLoan;
-  const vehicleInsurance = req.body.vehicleInsurance;
-  const cellPlan = req.body.cellPlan;
-  const cellLoan = req.body.cellLoan;
-  const cellInternet = req.body.cellInternet;
-  const childcareTuition = req.body.childcareTuition;
-  const childcareDaycare = req.body.childcareDaycare;
-  const healthInsurance = req.body.healthInsurance;
-  const debtStudent = req.body.debtStudent;
-  const debtCredit = req.body.debtCredit;
-  const retirement401k = req.body.retirement401k;
-  const retirementIra = req.body.retirementIra;
-  const retirementBrokerage = req.body.retirementBrokerage;
+  
+  let currentUser = res.locals.currentUser;
+  console.log("POST ON CURRENT USER: " + currentUser)
+  User.findOneAndUpdate({_id: currentUser._id},
+   {
+      salary: req.body.salary,
+      housingPayment: req.body.housingPayment,
+      housingInsurance: req.body.housingInsurance,
+      vehicleLoan: req.body.vehicleLoan,
+      vehicleInsurance: req.body.vehicleInsurance,
+      cellPlan: req.body.cellPlan,
+      cellLoan: req.body.cellLoan,
+      internetPlan:req.body.internetPlan, 
+      childcareTuition: req.body.childcareTuition,
+      childcareDaycare:req.body .childcareDaycare,
+      internetPlan: req.body.internetPlan,
+      healthInsurance:req.body.healthInsurance, 
+      debtStudent: req.body.debtStudent,
+      debtCredit: req.body.debtCredit,
+      retirement401k: req.body.retirement401k,
+      retirementIra: req.body.retirementIra,
+      retirementBrokerage: req.body.retirementBrokerage
+    },
+      (err, result) => {
+    if(err){
+      res.send(err)
+    } else {
+      console.log(currentUser);
+      res.redirect('/home')
+    }
+  })
+
+}
+
+
+
+
+
+
+
+
+
+// const housingRent = req.body.housingRent;
+  // const housingInsurance = req.body.housingInsurance;
+  // const vehicleLoan = req.body.vehicleLoan;
+  // const vehicleInsurance = req.body.vehicleInsurance;
+  // const cellPlan = req.body.cellPlan;
+  // const cellLoan = req.body.cellLoan;
+  // const cellInternet = req.body.cellInternet;
+  // const childcareTuition = req.body.childcareTuition;
+  // const childcareDaycare = req.body.childcareDaycare;
+  // const healthInsurance = req.body.healthInsurance;
+  // const debtStudent = req.body.debtStudent;
+  // const debtCredit = req.body.debtCredit;
+  // const retirement401k = req.body.retirement401k;
+  // const retirementIra = req.body.retirementIra;
+  // const retirementBrokerage = req.body.retirementBrokerage;
   // const userProfile = new UserProfile (incomeSalary, housingRent, housingInsurance, vehicleLoan,
   //    vehicleInsurance, cellPlan, cellLoan, 
   //   cellInternet, childcareTuition, childcareDaycare, healthInsurance, debtStudent, debtCredit, retirement401k, retirementIra, retirementBrokerage);
@@ -92,4 +134,3 @@ exports.postProfileSetUp = (req, res) => {
   // .catch(err => {
   //   console.log(err)
   // })
-}
