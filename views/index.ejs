@@ -17,7 +17,7 @@
   <header class="header">
     <div class="header-wrapper">
       <i class="fas fa-kaaba fa-3x logo"></i>
-      <form action="">
+      <form action="" method="POST">
         <div class="login-wrapper">
           <input type="text" name="email" id="" placeholder="email">
           <input type="password" name="password" placeholder="password">
@@ -31,9 +31,6 @@
 
   <!-- MAIN BEGIN -->
     <main class="main-container">
-      <% if(messages) { %>
-        <%= messages.error %> 
-      <% } %>
       <section class="row">
         <div class="card col-one">
           <h2 class="card-title text-center mt-3 mb-4">Track</h2>
@@ -61,7 +58,6 @@
           </div>
         </div>
       </section>
-      <p>test of the new branch</p>
   </main>
   <!-- MAIN END -->
   
