@@ -8,6 +8,7 @@ const UserSchema = new Schema(
   email : {type: String, maxlength:50, required: true},
   password : {type: String, minlength:8, required: true},
   salary : {type: Number, maxlength:100},
+  salarySchedule: {type: String},
   housingPayment: {type: Number, maxlength: 100},
   housingInsurance: {type: Number, maxlength: 100},
   vehicleLoan: {type: Number, maxlength: 100},
@@ -26,6 +27,19 @@ const UserSchema = new Schema(
   retirementBrokerage: {type: Number, maxlength: 100},
   }
 ); 
+
+UserSchema.virtual('monthlyTakeHome')
+.get(function () {
+  if (this.salarySchedule == 'weekly') {
+    return this.salary * 4;
+  }
+  else if (this.salarySchedule === 'biMonthly') {
+    return this.salary * 2;
+  }
+  else {
+    return this.salary;
+  }
+})
 
 
  

@@ -72,6 +72,7 @@ exports.postProfileSetUp = (req, res) => {
   User.findOneAndUpdate({_id: currentUser._id},
    {
       salary: req.body.salary,
+      salarySchedule: req.body.salarySchedule,
       housingPayment: req.body.housingPayment,
       housingInsurance: req.body.housingInsurance,
       vehicleLoan: req.body.vehicleLoan,
