@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const userProfile = require('../controllers/userProfileController');
+const userProfileController = require('../controllers/userProfileController');
 
-router.get('/home', userProfile.getHome);
+router.get('/home', userProfileController.getHome);
 
 // router.get('/yearly', (res, req) => {
 //   res.render('yearly');
 // });
+
+router.post('/add-expenditure', userProfileController.postAddExpenditure );
 
 module.exports = router;

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="css/header.css">
@@ -13,11 +15,12 @@
   <title>Home</title>
 </head>
 <body>
+
+  
   <%- include('includes/dashboard.ejs') %>
   <main class="main-container">
     <!-- FIRST ROW -->
     <section class="row">
-      <%= user.salary %>
       <%= console.log(`${user}`) %>
       <!-- COLUMN -->
       <div class="col-one card">
@@ -37,7 +40,7 @@
           <p class="">Remaining funds<br /></p>
           <span class="lt-green">$978</span>
           <hr class="hr">
-          <button class="gen-btn add-btn">Add Expense</button> 
+          <button class="gen-btn add-btn" type="button" data-toggle="modal" data-target="#myModal">Add Expense</button> 
         </div>
       </div>
       <!-- COLUMN -->
@@ -70,11 +73,11 @@
           <span>$78</span>
         </div>
         <div>
-          <p class="mb-1">Restruantes/Bars</p>
+          <p class="mb-1">Dining</p>
           <span>$275</span>
         </div>
         <div>
-          <p class="mb-1">Misceleneous</p>
+          <p class="mb-1">miscellaneous</p>
           <span>$113</span>
         </div>
       </div>
@@ -115,7 +118,60 @@
         </div>  
       </div>
     </section>
+
+
+    <!-- Modal used for adding expenses  -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Expenditure</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/add-expenditure" method="POST"> 
+          <label for="income-salary">Amount</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                  </div>
+                <input type="number" class="form-control" name="amount" value="" step="0.00" required>
+                </div>
+          <div class="form-check form-check-inline mt-4">
+            <input class="form-check-input" type="radio" name="spendingType" id="" value="true">
+            <label class="form-check-label" for="necessity">Necessity</label>
+          </div>
+          <div class="form-check form-check-inline mt-4">
+            <input class="form-check-input" type="radio" name="spendingType" id="" value="false">
+            <label class="form-check-label" for="indulgence">Indulgence</label>
+          </div>
+          <select class="custom-select mt-3" name="category">
+            <option selected>Choose category of item</option>
+            <option value="1">Housing</option>
+            <option value="2">Vehicle</option>
+            <option value="3">Utilites</option>
+            <option value="4">Groceries</option>
+            <option value="5">Dining</option>
+            <option value="6">miscellaneous</option>
+          </select>     
+      </div>
+       
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form> 
+        
+    </div>
+  </div>
+</div>
   </main>
+  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
 <script src="https://kit.fontawesome.com/0e80a7ec36.js" crossorigin="anonymous"></script>
 </body>
 </html>
