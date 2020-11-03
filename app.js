@@ -11,7 +11,7 @@ const logoutRoutes = require('./routes/logoutRoute');
 const userProfileRoutes = require('./routes/userProfileRoute');
  
 //models 
-const User = require('./models/user');
+const User = require('./models/User');
 
 const app = express(); 
 
