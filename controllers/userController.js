@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const User = require('../models/user');
+const User = require('../models/User');
 const { body, validationResult } = require("express-validator");
 
 
@@ -11,7 +11,7 @@ exports.getSignUp = (req, res) => {
   res.render('sign-up-form');
 };
 
-
+ 
 
 // post sign up form
 exports.postSignUp = [
