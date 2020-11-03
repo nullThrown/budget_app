@@ -40,7 +40,7 @@ exports.postSignUp = [
       // checks if email is already in use
       User.findOne({ 'email': req.body.email })
           .exec( function(err, found_email) {
-             if (err) { return next(err); }
+             if (err) { return next(err); } 
   
              if (found_email) {
                res.render('sign-up-form', {user: user, emailErr: 'Email  in use'});
