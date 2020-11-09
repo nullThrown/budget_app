@@ -15,30 +15,37 @@
   <title>Home</title>
 </head>
 <body>
-
-  
+   
   <%- include('includes/dashboard.ejs') %>
   <main class="main-container">
     <!-- FIRST ROW -->
     <section class="row">
-      <%= console.log(`${user}`) %>
-      <!-- COLUMN -->
+
+      <%= console.log(expenditures) %>
+      <%= console.log(userProfile) %>
+      <%= console.log(monthlyNecessities) %>
+      <%= console.log(monthlyIndulgences) %> 
+
+
+
+      <!-- COLUMN --> 
+      <% let remainingFunds = userProfile[0].monthlyTakeHome - userProfile[0].expenseSum - monthlyNecessities - monthlyIndulgences %>
       <div class="col-one card">
         <div class="card-title-wrapper">
           <h2 class="card-title">Budget</h2>
         </div>
         <div class="col-wrapper-one">
           <p>Take Home Pay</p>
-          <span class="lt-green">$ <%= user.monthlyTakeHome %></span>
+          <span class="lt-green">$ <%= userProfile[0].monthlyTakeHome %> </span>
           <hr class="hr">
-          <p class="">Necessities Spent</p>
-          <span class="lt-red">$ <%= %></span>
+          <p class="">Necessity Spent</p>
+          <span class="lt-red">$ <%= userProfile[0].expenseSum + monthlyNecessities %> </span>
           <hr class="hr">
           <p class="">Indulgent Spent<br /></p>
-          <span class="lt-red">$<%=  %></span>
+          <span class="lt-red">$ <%= monthlyIndulgences %> </span>
           <hr class="hr">
           <p class="">Remaining funds<br /></p>
-          <span class="lt-green">$978</span>
+          <span class="lt-green">$<%= remainingFunds  %></span>
           <hr class="hr">
           <button class="gen-btn add-btn" type="button" data-toggle="modal" data-target="#myModal">Add Expense</button> 
         </div>
@@ -151,8 +158,11 @@
             <option value="housing">Housing</option>
             <option value="vehicle">Vehicle</option>
             <option value="utilites">Utilites</option>
+            <option value="childcare">Childcare</option>
             <option value="groceries">Groceries</option>
             <option value="dining">Dining</option>
+            <option value="debtPayment">Debt Payment</option>
+            <option value="retirement"></option>
             <option value="miscellaneous">miscellaneous</option>
           </select>     
       </div>

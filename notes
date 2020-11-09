@@ -43,7 +43,18 @@
 
 
 
- // create database
-    // create collection for users 
-    // connect database to main app 
-    // add new user upon sign up post 
+// to do --   
+        // recreate use profile scehma to contain objects with an amount as well as category String
+        // loop through user profile schema and add .amount to specificSum object 
+    // place specific sums onto home page add sums of UserProfile based on category with Expenditure category sums   
+
+  // fix views
+      // fix header -- soften the color add space
+      // change login/ signup butons in header
+      // create footer
+
+  // figure out how to alter monthly specific EXPENDITURES without refreshing page 
+
+  // refactor db requests using async/await -- try to understand it first, c'mon
+
+  //           

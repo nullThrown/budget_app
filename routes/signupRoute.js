@@ -1,17 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const usersController = require('../controllers/userController');
-
+const signupController = require('../controllers/signupController');
 
 // Account creation
-router.get('/sign-up', usersController.getSignUp);
+router.get('/sign-up', signupController.getSignup);
 
-router.post('/sign-up', usersController.postSignUp); 
-
-// Profile setup
-router.get('/profile-set-up', usersController.getProfileSetUp);
-
-router.post('/profile-set-up', usersController.postProfileSetUp);
-
+router.post('/sign-up', signupController.postSignup); 
 
 module.exports = router;

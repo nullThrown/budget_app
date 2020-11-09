@@ -16,6 +16,7 @@ const expenditureSchema = new Schema(
 );
 
 
+
 expenditureSchema.virtual('date')
 .get(function() {
   return DateTime.fromJSDate(this.timeStamp).toLocaleString(DateTime.DATE_MED);
