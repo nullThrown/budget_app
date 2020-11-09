@@ -42,7 +42,7 @@ exports.getHome =  (req, res, next) => {
       miscellaneousSum: 0
     }
 
-   // combine this function with the top two 
+   // combine this function with the top two and run a foreach function on the entirety with a little help fromt the man upstare
     results.expenditures.forEach(exp => {
       switch (exp.category) {
         case 'housing':
@@ -72,6 +72,11 @@ exports.getHome =  (req, res, next) => {
       }
     });
 
+    // to grab userProfile and loop over object values
+    // array[0].key. category === "" then fill separate object, similar to the other object for the same values
+    // perhaps even fill in the same object and then transport that object to the views page
+
+    console.log(results.userProfile);
     console.log(specificSums);
     res.render('home', {
        user: req.user,
