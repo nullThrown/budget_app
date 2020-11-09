@@ -21,13 +21,7 @@
     <!-- FIRST ROW -->
     <section class="row">
 
-      <%= console.log(expenditures) %>
-      <%= console.log(userProfile) %>
-      <%= console.log(monthlyNecessities) %>
-      <%= console.log(monthlyIndulgences) %> 
-
-
-
+  
       <!-- COLUMN --> 
       <% let remainingFunds = userProfile[0].monthlyTakeHome - userProfile[0].expenseSum - monthlyNecessities - monthlyIndulgences %>
       <div class="col-one card">
