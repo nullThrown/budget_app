@@ -22,16 +22,7 @@ exports.getHome =  (req, res, next) => {
         err.status = 404;
         return next(err); 
     }
-    // refactor into single function that uses forEach and separates amounts into two separate variables 
-    // sums all 'necessary' expenditures(monthly purchases)
-    let monthlyNecessities = results.expenditures
-    .filter(exp => exp.necessity === true )
-    .reduce((a,b) =>a + b.amount, 0);
-    
-    // sums all 'necessary' expenditures(monthly purchases)    
-    let monthlyIndulgences = results.expenditures
-    .filter(exp => exp.necessity === false)
-    .reduce((a, b) => a + b.amount, 0);
+
 
     let specificSums = {
       housingSum: 0,
@@ -42,14 +33,23 @@ exports.getHome =  (req, res, next) => {
       miscellaneousSum: 0
     }
 
-   // combine this function with the top two and run a foreach function on the entirety with a little help fromt the man upstare
+   let monthlyNecessities = 0;
+   let monthlyIndulgences = 0;
+   // adds Expenditure.amount(s) to their respective categories 
+   // e.g. necessity vs indulgent and  the expenditure categories such as housing vs vehicle 
     results.expenditures.forEach(exp => {
+      if(exp.necessity === true){
+        monthlyNecessities += exp.amount;      
+      }
+      else {
+        monthlyIndulgences += exp.amount;
+      }
       switch (exp.category) {
         case 'housing':
           specificSums.housingSum += exp.amount;
         break;
 
-        case 'vehicle':
+        case 'vehicle': 
         specificSums.vehicleSum += exp.amount;
         break;
 
@@ -71,14 +71,18 @@ exports.getHome =  (req, res, next) => {
 
       }
     });
+    for(const key of Object.keys(this)) {
+      console.log(key);
+       if(key.category === 'housing') {
+         categorySums[housing] += key[amount]; 
+       }
+     }
 
     // to grab userProfile and loop over object values
     // array[0].key. category === "" then fill separate object, similar to the other object for the same values
     // perhaps even fill in the same object and then transport that object to the views page
 
-    console.log(results.userProfile);
-    console.log(specificSums);
-    res.render('home', {
+    res.render('home', { 
        user: req.user,
        expenditures: results.expenditures,
        userProfile: results.userProfile,
@@ -100,7 +104,6 @@ exports.postAddExpenditure = async (req, res, next) => {
       })
       .save(function (err) {
         if (err) { return next(err); }
-        console.log(expenditure);
         res.redirect('/home');
       })
 };      

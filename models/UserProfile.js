@@ -106,4 +106,5 @@ UserProfileSchema.virtual('expenseSum')
 });
 
 
+ 
 module.exports = mongoose.model('UserProfile', UserProfileSchema);

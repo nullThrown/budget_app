@@ -29,7 +29,7 @@ passport.use(
 )
 router.post('/login',
   passport.authenticate("local", {
-    successRedirect: "/profile-set-up",
+    successRedirect: "/home",
     failureRedirect: "/",
   })
 )
