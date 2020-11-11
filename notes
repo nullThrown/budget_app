@@ -58,4 +58,4 @@
 
   // refactor db requests using async/await -- try to understand it first, c'mon
 
-  //           
+  //  use chart.js or other library to create data for page         
