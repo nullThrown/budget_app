@@ -40,13 +40,13 @@ const UserProfileSchema = new Schema (
       amount: {type:Number}, 
       category: {type: String, default: 'childcare'}
     },
-    childcareDaycare: {
+    childcareDaycare: { 
       amount: {type:Number}, 
       category: {type: String, default: 'childcare'}
     },
     healthInsurance: {
       amount: {type:Number}, 
-      category: {type: String, default: 'miscellaneous'}
+      category: {type: String, default: 'healthInsurance'} 
     },
     debtStudent: {
       amount: {type:Number}, 
@@ -105,6 +105,27 @@ UserProfileSchema.virtual('expenseSum')
                this.retirementBrokerage.amount;
 });
 
+UserProfileSchema.virtual('categorySums')
+.get(function () {
+  const categorySums = {
+    housingSum: this.housingPayment.amount + this.housingInsurance.amount,
+    vehicleSum: this.vehicleLoan.amount + this.vehicleInsurance.amount,
+    utilitySum: this.cellPlan.amount + this.cellLoan.amount + this.internetPlan.amount,
+    childcareSum: this.childcareTuition.amount + this.childcareDaycare.amount,
+    healthInsuranceSum: this.healthInsurance.amount,  
+    debtPaymentSum: this.debtStudent.amount + this.debtCredit.amount,
+    retirementSum: this.retirement401k.amount + this.retirementIra.amount + this.retirementBrokerage.amount,
+  }
+  return categorySums; 
+
+}) 
+
+// housingSum: 0,
+// vehicleSum: 0,
+// utilitySum: 0,
+// grocerySum: 0,
+// diningSum: 0,
+// miscellaneousSum: 
 
  
 module.exports = mongoose.model('UserProfile', UserProfileSchema);
