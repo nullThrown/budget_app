@@ -61,7 +61,7 @@ exports.getHome =  (req, res, next) => {
         specificSums.utilitySum += exp.amount;
         break;
 
-        case 'childCare': 
+        case 'childcare': 
         specificSums.childcareSum += exp.amount
         break;
 
@@ -73,11 +73,11 @@ exports.getHome =  (req, res, next) => {
         specificSums.diningSum += exp.amount;
         break;
 
-        case 'debtPaymentSum': 
+        case 'debtPayment': 
         specificSums.debtPaymentSum += exp.amount;
         break;
 
-        case 'retirementSum': 
+        case 'retirement': 
         specificSums.retirementSum += exp.amount;
 
         case 'miscellaneous':
