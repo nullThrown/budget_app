@@ -32,7 +32,7 @@ passport.deserializeUser(function(id, done) {
   }); 
 });
 
-// body-parser 
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
