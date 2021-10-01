@@ -5,9 +5,7 @@ const userProfileController = require('../controllers/userProfileController');
 
 router.get('/home', userProfileController.getHome);
 
-// router.get('/yearly', (res, req) => {
-//   res.render('yearly');
-// });
+router.get('/yearly', userProfileController.getYearly);
 
 router.post('/add-expenditure', userProfileController.postAddExpenditure );
 

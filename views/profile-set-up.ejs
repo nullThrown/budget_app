@@ -1,228 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/profile.css">
-  
-</head>
-<body>
-  <%- include('includes/dashboard.ejs') %>
-  <main class="main-container">
-    
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/forms.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Profile Set Up</title>
+  </head>
 
-     <div class="main-container">
-       <main class="form-container">
-        <div class="form-wrapper">
-          
-          <form  method="POST">
-            <!-- FORM ITEM -->
-            <div class="form-item">
-              <div class="form-category-title-wrapper">
-              <p class="form-category-title">Income</p> 
-              </div> 
-              <div class="alert alert-info" role="alert">
-                Input base salary only -- other forms of income can be added later.
+  <body>
+    <main>
+    <div class="form-container form-container-lg"> 
+      <form  method="POST">
+        <!-- FORM ITEM -->
+        <div class="form-item">
+          <div class="form-category-title-wrapper">
+          <p class="form-category-title">Income</p> 
+          </div> 
+          <div class="alert alert-info" role="alert">
+            Input base salary only -- other forms of income can be added later.
+          </div>
+          <p class="form-item-title">Salary</p> 
+          <div class="form-group">
+            <label for="income-salary">Check Amount (post-tax income)</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
               </div>
-              <p class="form-item-title">Salary</p> 
-              <div class="form-group">
-                <label for="income-salary">Check Amount (post-tax income)</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="salary" value="0" step="0.00" required>
-                </div>
-              </div> 
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="salarySchedule" id="" value="weekly">
-                <label class="form-check-label" for="salary-schedule">Weekly</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="salarySchedule" id="" value="biMonthly">
-                <label class="form-check-label" for="salary-schedule">Bi-monthly</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="salarySchedule" id="" value="monthly">
-                <label class="form-check-label" for="salary-schedule">Monthly</label>
-              </div>
-            </div> 
-            <div class="form-category-title-wrapper">
-              <p class="form-category-title">Expenses</p> 
-              </div> 
-            <div class="alert alert-info" role="alert">
-                Enter the expense as payed on a monthly basis. If the payment is recurring but not a fixed amount (utilities, groceries etc.), then add these expenses as you pay for them.
-              </div>  
-            <!-- FORM ITEM -->
-            <div class="form-item">
-            <p class="form-item-title">Housing</p>  
-            <div class="form-group">
-              <label for="housing-rent">Mortgage or rent payment</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
-                </div>
-              <input type="number" class="form-control" name="housingPayment" value="0" step="0.00">
-              </div>
-            </div> 
-            <div class="form-group">
-              <label for="housing-insurance">Homeowners or renters insurance</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
-                </div>
-              <input type="number" class="form-control" name="housingInsurance" value="0" step="0.00">
-              </div>
-            </div>     
+            <input type="number" class="form-control" name="salary" value="0" step="0.00" required>
             </div>
-            <div class="form-item">
-              <p class="form-item-title">Vehicle and Transportation</p>
-              <div class="form-group">
-                <label for="vehicle-loan">Loan vehicle payment</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="vehicleLoan" value="0" step="0.00">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="vehicle-insurance">Vehicle Insurance</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="vehicleInsurance" value="0" step="0.00">
-                </div>
-              </div>      
+          </div> 
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="salarySchedule" id="" value="weekly">
+            <label class="form-check-label" for="salary-schedule">Weekly</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="salarySchedule" id="" value="biMonthly">
+            <label class="form-check-label" for="salary-schedule">Bi-monthly</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="salarySchedule" id="" value="monthly">
+            <label class="form-check-label" for="salary-schedule">Monthly</label>
+          </div>
+        </div> 
+        <div class="form-category-title-wrapper">
+          <p class="form-category-title">Expenses</p> 
+          </div> 
+        <div class="alert alert-info" role="alert">
+            Enter the expense as payed on a monthly basis. If the payment is recurring but not a fixed amount (utilities, groceries etc.), then add these expenses as you pay for them.
+          </div>  
+        <!-- FORM ITEM -->
+        <div class="form-item">
+        <p class="form-item-title">Housing</p>  
+        <div class="form-group">
+          <label for="housing-rent">Mortgage or rent payment</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
             </div>
-            <div class="form-item">
-              <p class="form-item-title">Cell Phone and Internet</p>
-                <div class="form-group">
-                  <label for="cell-plan">Cell phone plan</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    </div>
-                  <input type="number" class="form-control" name="cellPlan" value="0" step="0.00">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="cell-loan">Cell phone loan payment</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    </div>
-                  <input type="number" class="form-control" name="cellLoan" value="0" step="0.00">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="cell-internet">Internet</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                    </div>
-                  <input type="number" class="form-control" name="internetPlan" value="0" step="0.00">
-                  </div>
-                </div>
+          <input type="number" class="form-control" name="housingPayment" value="0" step="0.00">
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="housing-insurance">Homeowners or renters insurance</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
             </div>
-            <div class="form-item">
-              <p class="form-item-title">Childcare and School</p>
-              <div class="form-group">
-                <label for="childcare-tuition">Tuition</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="childcareTuition" value="0" step="0.00">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="childcare-daycare">Daycare or early child care</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="childcareDaycare" value="0" step="0.00">
-                </div>
-              </div>
-            </div>
-            <div class="form-item">
-              <p class="form-item-title">Health Insurance</p>
-              <div class="form-group">
-                <label for="health-insurance">Health insurance plan</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="healthInsurance" value="0" step="0.00">
-                </div>
-              </div>
-            </div>
-            <div class="form-item">
-              <p class="form-item-title">Loans and Other Debts</p>
-              <div class="form-group">
-                <label for="debts-student">Student loans</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="debtStudent" value="0" step="0.00">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="debts-credit">Credit card debt</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="debtCredit" value="0" step="0.00">
-                </div>
-              </div>
-            </div>
-            <div class="form-item">
-              <p class="form-item-title">Retirement Funding</p>
-              <div class="form-group">
-                <label for="retirement-401k">401k</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="retirement401k" value="0" step="0.00">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="retirement-ira">IRA accounts</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="retirementIra" value="0" step="0.00">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="retirement-brokerage">Brokerage account</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  </div>
-                <input type="number" class="form-control" name="retirementBrokerage" value="0" step="0.00">
-                </div>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-success save-btn">Save</button>
-          </form>
+          <input type="number" class="form-control" name="housingInsurance" value="0" step="0.00">
+          </div>
+        </div>     
         </div>
-       </main>
-     </div>
-        
-       
-  </main>
-  <script src="https://kit.fontawesome.com/0e80a7ec36.js" crossorigin="anonymous"></script>  
-  <script src="/js/profile.js"></script> 
-</body>
+        <div class="form-item">
+          <p class="form-item-title">Vehicle and Transportation</p>
+          <div class="form-group">
+            <label for="vehicle-loan">Loan vehicle payment</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="vehicleLoan" value="0" step="0.00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="vehicle-insurance">Vehicle Insurance</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="vehicleInsurance" value="0" step="0.00">
+            </div>
+          </div>      
+        </div>
+        <div class="form-item">
+          <p class="form-item-title">Cell Phone and Internet</p>
+            <div class="form-group">
+              <label for="cell-plan">Cell phone plan</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+                </div>
+              <input type="number" class="form-control" name="cellPlan" value="0" step="0.00">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cell-loan">Cell phone loan payment</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+                </div>
+              <input type="number" class="form-control" name="cellLoan" value="0" step="0.00">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cell-internet">Internet</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+                </div>
+              <input type="number" class="form-control" name="internetPlan" value="0" step="0.00">
+              </div>
+            </div>
+        </div>
+        <div class="form-item">
+          <p class="form-item-title">Childcare and School</p>
+          <div class="form-group">
+            <label for="childcare-tuition">Tuition</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="childcareTuition" value="0" step="0.00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="childcare-daycare">Daycare or early child care</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="childcareDaycare" value="0" step="0.00">
+            </div>
+          </div>
+        </div>
+        <div class="form-item">
+          <p class="form-item-title">Health Insurance</p>
+          <div class="form-group">
+            <label for="health-insurance">Health insurance plan</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="healthInsurance" value="0" step="0.00">
+            </div>
+          </div>
+        </div>
+        <div class="form-item">
+          <p class="form-item-title">Loans and Other Debts</p>
+          <div class="form-group">
+            <label for="debts-student">Student loans</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="debtStudent" value="0" step="0.00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="debts-credit">Credit card debt</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="debtCredit" value="0" step="0.00">
+            </div>
+          </div>
+        </div>
+        <div class="form-item">
+          <p class="form-item-title">Retirement Funding</p>
+          <div class="form-group">
+            <label for="retirement-401k">401k</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="retirement401k" value="0" step="0.00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="retirement-ira">IRA accounts</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="retirementIra" value="0" step="0.00">
+            </div>
+          </div> 
+          <div class="form-group">
+            <label for="retirement-brokerage">Brokerage account</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              </div>
+            <input type="number" class="form-control" name="retirementBrokerage" value="0" step="0.00">
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success submit-btn">Save</button>
+      </form>
+    </div>
+    </main>
+          
+    <script src="https://kit.fontawesome.com/0e80a7ec36.js" crossorigin="anonymous"></script>  
+    <script src="/js/profile.js"></script> 
+  </body>
 </html>
