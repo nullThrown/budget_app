@@ -13,6 +13,12 @@ app.js -> server.js
   combine controllers and route contents
 
   refactor routes in this order
-  register(file name: signup)
-  login
-  logout
+  
+  place all in auth file
+    register(file name: signup)
+    login
+    logout
+
+place validation in separate file 
+
+create authenticate middleware
