@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/forms.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <title>Log In</title>
+</head>
+
+<body>
+    <div class="form-container form-container-sm">
+      <form class="" method="post">
+        <h2 class="form-category-title mt-2 mb-4">Log In</h2>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <% if(typeof emailErr !== 'undefined') { %>
+            <div class="alert alert-danger"> <%= emailErr %></div>
+          <% } %>  
+          <input type="email" class="form-control" id="user-email" name="email" value="<%= 'undefined' == typeof user ? '' : user.email %>">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="mb-2 text-danger">
+            Password must be 8 or more characters
+           </div>
+          <input type="password" class="form-control" id="user-password" name="password" value="">
+        </div> 
+        <button type="submit" id="submit-form-btn" class="btn btn-primary submit-btn" name="button">Log In</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
+
+

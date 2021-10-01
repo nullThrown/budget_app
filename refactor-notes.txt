@@ -1,0 +1,18 @@
+The ultimate goal of this refactor is to convert the application from a server rendered(ejs template) into a backend JSON API
+secondary goals include utilizing proper naming, DRY principles, removing unneceesary code and making the app much nicer and cleaner and better code
+
+
+app.js -> server.js 
+
+  remove passportJS
+  rename route folders 
+  concatanate  route imports into single middleware
+  place mongoDB connection into separate file
+  create .env file to store PORT || mongoDB connection string  
+  remove all EJS view files 
+  combine controllers and route contents
+
+  refactor routes in this order
+  register(file name: signup)
+  login
+  logout

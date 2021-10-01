@@ -14,26 +14,8 @@ li {
 }
 a:hover {
   text-decoration: none;
-}
-.mb-1 {
-  margin-bottom: .5em;
-}
-.mb-2 {
-  margin-bottom: 1em;
-}
-.mb-3 {
-  margin-bottom: 1.5em;
-}
-.mt-1 {
-  margin-top: 2em;
-}
-.link-btn {
-  font-size: 1.2rem;
-  border-radius: 4px;
-  padding: .3em .8em;
-  border-radius: 4px;
-  transition: 250ms;
-}
+ }
+
 .gen-btn {
   padding: .4em .5em;
   border-radius: 6px;
@@ -110,8 +92,8 @@ a:hover {
 
 .card {
   border: 1px rgb(220, 220, 220) solid;
-  border-radius: 8px;
-  background-color: rgb(235, 235, 235);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.253);
 }
 .card-title-wrapper {
   width: 100%;
@@ -130,11 +112,11 @@ a:hover {
 
 /* TYPOGRAPHY */
 .lt-red {
-  color: rgb(192, 47, 29);
+  color: rgb(204, 119, 108);
 }
 .soft-black {
   color: rgb(30,30,30);
   }
 .lt-green {
-  color: rgb(54, 109, 37);
+  color: rgb(80, 133, 64);
 }  
