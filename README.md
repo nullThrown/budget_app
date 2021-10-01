@@ -17,7 +17,3 @@ An application meant to allow simple tracking of income and expenses. The layout
 
 
 
-
-    TEST OF THE NEW BRANCH 
-    TEST OF THE NEW BRANCH
-    TEST OF THE NEW BRANCH

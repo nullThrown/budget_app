@@ -20,7 +20,7 @@
   margin: 0 auto 1em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-row-gap: 2em;
+  grid-row-gap: 1em;
   text-align: center;
 } 
 .col-wrapper-two > div > p {
@@ -58,10 +58,12 @@
   display: flex;
   flex-direction: column;
   align-self: flex-start;
+  border-right: 1px rgb(194, 194, 194) solid;
 } 
 .monthly-specs-btns-wrapper button {
   color: rgb(85, 104, 192);
   font-size: 1rem;
+  background-color: rgb(255, 255, 255);
 }
 .monthly-specs-btns-wrapper button:hover {
   color: rgb(42, 64, 160);
