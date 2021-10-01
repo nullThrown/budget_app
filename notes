@@ -46,16 +46,20 @@
 // to do --   
         // recreate use profile scehma to contain objects with an amount as well as category String
         // loop through user profile schema and add .amount to specificSum object 
-    // place specific sums onto home page add sums of UserProfile based on category with Expenditure category sums 
-    // run loop on userprofile object and add sums to other specific sums object 
+        // place specific sums onto home page add sums of UserProfile based on category with Expenditure category sums 
 
   // fix views
-      // fix header -- soften the color add space
-      // change login/ signup butons in header
+        // fix header -- soften the color add space
+        // change login/ signup butons in header
+      // add links to home page anchors
+      // create one form css file 
+      // fix colors for cash amounts on the home page
+    
       // create footer
 
-  // figure out how to alter monthly specific EXPENDITURES without refreshing page 
 
-  // refactor db requests using async/await -- try to understand it first, c'mon
+  // figure out how to alter monthly specific expenditures without refreshing page 
+
+  // refactor db requests using async/await
 
   //  use chart.js or other library to create data for page         

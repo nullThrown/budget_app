@@ -2,14 +2,33 @@ const Expenditure = require('../models/Expenditure');
 const UserProfile = require('../models/UserProfile');
 const async = require('async');
 
+// db.Expenditure.aggregate([
+//   {$project: {name: 1, month: {$month: '$bday'}}},
+//   {$match: {month: 9}}
+// ]);
 
 
+ const month =  Expenditure.aggregate([
+  {$project: { month: {$month: 'timeStamp'}}},
+  {$match: {month: 11}}
+])
+// console.log(month._pipeline.$project)
+ 
 exports.getHome =  (req, res, next) => {
-  async.parallel({
+  async.parallel({ 
     expenditures: (callback) => {
       Expenditure.find({'userId': req.user._id})
-      .exec(callback)
+      .exec(callback) 
   },
+  
+  //Expenditures.find({'userId: req.user._id})
+ 
+    // find expenditures by current userId
+    // find current month = Number(1-12)
+    // match current expenditures list and aggregate by current month var
+    // return matched expenditures 
+
+
       userProfile: (callback) => {
       UserProfile.find({'userId': req.user._id})
       .exec(callback)  
@@ -97,7 +116,8 @@ exports.getHome =  (req, res, next) => {
        userProfile: results.userProfile,
        monthlyNecessities: monthlyNecessities,
        monthlyIndulgences: monthlyIndulgences,
-       specificSums: specificSums
+       specificSums: specificSums,
+       month: month
        }); 
       }  
   );
@@ -105,7 +125,7 @@ exports.getHome =  (req, res, next) => {
 
 exports.postAddExpenditure = async (req, res, next) => {
     const expenditure = await new Expenditure({
-        
+         
         title: req.body.expTitle, 
         amount: req.body.expAmount,
         necessity: req.body.expSpendingType,
@@ -116,4 +136,8 @@ exports.postAddExpenditure = async (req, res, next) => {
         if (err) { return next(err); }
         res.redirect('/home');
       })
-};      
+};   
+
+exports.getYearly = (req, res, next) => {
+  res.render('yearly', {user: req.user})
+}
