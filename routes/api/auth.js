@@ -1,57 +1,46 @@
 const express = require('express');
 const router = express.Router();
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../../models/user');
-const auth = require('../../middleware/auth');
+const User = require('../../models/User');
+const { verifyToken } = require('../../middleware/auth');
+const {
+  validateRegistration,
+  validateLogin,
+} = require('../../middleware/validation/validateAuth');
+const validate = require('../../middleware/validation/validate');
 // ROUTE    GET api/auth/register
 // DESC     Register a new user
 // ACCESS   Public
-router.post(
-  '/register',
+router.post('/register', validateRegistration(), validate, async (req, res) => {
+  try {
+    const { firstName, lastName, email, password } = req.body;
 
-  // validation / sanitation
-  body('name', ' Name is required').trim().isLength({ min: 3 }).escape(),
-  body('email', 'Not a valid email ').trim().isEmail().escape(),
-  body('password', 'Password must be 8 characters')
-    .trim()
-    .isLength({ min: 8 })
-    .escape(),
-
-  async (req, res) => {
-    try {
-      console.log(req.body);
-      const { name, email, password } = req.body;
-      //check if email already exists
-      let user = await User.findOne({ email: email });
-      if (user) {
-        return res.status(400).json({ error: ['email already exists'] });
-      }
-      // handle validation errors
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
-
-      // password hash
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-
-      user = new User({
-        name,
-        email,
-        password: hashedPassword,
-      });
-
-      await user.save();
-      res.json(user);
-    } catch (err) {
-      console.log(err.message);
-      res.status(500).send('server error');
+    //check if email already exists
+    let user = await User.findOne({ email: email });
+    if (user) {
+      return res.status(400).json({ error: ['email already exists'] });
     }
+
+    // password hash
+    const salt = await bcrypt.genSalt(12);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
+
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('server error');
   }
-);
+});
 
 // ROUTE    POST api/auth/login
 // DESC     login a user
@@ -92,14 +81,17 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// place in separate route folder
-// ROUTE    GET api/auth/me
-// DESC     Get a user
+// ROUTE    POST api/auth/login
+// DESC     logout a user
 // ACCESS   Private
-router.get('/me', auth, async (req, res) => {
+
+// may need refactoring -- watch for on traversy video
+// remove req.header('x-auth-token')
+// delete req.user()
+// blacklist or backdate token
+router.post('/signout', verifyToken, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
-    res.json(user);
+    res.send(req.user);
   } catch (err) {
     console.error(err.message);
     res.status(500).json(err);

@@ -1,24 +1,27 @@
-The ultimate goal of this refactor is to convert the application from a server rendered(ejs template) into a backend JSON API
-secondary goals include utilizing proper naming, DRY principles, removing unneceesary code and making the app much nicer and cleaner and better code
+    todo: 
+    rework monthly expenditure virtual fn() to include 
+    expenditures
+  API ROUTES 
 
+    AUTH -> api/auth
+      POST register
+      POST signin
+      POST signout
 
-app.js -> server.js 
+    USER -> api/user
+      GET user 
+      POST update user
+      DELETE delete user and assoc. profile
 
-  remove passportJS
-  rename route folders 
-  concatanate  route imports into single middleware
-  place mongoDB connection into separate file
-  create .env file to store PORT || mongoDB connection string  
-  remove all EJS view files 
-  combine controllers and route contents
+    PROFILE -> api/profiles
+      POST create new profile
+      GET  current user profile 
+      POST update current user profile
 
-  refactor routes in this order
-  
-  place all in auth file
-    register(file name: signup)
-    login
-    logout
+    EXPENDITURES -> api/profile  
+      POST create new expenditure
+      DELETE delete single expenditure
+      GET  all expenditures 
+      GET  expenditures by month
+      GET  expenditure by year
 
-place validation in separate file 
-
-create authenticate middleware

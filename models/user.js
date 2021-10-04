@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   lastName: { type: String, maxlength: 100, required: true },
   email: { type: String, maxlength: 50, required: true },
   password: { type: String, required: true },
-  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'profile' },
+  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
   isAdmin: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now() },
 });

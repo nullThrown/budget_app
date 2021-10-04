@@ -1,5 +1,5 @@
 const Expenditure = require('../models/Expenditure');
-const UserProfile = require('../models/UserProfile');
+const UserProfile = require('../models/Profile');
 const async = require('async');
 
 // db.Expenditure.aggregate([
@@ -110,18 +110,6 @@ exports.getHome =  (req, res, next) => {
     // array[0].key. category === "" then fill separate object, similar to the other object for the same values
     // perhaps even fill in the same object and then transport that object to the views page
     // console.log(specificSums);
-    res.render('home', { 
-       user: req.user,
-       expenditures: results.expenditures,
-       userProfile: results.userProfile,
-       monthlyNecessities: monthlyNecessities,
-       monthlyIndulgences: monthlyIndulgences,
-       specificSums: specificSums,
-       month: month
-       }); 
-      }  
-  );
-};    
 
 exports.postAddExpenditure = async (req, res, next) => {
     const expenditure = await new Expenditure({
