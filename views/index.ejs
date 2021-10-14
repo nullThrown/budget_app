@@ -1,90 +1,28 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  
-  <title>Document</title>
-</head>
-<body>
-  <!-- ADD MORE CONTENT ON FROM PAGE -->
-  <!-- ADD GETTING STARTED SECTION THAT EXPLAINS WEBSITE WITH SIGN UP BUTTON -->
-  <!-- HEADER BEGIN -->
-  <header class="header">
-    <div class="header-wrapper">
-      <i class="fas fa-kaaba fa-3x logo"></i>
-      <form action="">
-        <div class="login-wrapper">
-          <input type="text" name="email" id="" placeholder="email">
-          <input type="password" name="password" placeholder="password">
-          <button type="submit" class="link-btn log-in-btn">Log In</button>
-        </div>
-      </form>
-      <a href="sign-up" class="link-btn sign-up-btn">Sign-Up</a>
-    </div>
-  </header>
-  <!-- HEADER END -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/header-footer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- MAIN BEGIN -->
-    <main class="main-container">
-      <% if(messages.error) { %>
-        <%= messages.error %> 
-      <% } %>
-      <section class="row">
-        <div class="card col-one">
-          <h2 class="card-title text-center mt-3 mb-4">Track</h2>
-          <img class="card-img-top" src="/img/laptop.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Report both income and expenditures and know exactly where your money is going.</p>
-          </div>
-        </div>
-        
-        <div class="card col-one">
-          <h2 class="card-title text-center mt-3 mb-4">Simple</h2>
-          <img class="card-img-top" src="/img/meeting.jpeg" alt="Card image cap">
-          <div class="card-body">
-            
-            <p class="card-text">Easy to use interface that displays the information you want without all the unnecessaries</p>
-          </div>
-        </div>
-  
-        <div class="card col-one">
-          <h2 class="card-title text-center mt-3 mb-4">Analysis</h2>
-          <img class="card-img-top" src="/img/journaling.jpg" alt="Card image cap">
-          <div class="card-body">
-            
-            <p class="card-text">In depth statistical breakdown of spending and saving habits with reports both monthly and annually.</p>
-          </div>
-        </div>
-      </section>
-  </main>
-  <!-- MAIN END -->
-  
-  <script src="https://kit.fontawesome.com/0e80a7ec36.js" crossorigin="anonymous"></script>
-</body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/header-footer.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  
-  <title>Document</title>
-</head>
-<body>
-  <!-- ADD MORE CONTENT ON FROM PAGE -->
-  <!-- ADD GETTING STARTED SECTION THAT EXPLAINS WEBSITE WITH SIGN UP BUTTON -->
-  <!-- HEADER BEGIN -->
-  <!-- <header class="header">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ADD MORE CONTENT ON FROM PAGE -->
+    <!-- ADD GETTING STARTED SECTION THAT EXPLAINS WEBSITE WITH SIGN UP BUTTON -->
+    <!-- HEADER BEGIN -->
+    <!-- <header class="header">
     <div class="header-wrapper">
       <i class="fas fa-kaaba fa-3x logo"></i>
       <form action="/login" method="POST">
@@ -97,42 +35,63 @@
       <a href="sign-up" class="link-btn sign-up-btn">Sign-Up</a>
     </div>
   </header>  -->
-  <%- include('includes/header.ejs') %>
-  <!-- HEADER END -->
+    <%- include('includes/header.ejs') %>
+    <!-- HEADER END -->
 
-  <!-- MAIN BEGIN --> 
+    <!-- MAIN BEGIN -->
     <main class="main-container">
       <section class="row">
         <div class="card col-one">
           <h2 class="card-title text-center mt-3 mb-4">Track</h2>
-          <img class="card-img-top" src="/img/laptop.jpg" alt="Card image cap">
+          <img
+            class="card-img-top"
+            src="/img/laptop.jpg"
+            alt="Card image cap"
+          />
           <div class="card-body">
-            <p class="card-text">Report both income and expenditures and know exactly where your money is going.</p>
+            <p class="card-text">
+              Report both income and expenditures and know exactly where your
+              money is going.
+            </p>
           </div>
         </div>
-        
+
         <div class="card col-one">
           <h2 class="card-title text-center mt-3 mb-4">Simple</h2>
-          <img class="card-img-top" src="/img/meeting.jpeg" alt="Card image cap">
+          <img
+            class="card-img-top"
+            src="/img/meeting.jpeg"
+            alt="Card image cap"
+          />
           <div class="card-body">
-            
-            <p class="card-text">Easy to use interface that displays the information you want without all the unnecessaries</p>
+            <p class="card-text">
+              Easy to use interface that displays the information you want
+              without all the unnecessaries
+            </p>
           </div>
         </div>
-  
+
         <div class="card col-one">
           <h2 class="card-title text-center mt-3 mb-4">Analysis</h2>
-          <img class="card-img-top" src="/img/journaling.jpg" alt="Card image cap">
+          <img
+            class="card-img-top"
+            src="/img/journaling.jpg"
+            alt="Card image cap"
+          />
           <div class="card-body">
-            
-            <p class="card-text">In depth statistical breakdown of spending and saving habits with reports both monthly and annually.</p>
+            <p class="card-text">
+              In depth statistical breakdown of spending and saving habits with
+              reports both monthly and annually.
+            </p>
           </div>
         </div>
       </section>
-  </main>
-  <!-- MAIN END -->
-  
-  <script src="https://kit.fontawesome.com/0e80a7ec36.js" crossorigin="anonymous"></script>
-</body>
->>>>>>> 1d1c70837e00427fd4b1fbe919c8d34011f7ba9e
+    </main>
+    <!-- MAIN END -->
+
+    <script
+      src="https://kit.fontawesome.com/0e80a7ec36.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

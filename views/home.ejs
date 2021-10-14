@@ -14,30 +14,30 @@
 </head>
 <body>
   <%- include('includes/header.ejs') %>  
-  <% console.log(month) %>
+ 
   <main class="main-container">
     <!-- FIRST ROW -->
     <section class="row"> 
 
   
       <!-- COLUMN --> 
-      <% let remainingFunds = userProfile[0].monthlyTakeHome - userProfile[0].expenseSum - monthlyNecessities - monthlyIndulgences %>
+     
       <div class="col-one card">
         <div class="card-title-wrapper">
           <h2 class="card-title">Budget</h2>
         </div>
         <div class="col-wrapper-one"> 
           <p>Take Home Pay</p>
-          <span class="lt-green">$ <%= userProfile[0].monthlyTakeHome %> </span>
+          <span class="lt-green">$  </span>
           <hr class="hr">
           <p class="">Necessity Spent</p>
-          <span class="lt-red">$ <%= userProfile[0].expenseSum + monthlyNecessities %> </span>
+          <span class="lt-red">$  </span>
           <hr class="hr">
           <p class="">Indulgent Spent<br /></p>
-          <span class="lt-red">$ <%= monthlyIndulgences %> </span>
+          <span class="lt-red">$  </span>
           <hr class="hr">
           <p class="">Remaining funds<br /></p>
-          <span class="lt-green">$<%= remainingFunds  %></span>
+          <span class="lt-green">$ </span>
           <hr class="hr">
           <button class="gen-btn add-btn" type="button" data-toggle="modal" data-target="#myModal">Add Expense</button> 
         </div>
@@ -55,47 +55,47 @@
         <h2 class="card-title">Month Specifics</h2>
       </div>
       
-      <% const userProfileSums = userProfile[0].categorySums %>
+      
       <div class="col-wrapper-two">
         <div>
           <p class="mb-1">Housing</p>
-          <span>$ <%= specificSums.housingSum + userProfileSums.housingSum %></span>
+          <span>$</span>
         </div>  
         <div>
           <p class="mb-1">Vehicle</p>
-          <span>$ <%= specificSums.vehicleSum + userProfileSums.vehicleSum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Utilities</p>
-          <span>$ <%= specificSums.utilitySum + userProfileSums.utilitySum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Childcare</p>
-          <span>$ <%= specificSums.childcareSum + userProfileSums.childcareSum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Groceries</p>
-          <span>$ <%= specificSums.grocerySum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Dining</p>
-          <span>$ <%= specificSums.diningSum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Debt Payment</p>
-          <span>$ <%= specificSums.debtPaymentSum + userProfileSums.debtPaymentSum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Retirement</p>
-          <span>$ <%= specificSums.retirementSum + userProfileSums.retirementSum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Health Insurance</p>
-          <span>$ <%= userProfileSums.healthInsuranceSum %></span>
+          <span>$ </span>
         </div>
         <div>
           <p class="mb-1">Miscellaneous</p>
-          <span>$ <%= specificSums.miscellaneousSum %></span>
+          <span>$ </span>
         </div>
       </div>
     </div>
@@ -121,10 +121,7 @@
             <h4>Posted</h4>
             <h4>Date</h4>
             <h4>Amount</h4>
-            <% expenditures.forEach(exp => { %>
-              <p><%= exp.title %></p>
-            <span><%= exp.date %></span><span>$<%= exp.amount %></span>
-            <% }); %> 
+           
           </div>
         </div>  
       </div>

@@ -1,26 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-
-let num = 5;
-for (let i = 0; i < 10; i++) {
-  let num = i;
-  console.log(num);
-}
-
-   
-
-
-
-
-
-
-  </script>
-</body>
-</html>
+<% let remainingFunds = userProfile[0].monthlyTakeHome -
+userProfile[0].expenseSum - monthlyNecessities - monthlyIndulgences %> <%=
+userProfile[0].monthlyTakeHome %> <%= userProfile[0].expenseSum +
+monthlyNecessities %> <%= monthlyIndulgences %> <%= remainingFunds <% const
+userProfileSums = userProfile[0].categorySums %> <%= specificSums.housingSum +
+userProfileSums.housingSum %> <%= specificSums.vehicleSum +
+userProfileSums.vehicleSum %> <%= specificSums.utilitySum +
+userProfileSums.utilitySum %> <%= specificSums.childcareSum +
+userProfileSums.childcareSum %> <%= specificSums.grocerySum %> <%=
+specificSums.diningSum %> <%= specificSums.debtPaymentSum +
+userProfileSums.debtPaymentSum %> <%= specificSums.retirementSum +
+userProfileSums.retirementSum %> <%= userProfileSums.healthInsuranceSum %> <%=
+specificSums.miscellaneousSum %> <% expenditures.forEach(exp => { %>
+<p><%= exp.title %></p>
+<span><%= exp.date %></span><span>$<%= exp.amount %></span>
+<% }); %>
