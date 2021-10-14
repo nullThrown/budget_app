@@ -1,0 +1,11 @@
+component structure will be modeled after the particular routes the component pertains to
+
+profile/
+  incomeCard.js
+  expenditures.js
+auth/
+  loginForm.js
+  signupForm.js
+
+landing/
+  
