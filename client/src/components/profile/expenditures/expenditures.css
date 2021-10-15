@@ -5,13 +5,13 @@
   border: 1px rgba(163, 160, 160, 0.822) solid;
   padding: 2em;
 }
-.expenditures-title {
+.header-title {
   text-align: center;
   font-size: 2.6rem;
   font-weight: 400;
   margin-bottom: 0.4em;
 }
-.expenditures-desc {
+.header-desc {
   padding: 1em 0;
   border-bottom: 1px solid rgba(163, 160, 160, 0.822);
   border-top: 1px solid rgba(163, 160, 160, 0.822);
@@ -21,20 +21,14 @@
   /* grid-template-rows: repeat(2, 40px); */
   place-items: center;
 }
-.expenditures-category {
+.main {
+  border: 1px rgb(122, 119, 119) solid;
+  margin: 1em 0;
+  display: flex;
 }
-.category-budget-amount {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  align-self: start;
-}
-.category-spent {
-  grid-column: 3 / -1;
-  justify-self: start;
-}
+
 .nav {
   width: fit-content;
-  margin-left: 1em;
 }
 .nav-list {
   display: flex;
@@ -53,4 +47,16 @@
 }
 .nav-item-btn:hover {
   color: rgb(25, 52, 92);
+}
+table {
+  width: 90%;
+  margin-left: auto;
+}
+td,
+th {
+  width: 20%;
+  text-align: center;
+}
+.table-row-data {
+  border: 1px solid grey;
 }
