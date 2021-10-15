@@ -1,0 +1,56 @@
+.expenditures-box {
+  max-width: 1000px;
+  width: 96%;
+  margin: 10em auto;
+  border: 1px rgba(163, 160, 160, 0.822) solid;
+  padding: 2em;
+}
+.expenditures-title {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin-bottom: 0.4em;
+}
+.expenditures-desc {
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(163, 160, 160, 0.822);
+  border-top: 1px solid rgba(163, 160, 160, 0.822);
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: repeat(2, 40px); */
+  place-items: center;
+}
+.expenditures-category {
+}
+.category-budget-amount {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  align-self: start;
+}
+.category-spent {
+  grid-column: 3 / -1;
+  justify-self: start;
+}
+.nav {
+  width: fit-content;
+  margin-left: 1em;
+}
+.nav-list {
+  display: flex;
+  flex-direction: column;
+}
+.nav-item {
+  margin-bottom: 3px;
+}
+.nav-item-btn {
+  border: none;
+  background-color: inherit;
+  color: rgb(31, 95, 155);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 100ms;
+}
+.nav-item-btn:hover {
+  color: rgb(25, 52, 92);
+}
