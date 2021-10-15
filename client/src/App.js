@@ -1,7 +1,8 @@
 import './App.css';
+import { Expenditures } from './components/profile/expenditures/expenditures';
 
 function App() {
-  return <h1>Hello world!</h1>;
+  return <Expenditures />;
 }
 
 export default App;
