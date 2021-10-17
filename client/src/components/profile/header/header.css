@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  padding: 1em 0 2em;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--grey-1);
+}
+.title {
+  margin-left: 2em;
+}
+.user-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.user-nav i {
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
+.user {
+  font-size: 1.8rem !important;
+  margin-left: 12px;
+}
