@@ -1,5 +1,5 @@
 import '../expenditures/expenditures.css';
-import { Header } from './heading';
+import { Header } from './header';
 import { Nav } from './nav';
 import { Table } from './table';
 export const Expenditures = () => {
@@ -7,9 +7,12 @@ export const Expenditures = () => {
     <section className='expenditures-box'>
       <Header />
       <main className='main'>
-        <Nav />
+        {/* <Nav /> */}
         <Table />
       </main>
     </section>
   );
 };
+
+// NOTES
+// place nav into category options -- make it look fancy
