@@ -11,45 +11,50 @@ const expenditures = [
     date: '7 - 1 - 25',
     description: "ron's coffee",
     category: 'Dining',
-    necessity: false,
+    necessity: true,
     amount: 3.27,
   },
   {
     date: '7 - 1 - 25',
-    description: "ron's coffee",
+    description: 'gym membership for the new thing',
     category: 'Dining',
-    necessity: false,
+    necessity: true,
     amount: 3.27,
   },
 ];
 
 export const Table = () => {
-  // const [data, setData] = useState(expenditures);
+  const [data, setData] = useState(expenditures);
 
-  // useEffect(() => {
-  //   setData(expenditures);
-  // }, [data]);
+  useEffect(() => {
+    setData(expenditures);
+  }, [data]);
 
   return (
     <table>
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>category</th>
-          <th>necessity</th>
-          <th>amount</th>
+          <th className='table-cell-date'>Date</th>
+          <th className='table-cell-desc'>Description</th>
+          <th className='table-cell-category'>category</th>
+          <th className='table-cell-necessity'></th>
+          <th className='table-cell-amount'>amount</th>
         </tr>
       </thead>
       <tbody>
-        {expenditures.map((exp) => {
+        {data.map((exp, i) => {
           return (
-            <tr className='table-row-data'>
-              <td>{exp.date}</td>
-              <td>{exp.description}</td>
-              <td>{exp.category}</td>
-              <td>{exp.necessity}</td>
-              <td>${exp.amount}</td>
+            <tr className={'table-row-data' + (i % 2 === 1 ? '' : ' bg-green')}>
+              <td className='table-cell-date'>{exp.date}</td>
+              <td className='table-cell-desc'>{exp.description}</td>
+              <td className='table-cell-category'>{exp.category}</td>
+              <td className='table-cell-necessity'>
+                <span className='text-sm-i text'>
+                  <p>{exp.necessity ? ' necessity' : ' indulgent'}</p>
+                </span>
+              </td>
+
+              <td className='table-cell-amount'>${exp.amount}</td>
             </tr>
           );
         })}
