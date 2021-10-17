@@ -3,6 +3,9 @@ export const Nav = () => {
     <nav className='nav'>
       <ul className='nav-list'>
         <li className='nav-item'>
+          <button className='nav-item-btn'>All</button>
+        </li>
+        <li className='nav-item'>
           <button className='nav-item-btn'>Housing</button>
         </li>
         <li className='nav-item'>
