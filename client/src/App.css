@@ -1,16 +1,23 @@
 /* variables */
 :root {
+  --soft-white: rgb(250, 250, 250);
+  --soft-black: rgb(8, 8, 8);
   --grey-1: rgba(163, 160, 160, 0.4);
   --grey-2: rgba(163, 160, 160, 0.822);
 
   --green-1: rgba(203, 246, 203, 0.603);
-  --green-2: rgba(72, 194, 72, 0.822);
-  --green-3: rgba(38, 104, 38, 0.822);
+  --green-2: rgba(113, 240, 113, 0.603);
+  --green-3: rgba(72, 194, 72, 0.822);
+  --green-4: rgba(38, 104, 38, 0.822);
+  --green-4: rgb(26, 83, 26);
 
   --blue-1: rgb(31, 95, 155);
   --blue-2: rgb(25, 52, 92);
 
-  --red-1: rgb(197, 80, 69);
+  --red-1: rgb(236, 168, 162);
+  --red-2: rgb(197, 67, 56);
+  --red-3: rgb(156, 52, 43);
+  --red-4: rgb(65, 19, 13);
 }
 * {
   margin: 0;
@@ -24,6 +31,10 @@ body {
 }
 li {
   list-style: none;
+}
+.link {
+  font-size: 14px;
+  color: var(--blue-1);
 }
 .main-container {
   max-width: 1200px;
@@ -52,6 +63,11 @@ li {
   font-size: 1.4rem;
   font-family: 'Roboto', sans-serif;
 }
+/* BUTTONS */
+.btn {
+  cursor: pointer;
+  transition: 200ms;
+}
 
 /* UTILITY CLASSES */
 .text-sm-i {
@@ -59,6 +75,8 @@ li {
   font-style: italic;
   font-weight: 400;
 }
+
+/* FLEX */
 .flex {
   display: flex;
 }
@@ -69,6 +87,38 @@ li {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-center {
+  align-items: center;
+}
+.align-end {
+  align-items: flex-end;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+
+/* MARGIN */
+.mt-1 {
+  margin-bottom: 1em;
+}
+.mr-1 {
+  margin-bottom: 1em;
+}
+.mb-1 {
+  margin-bottom: 1em;
+}
+.ml-1 {
+  margin-bottom: 1em;
 }
 
 .bg-green {
