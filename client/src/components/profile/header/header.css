@@ -13,11 +13,24 @@
   display: flex;
   align-items: center;
 }
-.user-nav i {
-  font-size: 1.6rem;
-  margin-right: 10px;
+
+.icon-user {
+  align-self: flex-end;
+  margin-right: 20px;
+  position: relative;
+  top: 5px;
 }
-.user {
-  font-size: 1.8rem !important;
-  margin-left: 12px;
+.notification-active {
+  position: relative;
+}
+.notification-active::after {
+  content: '';
+  background-color: rgb(240, 78, 78);
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  top: -3px;
+  left: 14px;
 }
