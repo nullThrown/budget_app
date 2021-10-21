@@ -1,33 +1,35 @@
-// export const checkPasswordLength = (elName, elValue) => {
-//   if (elName === 'password') {
-//     if (elValue.length >= 8) return setIsPwordLong(true);
+// checks password strength upon sign up
 
-//     return setIsPwordLong(false);
-//   }
-// };
+export const checkPasswordLength = (elName, elValue, cb) => {
+  if (elName === 'password') {
+    if (elValue.length >= 8) return cb(true);
 
-// //check password has one number
-// export const checkPasswordNum = (elName, elValue) => {
-//   if (elName === 'password') {
-//     if (elValue.match('.*[0-9].*')) return setIsPwordHasNum(true);
+    return cb(false);
+  }
+};
 
-//     return setIsPwordHasNum(false);
-//   }
-// };
-// // check password has one special character
-// export const checkPasswordSym = (elName, elValue) => {
-//   if (elName === 'password') {
-//     if (elValue.match('(?=.*?[#?!@$%^&*-])')) return setIsPwordHasSym(true);
+// check password has one number
+export const checkPasswordNum = (elName, elValue, cb) => {
+  if (elName === 'password') {
+    if (elValue.match('.*[0-9].*')) return cb(true);
 
-//     return setIsPwordHasSym(false);
-//   }
-// };
+    return cb(false);
+  }
+};
+// check password has one special character
+export const checkPasswordSym = (elName, elValue, cb) => {
+  if (elName === 'password') {
+    if (elValue.match('(?=.*?[#?!@$%^&*-])')) return cb(true);
 
-// // check password has one uppercases character
-// export const checkPasswordUpper = (elName, elValue) => {
-//   if (elName === 'password') {
-//     if (elValue.match('(?=.*?[A-Z])')) return setIsPwordHasUpper(true);
+    return cb(false);
+  }
+};
 
-//     return setIsPwordHasUpper(false);
-//   }
-// };
+// check password has one uppercases character
+export const checkPasswordUpper = (elName, elValue, cb) => {
+  if (elName === 'password') {
+    if (elValue.match('(?=.*?[A-Z])')) return cb(true);
+
+    return cb(false);
+  }
+};
