@@ -18,10 +18,10 @@ export const Signup = () => {
     password: '',
     password2: '',
   });
-  const [isPwordLong, setIsPwordLong] = useState(false);
-  const [pwordHasNum, setIsPwordHasNum] = useState(false);
-  const [pwordHasSym, setIsPwordHasSym] = useState(false);
-  const [pwordHasUpper, setIsPwordHasUpper] = useState(false);
+  const [isPwordLong, setPwordLong] = useState(false);
+  const [pwordHasNum, setPwordHasNum] = useState(false);
+  const [pwordHasSym, setPwordHasSym] = useState(false);
+  const [pwordHasUpper, setPwordHasUpper] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   const onChangeHandler = (e) => {
@@ -30,16 +30,17 @@ export const Signup = () => {
     const elValue = e.target.value;
     if (elName) setUserData({ ...userData, [elName]: elValue });
 
-    checkPasswordLength(elName, elValue);
-    checkPasswordNum(elName, elValue);
-    checkPasswordSym(elName, elValue);
-    checkPasswordUpper(elName, elValue);
+    checkPasswordLength(elName, elValue, setPwordLong);
+    checkPasswordNum(elName, elValue, setPwordHasNum);
+    checkPasswordSym(elName, elValue, setPwordHasSym);
+    checkPasswordUpper(elName, elValue, setPwordHasUpper);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (userData.password !== userData.password2) {
       setPasswordMatch(false);
+      setUserData({ ...userData, password2: '' });
     } else {
       console.log(userData);
     }
