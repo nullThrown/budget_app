@@ -5,19 +5,21 @@
   --grey-1: rgba(163, 160, 160, 0.4);
   --grey-2: rgba(163, 160, 160, 0.822);
 
-  --green-1: rgba(203, 246, 203, 0.603);
+  --green-1: rgba(203, 246, 203, 0.76);
   --green-2: rgba(113, 240, 113, 0.603);
-  --green-3: rgba(72, 194, 72, 0.822);
-  --green-4: rgba(38, 104, 38, 0.822);
-  --green-4: rgb(26, 83, 26);
+  --green-3: rgba(35, 211, 35, 0.822);
+  --green-4: rgb(57, 153, 57);
+  --green-5: rgb(26, 83, 26);
 
   --blue-1: rgb(31, 95, 155);
   --blue-2: rgb(25, 52, 92);
 
-  --red-1: rgb(236, 168, 162);
-  --red-2: rgb(197, 67, 56);
-  --red-3: rgb(156, 52, 43);
-  --red-4: rgb(65, 19, 13);
+  --red-1: rgba(236, 168, 162, 0.74);
+  --red-2: rgb(236, 168, 162);
+  --red-3: rgb(197, 67, 56);
+  --red-4: rgb(214, 46, 30);
+  --red-5: rgb(156, 52, 43);
+  --red-6: rgb(65, 19, 13);
 }
 * {
   margin: 0;
@@ -108,17 +110,30 @@ li {
 }
 
 /* MARGIN */
+.mt-1-2 {
+  margin-top: 0.5em;
+}
+.mr-1-2 {
+  margin-right: 0.5em;
+}
+.mb-1-2 {
+  margin-bottom: 0.5em;
+}
+.ml-1-2 {
+  margin-left: 0.5em;
+}
+
 .mt-1 {
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 .mr-1 {
-  margin-bottom: 1em;
+  margin-right: 1em;
 }
 .mb-1 {
   margin-bottom: 1em;
 }
 .ml-1 {
-  margin-bottom: 1em;
+  margin-left: 1em;
 }
 
 .bg-green {
