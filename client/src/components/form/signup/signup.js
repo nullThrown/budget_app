@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import { Alert } from '../../alert/alert';
+import { PasswordCheck } from './passwordCheck';
+import {
+  checkPasswordLength,
+  checkPasswordNum,
+  checkPasswordSym,
+  checkPasswordUpper,
+} from '../../../util/validation/validatePassword';
 
-import { GiCheckMark } from 'react-icons/gi';
-import { MdDangerous } from 'react-icons/md';
+// validation import functions do not have access to state variables
+// solution? place callback inside validation functions and then insert state change functions when validate fn are called
 export const Signup = () => {
   const [userData, setUserData] = useState({
     firstName: '',
@@ -12,16 +20,29 @@ export const Signup = () => {
   });
   const [isPwordLong, setIsPwordLong] = useState(false);
   const [pwordHasNum, setIsPwordHasNum] = useState(false);
-  const [pwordHasSym, setIsPwordHasSym] = useState(true);
-  const [pwordHasUpper, setIsPwordHasUpper] = useState(true);
+  const [pwordHasSym, setIsPwordHasSym] = useState(false);
+  const [pwordHasUpper, setIsPwordHasUpper] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
   const onChangeHandler = (e) => {
-    if (e.target.name)
-      setUserData({ ...userData, [e.target.name]: e.target.value });
+    console.log();
+    const elName = e.target.name;
+    const elValue = e.target.value;
+    if (elName) setUserData({ ...userData, [elName]: elValue });
+
+    checkPasswordLength(elName, elValue);
+    checkPasswordNum(elName, elValue);
+    checkPasswordSym(elName, elValue);
+    checkPasswordUpper(elName, elValue);
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(userData);
+    if (userData.password !== userData.password2) {
+      setPasswordMatch(false);
+    } else {
+      console.log(userData);
+    }
   };
   return (
     <form onSubmit={submitHandler} className='form'>
@@ -48,7 +69,7 @@ export const Signup = () => {
       />
       <label htmlFor='firstName'>email</label>
       <input
-        type='text'
+        type='email'
         id='email'
         name='email'
         value={userData.email}
@@ -56,40 +77,13 @@ export const Signup = () => {
         onChange={(e) => onChangeHandler(e)}
         required
       />
-      <div className='flex-col align-start mb-1'>
-        <span
-          className={
-            'pword-check ' +
-            (isPwordLong ? 'pword-check--success' : 'pword-check--danger')
-          }>
-          {isPwordLong ? <GiCheckMark /> : <MdDangerous />}
-          password must be 8 characters long
-        </span>
-        <span
-          className={
-            'pword-check ' +
-            (pwordHasNum ? 'pword-check--success' : 'pword-check--danger')
-          }>
-          {pwordHasNum ? <GiCheckMark /> : <MdDangerous />}
-          password must contain 1 number
-        </span>
-        <span
-          className={
-            'pword-check ' +
-            (pwordHasSym ? 'pword-check--success' : 'pword-check--danger')
-          }>
-          {pwordHasSym ? <GiCheckMark /> : <MdDangerous />}
-          password must contain 1 symbol e.g., '!@#$'
-        </span>
-        <span
-          className={
-            'pword-check ' +
-            (pwordHasUpper ? 'pword-check--success' : 'pword-check--danger')
-          }>
-          {pwordHasUpper ? <GiCheckMark /> : <MdDangerous />}
-          password must have 1 uppercase letter
-        </span>
-      </div>
+
+      <PasswordCheck
+        isPwordLong={isPwordLong}
+        pwordHasNum={pwordHasNum}
+        pwordHasSym={pwordHasSym}
+        pwordHasUpper={pwordHasUpper}
+      />
       <label htmlFor='password'>password</label>
       <input
         type='password'
@@ -110,11 +104,12 @@ export const Signup = () => {
         onChange={(e) => onChangeHandler(e)}
         required
       />
-      <button type='submit' className='btn btn-submit'>
+      {passwordMatch || (
+        <Alert msg={'passwords do not match'} isSuccess={false} />
+      )}
+      <button type='submit' className='btn btn-submit' disabled={false}>
         Signup
       </button>
     </form>
   );
 };
-
-const passwordCheck = () => {};
