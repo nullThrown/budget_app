@@ -2,8 +2,8 @@ export const Header = () => {
   return (
     <header>
       <div className='title-box'>
-        <h2 className='header-title'>Expenditures</h2>
-        <button>Add Expenditure</button>
+        <h2 className='heading-3'>Expenditures</h2>
+        <button className='btn'>Add Expenditure</button>
       </div>
       <div className='header-desc'>
         <h3>
