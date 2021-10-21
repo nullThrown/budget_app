@@ -12,14 +12,14 @@ const expenditures = [
     description: "ron's coffee",
     category: 'Dining',
     necessity: true,
-    amount: 3.27,
+    amount: 13.55,
   },
   {
     date: '7 - 1 - 25',
     description: 'gym membership for the new thing',
     category: 'Dining',
     necessity: true,
-    amount: 3.27,
+    amount: 10.13,
   },
 ];
 
@@ -33,28 +33,37 @@ export const Table = () => {
   return (
     <table>
       <thead>
-        <tr>
+        <tr className='header-row'>
           <th className='table-cell-date'>Date</th>
           <th className='table-cell-desc'>Description</th>
           <th className='table-cell-category'>category</th>
           <th className='table-cell-necessity'></th>
           <th className='table-cell-amount'>amount</th>
+          <th className='table-cell-edit'></th>
         </tr>
       </thead>
       <tbody>
-        {data.map((exp, i) => {
+        {data.map((exp) => {
           return (
-            <tr className={'table-row-data' + (i % 2 === 1 ? '' : ' bg-green')}>
+            <tr className='table-row-data'>
               <td className='table-cell-date'>{exp.date}</td>
               <td className='table-cell-desc'>{exp.description}</td>
               <td className='table-cell-category'>{exp.category}</td>
               <td className='table-cell-necessity'>
-                <span className='text-sm-i text'>
-                  <p>{exp.necessity ? ' necessity' : ' indulgent'}</p>
+                <span
+                  className={
+                    'text-sm ' +
+                    (exp.necessity ? 'text-bg-green' : 'text-bg-red')
+                  }>
+                  {exp.necessity ? ' necessity' : ' indulgent'}
                 </span>
               </td>
 
               <td className='table-cell-amount'>${exp.amount}</td>
+              <td className='table-cell-edit'>
+                {' '}
+                <button className='btn link'>edit</button>
+              </td>
             </tr>
           );
         })}
