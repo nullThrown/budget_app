@@ -4,6 +4,11 @@ COMPONENT STRUCTURE
   profile/
     incomeCard.js
     expenditures.js
+      *create min-width for container 
+      *add horizontal scroll 
+      *perhaps change color for add expenditure button
+      *change header-desc section -- looks fairly ugly
+        *add bg-color to certain info -- perhaps the spent $ of $ part
   auth/
     loginForm.js
     signupForm.js
