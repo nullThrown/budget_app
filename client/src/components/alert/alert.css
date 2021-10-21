@@ -1,0 +1,20 @@
+.alert {
+  margin: 1px 0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.alert--failure {
+  color: var(--red-3);
+}
+.alert--success {
+  color: var(--green-4);
+}
+.alert--failure-bg {
+  padding: 2px 10px;
+  background-color: var(--red-1);
+}
+.alert--success-bg {
+  padding: 2px 10px;
+  background-color: var(--green-1);
+}
