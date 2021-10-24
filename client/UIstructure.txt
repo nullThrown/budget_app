@@ -9,9 +9,10 @@ COMPONENT STRUCTURE
       *perhaps change color for add expenditure button
       *change header-desc section -- looks fairly ugly
         *add bg-color to certain info -- perhaps the spent $ of $ part
-  auth/
+  forms/
     loginForm.js
     signupForm.js
+      use reducer for password validation checks. useReducer is more suited for when a single action updates multiple 
 
   landing/
   
