@@ -7,7 +7,7 @@ import { Signup } from './components/form/signup/signup';
 function App() {
   return (
     <main className='main-container'>
-      <Expenditures />
+      <Signup />
     </main>
   );
 }
