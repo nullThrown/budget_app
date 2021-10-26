@@ -12,7 +12,6 @@ COMPONENT STRUCTURE
   forms/
     loginForm.js
     signupForm.js
-      use reducer for password validation checks. useReducer is more suited for when a single action updates multiple 
 
   landing/
   
