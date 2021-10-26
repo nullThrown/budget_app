@@ -4,15 +4,12 @@ import './alert.css';
 
 export const AlertBg = (props) => {
   const { msg, isSuccess } = props;
-  console.log(isSuccess);
   return (
     <figure>
       <figcaption
         className={
           'flex align-center alert ' +
-          (isSuccess
-            ? 'alert--success alert--success-bg'
-            : 'alert--failure alert--failure-bg')
+          (isSuccess ? 'text-bg-green' : 'text-bg-red')
         }>
         {isSuccess ? <GiCheckMark /> : <MdDangerous />} {msg}
       </figcaption>
