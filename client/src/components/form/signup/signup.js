@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Alert } from '../../alert/alert';
 import { PasswordCheck } from './passwordCheck';
 import {
@@ -25,15 +25,8 @@ export const Signup = () => {
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   const onChangeHandler = (e) => {
-    console.log();
-    const elName = e.target.name;
-    const elValue = e.target.value;
-    if (elName) setUserData({ ...userData, [elName]: elValue });
-
-    checkPasswordLength(elName, elValue, setPwordLong);
-    checkPasswordNum(elName, elValue, setPwordHasNum);
-    checkPasswordSym(elName, elValue, setPwordHasSym);
-    checkPasswordUpper(elName, elValue, setPwordHasUpper);
+    if (e.target.name)
+      setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
   const submitHandler = (e) => {
@@ -45,6 +38,12 @@ export const Signup = () => {
       console.log(userData);
     }
   };
+  useEffect(() => {
+    checkPasswordLength(userData.password, setPwordLong);
+    checkPasswordNum(userData.password, setPwordHasNum);
+    checkPasswordSym(userData.password, setPwordHasSym);
+    checkPasswordUpper(userData.password, setPwordHasUpper);
+  }, [userData.password]);
   return (
     <form onSubmit={submitHandler} className='form'>
       <h2>Signup</h2>
