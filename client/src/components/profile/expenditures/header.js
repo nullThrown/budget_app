@@ -1,5 +1,15 @@
+import { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
+import { Nav } from './nav';
+import { categories } from '../../../data/categories';
 export const Header = () => {
+  const [isOpen, setisOpen] = useState();
+  const [current, setCurrent] = useState();
+  const toggleMenu = () => setisOpen(!isOpen);
+
+  const handleclick = () => {
+    toggleMenu();
+  };
   return (
     <header>
       <div className='title-box'>
@@ -9,10 +19,11 @@ export const Header = () => {
       <div className='desc-box'>
         <div className='header-desc'>
           <div className='desc-category'>
-            <button className='btn category-btn'>
+            <button className='btn category-btn' onClick={handleclick}>
               Category <IoIosArrowDown className={'category-btn-icon'} />
             </button>
             <h3 className='heading-5 current-category'>Dining</h3>
+            {isOpen && <Nav categories={categories} />}
           </div>
           <div className='header-spent'>
             <p>
