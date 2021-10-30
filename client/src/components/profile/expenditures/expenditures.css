@@ -45,8 +45,25 @@
   align-items: center;
 }
 .desc-category {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.nav {
+  grid-row: 2/ 3;
+  justify-self: start;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: 50%;
+}
+
+.nav-item-btn {
+  width: 100%;
+  background-color: white;
+  border: 1px solid var(--grey-2);
+  padding: 1em;
 }
 .current-category {
   margin-left: 0.4em;
