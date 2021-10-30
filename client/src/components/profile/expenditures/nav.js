@@ -1,29 +1,16 @@
-export const Nav = () => {
+export const Nav = ({ categories }) => {
+  console.log(categories);
   return (
     <nav className='nav'>
-      <ul className='nav-list'>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>All</button>
-        </li>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>Housing</button>
-        </li>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>Vehicle</button>
-        </li>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>utilities</button>
-        </li>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>childcare</button>
-        </li>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>dining</button>
-        </li>
-        <li className='nav-item'>
-          <button className='nav-item-btn'>amusement</button>
-        </li>
-      </ul>
+      <ol className='nav-list'>
+        {categories.map((category, i) => {
+          return (
+            <li key={i}>
+              <button className='btn nav-item-btn'>{category}</button>
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 };
