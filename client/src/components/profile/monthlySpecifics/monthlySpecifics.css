@@ -1,0 +1,23 @@
+.monthly-specifics {
+  padding: 1.4em;
+  box-shadow: 5px 5px 10px var(--grey-2);
+  background-color: white;
+  border-radius: 10px;
+}
+
+.category-box {
+  margin: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  column-gap: 1em;
+  row-gap: 2em;
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.category h4 {
+  margin-bottom: 0.4em;
+}
