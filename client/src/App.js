@@ -5,10 +5,11 @@ import { MonthlySpecifics } from './components/profile/monthlySpecifics/monthlyS
 import { Header } from './components/profile/header/header';
 import { Login } from './components/form/login/login';
 import { Signup } from './components/form/signup/signup';
+import { BarGraph } from './components/common/charts/bar';
 function App() {
   return (
     <main className='main-container'>
-      <Expenditures />
+      <BarGraph />
     </main>
   );
 }
