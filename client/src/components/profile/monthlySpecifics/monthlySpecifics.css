@@ -21,3 +21,9 @@
 .category h4 {
   margin-bottom: 0.4em;
 }
+
+.monthly-graph {
+  margin: 1.4em 0;
+  width: 600px;
+  height: 1000px;
+}
