@@ -48,8 +48,8 @@ li {
 .main-container {
   max-width: 1200px;
   width: 98%;
-  margin: 10em auto;
   /* temporary -- just for building components */
+  margin: 2em auto;
   display: flex;
   place-content: center;
 }
@@ -97,6 +97,15 @@ li {
   border-radius: 10px;
 }
 
+/* PAGE CONTAINERS */
+.home-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: min-content min-content 400px min-content;
+  column-gap: 0.4em;
+  row-gap: 1em;
+}
+
 /* BUTTONS */
 .btn {
   cursor: pointer;
@@ -105,6 +114,13 @@ li {
   background-color: inherit;
 }
 
+/* CARD */
+.card {
+  padding: 1.4em;
+  box-shadow: 5px 5px 10px var(--grey-2);
+  background-color: white;
+  border-radius: 10px;
+}
 /* UTILITY CLASSES */
 .text-sm-i {
   font-size: 1rem;
