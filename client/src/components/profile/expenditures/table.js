@@ -43,9 +43,9 @@ export const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {data.map((exp) => {
+        {data.map((exp, i) => {
           return (
-            <tr className='table-row-data'>
+            <tr key={i} className='table-row-data'>
               <td className='table-cell-date'>{exp.date}</td>
               <td className='table-cell-desc'>{exp.description}</td>
               <td className='table-cell-category'>{exp.category}</td>
