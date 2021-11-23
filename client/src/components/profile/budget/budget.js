@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './budget.css';
 
-export const Budget = () => {
+const Budget = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -12,11 +12,11 @@ export const Budget = () => {
       indulgent: 300,
       remaining: 1500,
     });
-  });
+  }, []);
   const { takeHomePay, necessity, indulgent, remaining } = data;
   return (
-    <section className='budget'>
-      <h3 className='budget-title heading-3'>Budget</h3>
+    <section className='card budget'>
+      <h3 className='heading-4 text-center'>Budget</h3>
       <div className='budget-box'>
         <BudgetItem
           title={'Take-home pay'}
@@ -53,3 +53,5 @@ const BudgetItem = (props) => {
     </div>
   );
 };
+
+export default Budget;
