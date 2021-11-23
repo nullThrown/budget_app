@@ -1,15 +1,16 @@
 .budget {
   padding: 1em;
   border: 1px solid var(--grey-1);
-  width: 360px;
+  width: 300px;
   background-color: white;
   border-radius: 5px;
+  font-size: 16px;
+
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
 }
 .budget-title {
   text-align: center;
-  text-decoration: underline;
-  font-weight: 300;
-  margin-top: 0.6em;
 }
 .budget-box {
   margin: 2em 0 0;
@@ -19,7 +20,7 @@
   text-align: center;
 }
 .budget-item {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   padding-bottom: 0.2em;
   border-bottom: 1px solid var(--grey-1);
 }
@@ -28,10 +29,10 @@
   margin-bottom: 0.2em;
 }
 .item-amount--red {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--red-1);
 }
 .item-amount--green {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--green-3);
 }
