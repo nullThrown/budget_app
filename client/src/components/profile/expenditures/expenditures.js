@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import '../expenditures/expenditures.css';
 import { Header } from './header';
 import { Table } from './table';
-export const Expenditures = () => {
+
+const Expenditures = () => {
   return (
-    <section className='expenditures-box'>
+    <section className='card expenditures-box'>
       <Header />
       <main className='main'>
         <Table />
@@ -13,5 +14,4 @@ export const Expenditures = () => {
   );
 };
 
-// NOTES
-// place nav into category options -- make it look fancy
+export default Expenditures;
