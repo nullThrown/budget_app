@@ -1,4 +1,5 @@
 import { Bar } from 'react-chartjs-2';
+import './monthlySpecifics.css';
 const categories = [
   {
     title: 'vehicle',
@@ -65,11 +66,13 @@ const options = {
     tooltip: {},
   },
 };
-export const BarGraph = () => {
+const BarGraph = () => {
   return (
-    <article className='monthly-specifics'>
+    <section className='card monthly-specifics'>
       <h2 className='heading-4 text-center'>Monthly Specifics</h2>
-      <Bar data={data} className='monthly-graph' options={options} />
-    </article>
+      <Bar data={data} className='monthly-graph' />
+    </section>
   );
 };
+
+export default BarGraph;
