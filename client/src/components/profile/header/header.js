@@ -3,7 +3,7 @@ import './header.css';
 import { IconContext } from 'react-icons';
 import { BiUserCircle } from 'react-icons/bi';
 import { IoNotificationsOutline } from 'react-icons/io5';
-export const Header = () => {
+const Header = () => {
   const [isNotification, setIsNotification] = useState(true);
   return (
     <header className='header'>
@@ -17,3 +17,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
