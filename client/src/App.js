@@ -1,16 +1,31 @@
 import './App.css';
-import { Expenditures } from './components/profile/expenditures/expenditures';
-import { Budget } from './components/profile/budget/budget';
-import { MonthlySpecifics } from './components/profile/monthlySpecifics/monthlySpecifics';
-import { Header } from './components/profile/header/header';
-import { Login } from './components/form/login/login';
-import { Signup } from './components/form/signup/signup';
-import { BarGraph } from './components/profile/monthlySpecifics/bar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//import from single page and/or use lazy loading
+import Login from './pages/login';
+import Signup from './pages/signup';
+import Account from './pages/account';
+import Home from './pages/home';
+import Landing from './pages/landing';
+import NotFound from './pages/notFound';
+import Year from './pages/year';
 function App() {
   return (
-    <main className='main-container'>
-      <BarGraph />
-    </main>
+    <Router>
+      <main className='main-container'>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/account' element={<Account />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Landing />} />
+          <Route path='/year' element={<Year />} />
+
+          {/* error path */}
+          <Route path='/not-found' element={<NotFound />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
