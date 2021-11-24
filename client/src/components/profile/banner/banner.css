@@ -1,0 +1,32 @@
+.banner {
+  grid-column: 1 / -1;
+  grid-row: 2/ 3;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 1em;
+}
+.banner-box {
+  margin-left: 4em;
+}
+.banner-date {
+  margin: 0 0.6em;
+}
+
+.arrow {
+  font-size: 1.6rem;
+}
+.arrow:hover {
+  animation: scaleUp 300ms ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
