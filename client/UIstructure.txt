@@ -33,7 +33,7 @@ COMPONENT STRUCTURE
         *another signup/login section
     *Home
       note: css sheets added to indiv. components appear to be placed globally... CSS modules should hopefully fix the problem
-      * 
+      * temp fix: switch to BEM style 
       * 
       * 
       * 
