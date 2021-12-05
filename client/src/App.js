@@ -12,19 +12,19 @@ import Year from './pages/year';
 function App() {
   return (
     <Router>
-      <main className='main-container'>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/account' element={<Account />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/' element={<Landing />} />
-          <Route path='/year' element={<Year />} />
+      {/* <main className='main-container'> */}
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/account' element={<Account />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Landing />} />
+        <Route path='/year' element={<Year />} />
 
-          {/* error path */}
-          <Route path='/not-found' element={<NotFound />} />
-        </Routes>
-      </main>
+        {/* error path */}
+        <Route path='/not-found' element={<NotFound />} />
+      </Routes>
+      {/* </main> */}
     </Router>
   );
 }
