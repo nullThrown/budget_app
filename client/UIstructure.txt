@@ -4,11 +4,7 @@ COMPONENT STRUCTURE
   profile/
     incomeCard.js
     expenditures.js
-      *create min-width for container 
-      *add horizontal scroll 
-      *perhaps change color for add expenditure button
-      *change header-desc section -- looks fairly ugly
-        *add bg-color to certain info -- perhaps the spent $ of $ part
+
   forms/
     loginForm.js
     signupForm.js
@@ -22,4 +18,22 @@ COMPONENT STRUCTURE
 
     each component will then have its own css local file for specific styles
 
-    refactoring should be done after UI is complete to find patterns and move styles from local -> global  
+    refactoring should be done after UI is complete to find patterns and move styles from local -> global 
+
+    todo list 
+    *Landing Page
+      * fix weird border issue on 'how it works' section 
+      * create keyframe 'moveright' -> from {opactity: 0, translateX(-10)} to {opacity: 1, translateX(0)}
+      * create keyframe 'moveleft' -> from {opactity: 0, translateX(10)} to {opacity: 1, translateX(0)}
+      * change background color
+      *structure 
+        *header
+        *description -- another component that gives a clearer picture of what the app does
+        *img/descr -- more description about specific elements of the app -- think of them as hooks(writing not react)
+        *another signup/login section
+    *Home
+      note: css sheets added to indiv. components appear to be placed globally... CSS modules should hopefully fix the problem
+      * 
+      * 
+      * 
+      * 
