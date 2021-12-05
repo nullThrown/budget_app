@@ -38,6 +38,9 @@ body {
   color: rgb(24, 24, 24);
   font-family: 'Open Sans', sans-serif;
 }
+a {
+  text-decoration: none;
+}
 li {
   list-style: none;
 }
@@ -101,7 +104,7 @@ li {
 .home-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: min-content min-content 400px min-content;
+  grid-template-rows: 1fr 1fr 400px min-content;
   column-gap: 0.4em;
   row-gap: 1em;
 }
