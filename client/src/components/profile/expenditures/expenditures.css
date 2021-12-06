@@ -3,7 +3,7 @@
   /* max-width: 1000px; */
   min-width: 600px;
 
-  grid-column: 1 / -1;
+  grid-column: 2 / -1;
   grid-row: 4 / 5;
   justify-self: center;
 }
