@@ -1,4 +1,5 @@
-.header {
+.land__footer,
+.land__header {
   height: 90vh;
   width: 100vw;
   display: flex;
@@ -6,25 +7,30 @@
   align-items: start;
   margin-top: 4em;
 }
-.header-box {
+.land__footer {
+  height: 45vh; 
+  background-color: var(--green-1);
+}
+.land__footer-box,
+.land__header-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 240px;
 }
-.header-box h1 {
+.land__header-box h1 {
   margin-bottom: 0.2em;
 }
-.header-box p {
+.land__header-box p {
   margin-bottom: 1em;
 }
-.btn-box {
+.land__btn-box {
   margin: 1.4em 0;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.signup-link {
+.land__signup-link {
   width: 100%;
   background-color: var(--green-5);
   padding: 0.8em 1em;
@@ -32,7 +38,7 @@
   text-align: center;
   margin-bottom: 0.6em;
 }
-.login-link {
+.land__login-link {
   width: 100%;
   background-color: var(--blue-2);
   padding: 0.8em 1em;
@@ -42,36 +48,36 @@
 
 /* DESCRIPTION SECTION */
 
-.description {
-  background-color: turquoise;
+.land__description {
   padding: 2em 0;
 }
 .desc-container {
 }
-.desc-box {
+.land__desc-box {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 4em 0;
+  
 }
 
-.desc-box:nth-child(2) {
+.land__desc-box:nth-child(2) {
   flex-direction: row-reverse;
 }
 
 @media (max-width: 762px) {
-  .desc-box {
+  .land__desc-box {
     flex-direction: column;
   }
   /* change to image */
-  .desc-box div {
+  .land__desc-box div {
     margin-bottom: 2em;
   }
-  .desc-box:nth-child(2) {
+  .land__desc-box:nth-child(2) {
     flex-direction: column;
   }
 }
-.desc-box p {
+.land__desc-box p {
   width: 400px;
   line-height: 1.6;
 }
@@ -81,4 +87,46 @@
   width: 300px;
   height: 200px;
   background-color: var(--green-5);
+  animation: moveRight 400ms ease-out;
+}
+.fake-img-2 {
+  animation: moveLeft 400ms ease-out;
+}
+.img-1-desc {
+  animation: moveLeft 400ms ease-out;
+  
+}
+.img-2-desc {
+  animation: moveRight 400ms ease-out;
+  
+}
+.img-3-desc {
+  animation: moveLeft 400ms ease-out;
+  
+}
+
+.land__intro {
+  background-color: var(--grey-1);
+  padding: 1em 0;
+}
+.land__content-box {
+  width: 90%;
+  max-width: 700px;
+  margin: 2em auto;
+  display: flex;
+  flex-direction: column;
+
+}
+.land__intro-desc {
+  margin-right: 1em;
+  width: 80%;
+  align-self: flex-start;
+  margin-bottom: 2em;
+}
+.fake-img-4 {
+  max-width: 700px;
+  width: 80%;
+  height: 260px;
+  background-color: burlywood;
+  align-self: flex-end;
 }
