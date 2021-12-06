@@ -8,13 +8,13 @@ import {budgetData, categories, barData, expData} from '../data/year'
 
 const Home = () => {
   return (
-    <section className='home-container'>
+    <main className='main-container'>
      <Header />
       <Banner />
       <Budget data={budgetData} />
       <Bar data={barData} categories={categories}/>
       <Expenditures data={expData}/>
-    </section>
+    </main>
   );
 };
 
