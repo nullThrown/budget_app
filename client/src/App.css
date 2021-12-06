@@ -11,6 +11,7 @@
   --grey-3: rgb(210, 210, 210);
   --grey-4: rgba(163, 160, 160, 0.4);
   --grey-5: rgba(163, 160, 160, 0.822);
+  --grey-6: rgb(109, 107, 107);
 
   --green-1: rgb(196, 248, 221);
   --green-2: rgba(203, 246, 203, 0.76);
@@ -105,10 +106,10 @@ li {
 .main-container {
   width: 98%;
   display: grid;
-  grid-template-columns: minmax(180px, 240px) repeat(3, 1fr);
+  grid-template-columns: minmax(180px, 240px) repeat(6, 1fr);
   grid-template-rows: 1fr 1fr 400px min-content;
   column-gap: 0.4em;
-  /* row-gap: 1em; */
+  row-gap: 1em;
 }
 .main-nav {
   
@@ -123,6 +124,7 @@ li {
 }
 
 /* CARD */
+
 .card {
   padding: 1.4em;
   box-shadow: 5px 5px 10px var(--grey-2);
