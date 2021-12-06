@@ -21,11 +21,9 @@ COMPONENT STRUCTURE
     refactoring should be done after UI is complete to find patterns and move styles from local -> global 
 
     todo list 
-      *create new component for recurring payments 
       
       *nav is collapsable 
       *bargraph sizes properly
-      *spacing between items works well
       *make expenditures box scroll horizontally
         *place inside a container that scrolls
       
