@@ -1,6 +1,21 @@
 import React from 'react';
+import Budget from '../components/profile/budget/budget';
+import Expenditures from '../components/profile/expenditures/expenditures';
+import Header from '../components/profile/header/header';
+import Bar from '../components/profile/monthlySpecifics/bar';
+import Banner from '../components/profile/banner/banner';
+import {budgetData, categories, barData, expData} from '../data/year'
 
-export const Year = () => {
-  return <h1>Year</h1>;
+const Home = () => {
+  return (
+    <section className='home-container'>
+     <Header />
+      <Banner />
+      <Budget data={budgetData} />
+      <Bar data={barData} categories={categories}/>
+      <Expenditures data={expData}/>
+    </section>
+  );
 };
-export default Year;
+
+export default Home;
