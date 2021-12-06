@@ -4,14 +4,15 @@ import Expenditures from '../components/profile/expenditures/expenditures';
 import Header from '../components/profile/header/header';
 import Bar from '../components/profile/monthlySpecifics/bar';
 import Banner from '../components/profile/banner/banner';
+import {budgetData, categories, barData, expData} from '../data/currentMonth'
 const Home = () => {
   return (
     <section className='home-container'>
       <Header />
       <Banner />
-      <Budget />
-      <Bar />
-      <Expenditures />
+      <Budget data={budgetData} />
+      <Bar data={barData} categories={categories}/>
+      <Expenditures data={expData}/>
     </section>
   );
 };
