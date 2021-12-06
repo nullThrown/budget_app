@@ -1,12 +1,12 @@
 .budget {
   padding: 1em;
   border: 1px solid var(--grey-1);
-  width: 300px;
+  /* width: 300px; */
   background-color: white;
   border-radius: 5px;
   font-size: 16px;
 
-  grid-column: 2 / 3;
+  grid-column: 2 / 4;
   grid-row: 3 / 4;
 }
 .budget-title {
