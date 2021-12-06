@@ -200,3 +200,30 @@ li {
 .bg-green {
   background-color: var(--green-1);
 }
+
+
+/* KEYFRAMES */
+@keyframes moveRight {
+ from {
+  opacity: 0;
+  transform: translateX(-100px);
+ } 
+ to {
+  opacity: 1;
+  transform: translateX(0);
+ }
+}
+@keyframes moveLeft {
+ from {
+  opacity: 0;
+  transform: translateX(100px);
+ } 
+ to {
+  opacity: 1;
+  transform: translateX(0);
+ }
+}
+
+
+
+
