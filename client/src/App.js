@@ -12,7 +12,6 @@ import Year from './pages/year';
 function App() {
   return (
     <Router>
-      {/* <main className='main-container'> */}
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
@@ -24,7 +23,6 @@ function App() {
         {/* error path */}
         <Route path='/not-found' element={<NotFound />} />
       </Routes>
-      {/* </main> */}
     </Router>
   );
 }
