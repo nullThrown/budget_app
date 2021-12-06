@@ -1,18 +1,7 @@
 import { useState, useEffect } from 'react';
 import './budget.css';
 
-const Budget = () => {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    setData({
-      ...Date,
-      takeHomePay: 3600,
-      necessity: 1800,
-      indulgent: 300,
-      remaining: 1500,
-    });
-  }, []);
+const Budget = ({data}) => {
   const { takeHomePay, necessity, indulgent, remaining } = data;
   return (
     <section className='card budget'>
