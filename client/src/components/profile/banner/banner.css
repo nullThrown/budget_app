@@ -1,5 +1,5 @@
 .banner {
-  grid-column: 1 / -1;
+  grid-column: 2 / -1;
   grid-row: 2/ 3;
   height: 80px;
   display: flex;
