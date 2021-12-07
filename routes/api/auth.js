@@ -66,7 +66,8 @@ router.post('/login', async (req, res) => {
     };
     jwt.sign(
       payload,
-      process.env.JWTSECRET,
+      //temporary
+      process.env.AUTHSECRET,
       { expiresIn: '2d' },
       (err, token) => {
         if (err) {
