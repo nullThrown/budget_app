@@ -1,0 +1,75 @@
+
+
+COMPONENT FILE STRUCTURE
+
+  profile/
+    incomeCard.js
+    expenditures.js
+
+  forms/
+    loginForm.js
+    signupForm.js
+
+  landing/
+
+------------------------------------------------------------------------------------------------------------
+
+CSS STRUCTURE
+
+  *global styles for generic classes e.g., typography, animations, variables
+  *each component will then have its own css local file for specific styles
+  *refactor after UI complete -> local to global styles
+
+------------------------------------------------------------------------------------------------------------
+
+UI TODO LIST
+
+  global
+    *create footer component
+
+  landing/
+
+    header
+      *Fix header spacing issue
+      *center main content
+      *fix height to accomodate Intro 'How does coin drop work?' text
+      *change title 'Coin Drop' different font/size etc.
+      *find background color or img that looks nice
+
+    Intro 
+      *rewrite intro paragraph -- current one is very poor
+        *para should provide a succinct but thorough description of the app
+        *user should have a strong understanding of what the app actually does
+      *move 'how does it work' text into this component
+      *change height to 100vh 
+      *fix spacing around title 
+      *add animations to all pieces of content -- opacity/location
+      *Add video into colored div taken from the home page 
+    
+    Description
+      *fix height to 100vh
+      *reduce spacing between img/text component when vertical(small screen size)
+      *add image to green div
+      *add background color or image 
+      
+    Footer
+      *fix height to 100vh
+      *center main content 
+      *change background color/ img to something pretty
+      
+
+  profile/
+
+    *nav is collapsable 
+    *bargraph sizes properly
+    *make expenditures box scroll horizontally
+    *place inside a container that scrolls
+  
+  *if time
+  *abstract out drop-down menu 
+  *add one for profile/notification icon
+
+------------------------------------------------------------------------------------------------------------
+
+  REDUX STATE
+
