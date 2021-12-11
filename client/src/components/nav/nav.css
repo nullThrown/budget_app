@@ -1,0 +1,32 @@
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    padding: 1em;
+    background-color: var(--blue-4);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.sidebar__heading {
+    color: var(--grey-1);
+    padding-bottom: .4em;
+    margin: .4em 0 1em;
+    border-bottom: 1px solid var(--grey-4);
+}
+.sidebar__nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+}
+.nav__list-item {
+    display: flex;
+    margin-bottom: .5em;
+}
+.nav__icons {
+color: var(--grey-1);
+margin-right: .8em;
+}
+.nav__link-item {
+    color: var(--grey-3);
+}

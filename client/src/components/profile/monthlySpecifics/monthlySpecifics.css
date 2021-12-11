@@ -1,5 +1,5 @@
 .monthly-specifics {
-  grid-column: 2 / -1;
+  grid-column: 6 / 8;
   grid-row: 3 / 4;
   align-self: start;
   justify-self: end;

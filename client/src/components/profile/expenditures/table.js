@@ -1,35 +1,4 @@
-import { useState, useEffect } from 'react';
-const expenditures = [
-  {
-    date: '7 - 1 - 25',
-    description: "ron's coffee",
-    category: 'Dining',
-    necessity: false,
-    amount: 3.27,
-  },
-  {
-    date: '7 - 1 - 25',
-    description: "ron's coffee",
-    category: 'Dining',
-    necessity: true,
-    amount: 13.55,
-  },
-  {
-    date: '7 - 1 - 25',
-    description: 'gym membership for the new thing',
-    category: 'Dining',
-    necessity: true,
-    amount: 10.13,
-  },
-];
-
-export const Table = () => {
-  const [data, setData] = useState(expenditures);
-
-  useEffect(() => {
-    setData(expenditures);
-  }, [data]);
-
+export const Table = ({data}) => {
   return (
     <table>
       <thead>

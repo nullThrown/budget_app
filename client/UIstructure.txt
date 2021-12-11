@@ -21,19 +21,12 @@ COMPONENT STRUCTURE
     refactoring should be done after UI is complete to find patterns and move styles from local -> global 
 
     todo list 
-    *Landing Page
-      * fix weird border issue on 'how it works' section 
-      * create keyframe 'moveright' -> from {opactity: 0, translateX(-10)} to {opacity: 1, translateX(0)}
-      * create keyframe 'moveleft' -> from {opactity: 0, translateX(10)} to {opacity: 1, translateX(0)}
-      * change background color
-      *structure 
-        *header
-        *description -- another component that gives a clearer picture of what the app does
-        *img/descr -- more description about specific elements of the app -- think of them as hooks(writing not react)
-        *another signup/login section
-    *Home
-      note: css sheets added to indiv. components appear to be placed globally... CSS modules should hopefully fix the problem
-      * temp fix: switch to BEM style 
-      * 
-      * 
-      * 
+      
+      *nav is collapsable 
+      *bargraph sizes properly
+      *make expenditures box scroll horizontally
+        *place inside a container that scrolls
+      
+      *if time
+      *abstract out drop-down menu 
+      *add one for profile/notification icon
