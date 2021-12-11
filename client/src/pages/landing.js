@@ -1,6 +1,12 @@
 import React from 'react';
-
+import Description from '../components/landing/description';
+import Header from '../components/landing/header';
 export const Landing = () => {
-  return <h1>Landing</h1>;
+  return (
+    <>
+      <Header />
+      <Description />
+    </>
+  );
 };
 export default Landing;
