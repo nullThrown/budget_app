@@ -48,6 +48,3 @@ const Description = () => {
   );
 };
 export default Description;
-
-const arr = [1, 2, 3];
-arr.map((num) => {});
