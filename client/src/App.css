@@ -44,6 +44,7 @@ body {
   background-color: rgb(250, 250, 250);
   color: rgb(24, 24, 24);
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
 }
 a {
   text-decoration: none;
@@ -57,6 +58,11 @@ li {
 }
 
 /* TYPOGRAPHY */
+.main-heading {
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--soft-white);
+}
 .heading-1 {
   font-size: 3.2rem;
   font-weight: 300;
@@ -101,18 +107,37 @@ li {
 }
 
 /* MAIN CONTAINERS */
-/* this will be used for home and year pages */
+/* this will be used for pages related to profile/logged-in user -- home, year, retirement */
 
 .main-container {
   width: 98%;
+  margin: 1em 0 10em;
   display: grid;
-  grid-template-columns: minmax(180px, 240px) repeat(6, 1fr);
-  grid-template-rows: 1fr 1fr 400px min-content;
-  column-gap: 0.4em;
+  grid-template-columns: 260px repeat(2, minmax(200px, 240px)) minmax(
+      440px,
+      700px
+    );
+  grid-template-rows: 1fr min-content min-content min-content;
+  column-gap: 1em;
   row-gap: 1em;
 }
+@media (max-width: 1150px) {
+  .main-container {
+    grid-template-columns: repeat(2, minmax(200px, 240px)) minmax(440px, 700px);
+    width: 98%;
+    margin: 1em auto 10em;
+  }
+}
+@media (max-width: 900px) {
+  .main-container {
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(5, min-content);
+    width: 94%;
+    margin: 1em auto 10em;
+  }
+}
+
 .main-nav {
-  
 }
 
 /* BUTTONS */
@@ -126,12 +151,16 @@ li {
 /* CARD */
 
 .card {
+  /* padding should most likely be component specific */
   padding: 1.4em;
   box-shadow: 5px 5px 10px var(--grey-2);
   background-color: white;
   border-radius: 10px;
 }
 /* UTILITY CLASSES */
+.text-white {
+  color: var(--soft-white);
+}
 .text-sm-i {
   font-size: 1rem;
   font-style: italic;
@@ -208,29 +237,61 @@ li {
   background-color: var(--green-1);
 }
 
-
 /* KEYFRAMES */
 @keyframes moveRight {
- from {
-  opacity: 0;
-  transform: translateX(-100px);
- } 
- to {
-  opacity: 1;
-  transform: translateX(0);
- }
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes moveLeft {
- from {
-  opacity: 0;
-  transform: translateX(100px);
- } 
- to {
-  opacity: 1;
-  transform: translateX(0);
- }
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-
-
-
+@keyframes moveDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes moveUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes openMenu {
+  from {
+    /* transform: translateX(0%); */
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes closeMenu {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
