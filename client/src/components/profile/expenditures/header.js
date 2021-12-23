@@ -12,10 +12,7 @@ export const Header = () => {
   };
   return (
     <header>
-      <div className='title-box'>
-        <h2 className='heading-3'>Expenditures</h2>
-        <button className='btn'>Add Expenditure</button>
-      </div>
+      <h2 className='heading-4 text-center'>Expenditures</h2>
       <div className='desc-box'>
         <div className='header-desc'>
           <div className='desc-category'>
