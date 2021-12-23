@@ -3,11 +3,16 @@ import './header.css';
 import { IconContext } from 'react-icons';
 import { BiUserCircle } from 'react-icons/bi';
 import { IoNotificationsOutline } from 'react-icons/io5';
+import { GiHamburgerMenu } from 'react-icons/gi';
 const Header = () => {
   const [isNotification, setIsNotification] = useState(true);
+
   return (
     <header className='header'>
-      <h2 className='heading-2 title'>Dashboard</h2>
+      <button type='button' className='btn header__menu-icon'>
+        <GiHamburgerMenu />
+      </button>
+      <h2 className='heading-2 header__title'>Dashboard</h2>
       <div className='user-nav'>
         <span className={isNotification ? 'notification-active' : ''}>
           <IoNotificationsOutline size={'1.8em'} className={'icon-user'} />
