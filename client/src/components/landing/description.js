@@ -2,8 +2,7 @@ import React from 'react';
 
 const Description = () => {
   return (
-    <section className='land__description'>
-      <p className='text-center'>How does coin drop work?</p>
+    <section className='land__desc'>
       <div className='land__desc-container'>
         <div className='land__desc-box'>
           {/* place an image or video here of the actual app */}
