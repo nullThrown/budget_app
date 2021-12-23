@@ -16,9 +16,9 @@ COMPONENT FILE STRUCTURE
 
 CSS STRUCTURE
 
-  *global styles for generic classes e.g., typography, animations, variables
+  *global styles for generic classes e.g., typography, animations, vars
   *each component will then have its own css local file for specific styles
-  *refactor after UI complete -> local to global styles
+  *refactor after UI complete : local -> global styles
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -26,48 +26,84 @@ UI TODO LIST
 
   global
     *create footer component
+    *fix header hierarchy
 
-  landing/
+  /landing
 
     header
-      *Fix header spacing issue
-      *center main content
-      *fix height to accomodate Intro 'How does coin drop work?' text
-      *change title 'Coin Drop' different font/size etc.
-      *find background color or img that looks nice
+        *Fix header spacing issue
+        *center main content
+        *fix height to accomodate Intro 'How does coin drop work?' text
+        *find background color or img that looks nice
+        *change title 'Coin Drop' different font/size etc.
+      *mess around with the color gradient -- make it look cool or whatever
 
     Intro 
+      *Add video into colored div taken from the home page 
       *rewrite intro paragraph -- current one is very poor
+      *find a cool background color- see how it looks
         *para should provide a succinct but thorough description of the app
         *user should have a strong understanding of what the app actually does
-      *move 'how does it work' text into this component
-      *change height to 100vh 
-      *fix spacing around title 
-      *add animations to all pieces of content -- opacity/location
-      *Add video into colored div taken from the home page 
     
     Description
-      *fix height to 100vh
-      *reduce spacing between img/text component when vertical(small screen size)
       *add image to green div
       *add background color or image 
-      
+      *perhaps increase img size -- deal with that once we have images in place
+    
     Footer
-      *fix height to 100vh
-      *center main content 
-      *change background color/ img to something pretty
+      *add background color or image 
       
 
-  profile/
+  profile
+    TODO
+      general 
+        layout
+        sizing
+          *add rem sizing to all text
+            *add % to html tag for rem sizing
+            *set breakpoint to downsize all text
 
-    *nav is collapsable 
-    *bargraph sizes properly
-    *make expenditures box scroll horizontally
-    *place inside a container that scrolls
+          *fix overflow issues upon smallest size  
+          *fix any other issues with sizing upon smaller viewport
+          
+      *exp 
+        *allow horizontal scroll to expenditures component
+    
+      *nav
+       *toggle nav visibility/placement upon button press
+         *nav menu links need to be set to visibility:none in order to be removed from 
+         the focus selection list -- accessibility issue. more research needed.
+
+
+
+    /home
+      global 
+        *add container to content that creates even spacing between title and rest of content
+        *mess around with heading class -- smaller could work better
+        *normalize colors -- greens and reds should be the same color -- base colors should be taken from expenditures span items
+        *rename components to appropriate names
+
+      nav
+
+      dashboard
+
+      banner
+
+      budget
+        *display nec. spent, ind. spent, and remaining as numbers
+          *add amounts to legend items
+        *figure out color scheme for graph
+
+      recurring
+        *add pagination
+          *limit number of categories rendered per page
+
+      graph
+
+      expenditures
+        *make expenditures box scroll horizontally
+          *place inside a container that scrolls
   
-  *if time
-  *abstract out drop-down menu 
-  *add one for profile/notification icon
 
 ------------------------------------------------------------------------------------------------------------
 
