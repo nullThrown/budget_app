@@ -1,32 +1,33 @@
 .recurring {
-    grid-column: 4 / 6;
-    grid-row: 3 / 4;
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
 }
-.payment__category {
-    /* margin-bottom: 1em; */
-    padding: .5em;
-    border-bottom: 1px solid var(--grey-4);
+@media (max-width: 1150px) {
+  .recurring {
+    grid-column: 2 / 3;
+  }
+}
 
+.payment__category {
+  padding: 0.5em;
+  border-bottom: 1px solid var(--grey-4);
 }
 .payment__title {
-    background-color: var(--grey-2);
-    border-radius: 2px;
-    padding: 0 .2em;
+  background-color: var(--grey-2);
+  border-radius: 2px;
+  padding: 0 0.2em;
 }
 .payment__item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: .2em 0;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.2em 0;
 }
 .payment__item-title {
-    display: flex;
-    justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
 .payment__item-amt {
-    display: flex;
-    justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
