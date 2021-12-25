@@ -1,23 +1,32 @@
 import React from 'react';
-import Budget from '../components/profile/budget/budget';
+import Overview from '../components/profile/overview/overview';
 import Expenditures from '../components/profile/expenditures/expenditures';
 import Header from '../components/profile/header/header';
-import Bar from '../components/profile/monthlySpecifics/bar';
+import BudgetGraph from '../components/profile/budget/budgetGraph';
 import Banner from '../components/profile/banner/banner';
 import Nav from '../components/nav/nav';
-import Recurring from '../components/profile/recurring/recurring'
-import {budgetData, categories, barData, expData} from '../data/currentMonth'
+import Recurring from '../components/profile/recurring/recurring';
+import {
+  budgetData,
+  categories,
+  barData,
+  doughnutData,
+  expData,
+} from '../data/currentMonth';
+import recurringData from '../data/recurring';
 const Home = () => {
   return (
-    <main className='main-container'>
-      <Nav/>
-      <Header />
-      <Banner />
-      <Budget data={budgetData} />
-      <Recurring/>
-      <Bar data={barData} categories={categories}/>
-      <Expenditures data={expData}/>
-    </main>
+    <div>
+      <Nav />
+      <main className='main-container'>
+        <Header />
+        <Banner />
+        <Overview doughnut={doughnutData} budget={budgetData} />
+        <Recurring data={recurringData} />
+        <BudgetGraph data={barData} categories={categories} />
+        <Expenditures data={expData} />
+      </main>
+    </div>
   );
 };
 
