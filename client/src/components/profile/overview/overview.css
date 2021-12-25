@@ -1,0 +1,49 @@
+.budget {
+  padding: 1em;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  align-self: start;
+}
+@media (max-width: 1150px) {
+  .budget {
+    grid-column: 1 / 2;
+  }
+}
+@media (max-width: 900px) {
+  .budget {
+    grid-column: 1 / 2;
+  }
+}
+
+.budget-title {
+  text-align: center;
+}
+/* this should be abstracted out to global container -- all component contents shold be wrap in this */
+.budget-box {
+  margin: 1em 0 0;
+}
+.budget-box div:last-child {
+  grid-column: 1 /3;
+  grid-row: 3 / 4;
+  justify-content: center;
+}
+.budget-item {
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--grey-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-title {
+  font-size: 0.8rem;
+  margin-bottom: 0.2em;
+  margin-right: 0.4em;
+}
+.item-amount--red {
+  font-size: 1rem;
+  color: var(--red-4);
+}
+.item-amount--green {
+  font-size: 1rem;
+  color: var(--green-3);
+}
