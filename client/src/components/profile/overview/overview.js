@@ -3,7 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { doughnutData } from '../../../data/currentMonth';
 
-const Budget = ({ doughnut, budget }) => {
+const Budget = ({ doughnut }) => {
   const selectProfileData = (state) => {
     const recurringPayments = state.profile.recurringPayments;
     return recurringPayments.reduce((acc, obj) => {
