@@ -1,37 +1,67 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: var(--grey-1);
+}
 .form {
   max-width: 480px;
   width: 90%;
-  padding: 3em 2em;
+  padding: 2em 2em 3em;
+
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 2px 2px 6px rgba(128, 128, 128, 0.26);
+  border-radius: 2px;
+  box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.1);
+}
+.form-box {
+  width: 100%;
+  margin: 1em 0 1em;
+}
+.input-item {
   display: flex;
   flex-direction: column;
 }
-.form h2 {
-  align-self: center;
-  margin-bottom: 0.4em;
-  font-weight: 400;
-  font-size: 1.8rem;
+.input-item:not(:last-child) {
+  margin-bottom: 1.8em;
 }
-.form input {
-  font-size: 18px;
+.input-item label {
+  margin-bottom: 0.2em;
+}
+.input-item input {
+  font-size: 1.2rem;
   padding: 4px;
-  width: 380px;
+  width: 90%;
 }
-.form label {
-  margin-bottom: 0.3em;
-}
+
 .btn-submit {
-  align-self: center;
+  display: block;
+  margin: 1.6em auto 0;
   padding: 0.6em 1em;
-  margin: 1em 0;
   color: var(--blue-2);
   background-color: white;
   border: 1px solid var(--blue-2);
   border-radius: 4px;
   font-size: 18px;
   font-weight: 500;
+}
+.progress-bar {
+  width: 90%;
+  height: 20px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: 1px;
+}
+.progress-sect--complete {
+  background-color: var(--green-5);
+}
+.progress-sect--incomplete {
+  background-color: var(--grey-1);
+}
+.btn-page-select {
+  font-size: 1.2rem;
+  border: 1px solid var(--grey-2);
+  padding: 0.4em 1em;
 }
 .btn-submit:hover {
   background-color: var(--blue-2);
@@ -40,6 +70,12 @@
 .link-sign-up {
   align-self: center;
   font-size: 14px;
+}
+.no-account-link {
+  font-size: 1rem;
+  display: block;
+  margin-top: 1em;
+  text-align: center;
 }
 .pword-check {
   padding: 4px 10px;
