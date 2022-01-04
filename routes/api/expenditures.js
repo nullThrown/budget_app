@@ -7,6 +7,8 @@ const validateExpenditure = require('../../middleware/validation/validateExpendi
 const validate = require('../../middleware/validation/validate');
 const { verify } = require('jsonwebtoken');
 const { response } = require('express');
+const Expenditures = require('../../models/Expenditures');
+const { nextTick } = require('async');
 
 // ROUTE    POST api/profile/
 // DESC     create new expenditure
@@ -18,32 +20,45 @@ router.post(
   validate,
   async (req, res) => {
     const { title, amount, necessity, category } = req.body;
-    const expenditure = {
+
+    const expense = {
       title,
       amount,
       necessity,
       category,
     };
+
     try {
-      const profile = await Profile.findOneAndUpdate(
-        { user: req.user.id },
-        { $push: { expenditures: expenditure } },
-        { returnOriginal: false, useFindAndModify: false }
-      );
-      res.json(profile);
+      let expenditures = await Expenditures.findOne({ user: req.user.id });
+      if (expenditures) {
+        console.log(req.user);
+        expenditures = await Expenditures.findOneAndUpdate(
+          { user: req.user.id },
+          { $push: { expenses: expense } },
+          { returnOriginal: false, useFindAndModify: false }
+        );
+      } else {
+        expenditures = new Expenditures({
+          user: req.user.id,
+          expenses: expense,
+        });
+        await expenditures.save();
+      }
+      res.json(expenditures);
     } catch (err) {
       console.log({ err: [err.message, err.stack] });
       res.status(500).send('server error');
     }
   }
 );
+
 // ROUTE    GET api/profile/
 // DESC     Get all expenditures
 // ACCESS   Private
 router.get('/expenditures', verifyToken, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
-    res.json(profile.expenditures);
+    const expenditures = await Expenditures.findOne({ user: req.user.id });
+    res.json(expenditures.expenses);
   } catch (err) {
     console.log({ err: [err.message, err.stack] });
     res.status(500).send('server error');
@@ -53,16 +68,17 @@ router.get('/expenditures', verifyToken, async (req, res) => {
 // ROUTE    GET api/profile/
 // DESC     Get all expenditures by current month
 // ACCESS   Private
-router.get('/exp', verifyToken, async (req, res) => {
+router.get('/exp/current-month', verifyToken, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
-    const monthlyExp = profile.expenditures.filter((exp) => {
+    const expenditures = await Expenditures.findOne({ user: req.user.id });
+    const monthlyExpenses = expenditures.expenses.filter((exp) => {
       return (
+        // returns expenses that match current year & current month
         exp.date.getMonth() === new Date().getMonth() &&
         exp.date.getYear() === new Date().getYear()
       );
     });
-    res.json(monthlyExp);
+    res.json(monthlyExpenses);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
     res.status(500).send('server error');
@@ -71,13 +87,16 @@ router.get('/exp', verifyToken, async (req, res) => {
 // ROUTE    GET api/profile/
 // DESC     Get all expenditures by current year
 // ACCESS   Private
-router.get('/expenditures/year', verifyToken, async (req, res) => {
+router.get('/exp/current-year', verifyToken, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
-    const yearlyExp = profile.expenditures.filter((exp) => {
-      return exp.date.getYear() === new Date().getYear();
+    const expenditures = await Expenditures.findOne({ user: req.user.id });
+    const yearlyExpenses = expenditures.expenses.filter((exp) => {
+      return (
+        // returns expenses that match current year
+        exp.date.getYear() === new Date().getYear()
+      );
     });
-    res.json(yearlyExp);
+    res.json(yearlyExpenses);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
     res.status(500).send('server error');
@@ -87,14 +106,14 @@ router.get('/expenditures/year', verifyToken, async (req, res) => {
 // ROUTE    DELETE api/profile/
 // DESC     Delete a single expenditure
 // ACCESS   Private
-router.delete('/expenditures/:id', verifyToken, async (req, res) => {
+router.delete('/exp/delete/:id', verifyToken, async (req, res) => {
   try {
-    const updatedProfile = await Profile.findOneAndUpdate(
+    const updatedExp = await Expenditures.findOneAndUpdate(
       { user: req.user.id },
-      { $pull: { expenditures: { _id: req.params.id } } },
+      { $pull: { expenses: { _id: req.params.id } } },
       { returnOriginal: false, useFindAndModify: false }
     );
-    res.json(updatedProfile);
+    res.json(updatedExp);
   } catch (err) {
     console.log({ err: [err.message, err.stack] });
     res.status(500).send('server error');
