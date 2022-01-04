@@ -22,6 +22,27 @@ CSS STRUCTURE
 
 ------------------------------------------------------------------------------------------------------------
 
+TODO LIST 1-3-22
+
+  REDUX
+  auth
+    *login user
+      Should logging in a user require redux?
+      if no state is being updated
+  entire home page should be linked up to redux store -- dummy data for now, eventual integration of express API data
+  *restructure models
+        
+    *useSelector for overview component
+    
+    *useSelector for budget component
+      *will need to use similar technique of combining two separate selections
+
+    *watch traversy video on MERN stack
+
+    questions
+      
+
+------------------------------------------------------------------------------------------------------------
 UI TODO LIST
 
   global
@@ -55,7 +76,6 @@ UI TODO LIST
       
 
   profile
-    TODO
       general 
         layout
         sizing
@@ -97,6 +117,8 @@ UI TODO LIST
       recurring
         *add pagination
           *limit number of categories rendered per page
+        *create set height that equals other components of same row
+        *align dollar signs of the item amounts 
 
       graph
 
@@ -109,3 +131,30 @@ UI TODO LIST
 
   REDUX STATE
 
+  todo
+    *create auth slice
+      *create dispatch action for register user 
+      *create dispatch action for login user
+      *create dispatch action for logout user
+      
+
+  general
+    Eventual integration of redux toolkit
+    perhaps different tools like redux-query...
+    find the simplest manner of maintaining state
+  budget
+    *need to combine state from both expenditures and profile.recurringPayments
+    *both arrays are pulled from redux store
+    *need to add some sort of business logic that combines the results of these two return state values
+      *react strict mode causes this function to run twice thereby adding the elements twice
+      *this is clearly the wrong solution
+------------------------------------------------------------------------------------------------------------
+
+EXPRESS API 
+
+  models
+    profile
+      *recurringPayments should be renamed categorySpending
+        *whenever a new category is created -- it will be added to categorySpending array
+        *payments subdoc of recurringPayments should be renamed recurring payments
+    
