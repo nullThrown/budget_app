@@ -1,27 +1,32 @@
 import { map } from 'async';
 import React from 'react';
 import './recurring.css';
+import { useSelector } from 'react-redux';
 
 const Recurring = ({ data }) => {
+  const selectPayments = (state) => state.profile.recurringPayments;
+  const payments = useSelector(selectPayments);
   return (
     <section className='card recurring'>
       <h2 className='heading-4 text-center'>Recurring</h2>
-      {data.map((cat, i) => {
-        const { title, exp } = cat;
-        return <PaymentItem key={i} title={title} exp={exp} />;
+      {payments.map((cat, _id) => {
+        const { category, payments } = cat;
+        return (
+          <PaymentItem key={_id} category={category} payments={payments} />
+        );
       })}
     </section>
   );
 };
 
-const PaymentItem = ({ title, exp }) => {
+const PaymentItem = ({ category, payments }) => {
   return (
     <div className='payment__category'>
-      <p className=' payment__title text-sm'>{title}</p>
-      {exp.map((exp, i) => {
-        const { name, amount } = exp;
+      <p className=' payment__title text-sm'>{category}</p>
+      {payments.map((expense) => {
+        const { amount, name, _id } = expense;
         return (
-          <div key={i} className='flex payment__item'>
+          <div key={_id} className='flex payment__item'>
             <p className='payment__item-title text-sm'>{name}</p>
             <span className='payment__item-amt   text-sm'>$ {amount}</span>
           </div>
