@@ -80,7 +80,7 @@ router.post('/login', async (req, res, next) => {
           httpOnly: true,
           maxAge: 40000000,
         });
-        res.json(user);
+        res.json({ user, token });
       }
     );
   } catch (err) {
