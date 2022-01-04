@@ -36,6 +36,7 @@ router.post('/', verifyToken, validateProfile(), validate, async (req, res) => {
     childcareTuition,
     childcareDaycare,
     healthInsurance,
+    healthFitness,
     debtStudent,
     debtCredit,
     retirementIra,
@@ -47,90 +48,124 @@ router.post('/', verifyToken, validateProfile(), validate, async (req, res) => {
     user: req.user.id,
     paycheckAmount,
     salarySchedule,
-
-    // housing expenses
-    housingExp: {
-      total: Number(housingPayment) + Number(housingInsurance),
-      housingPayment: {
-        amount: housingPayment,
+    recurringPayments: [
+      {
+        // housing expenses
+        total: Number(housingPayment) + Number(housingInsurance),
+        category: 'housing',
+        payments: [
+          {
+            amount: housingPayment,
+            name: 'mortgage/rent',
+          },
+          {
+            amount: housingInsurance,
+            name: 'insurance',
+          },
+        ],
       },
-      housingInsurance: {
-        amount: housingInsurance,
+      {
+        // vehicle expenses
+        total: Number(vehicleLoan) + Number(vehicleInsurance),
+        category: 'vehicle',
+        payments: [
+          {
+            amount: vehicleLoan,
+            name: 'loan',
+          },
+          {
+            amount: vehicleInsurance,
+            name: 'insurance',
+          },
+        ],
       },
-    },
-
-    // vehicle expenses
-    vehicleExp: {
-      total: Number(vehicleLoan) + Number(vehicleInsurance),
-      vehicleLoan: {
-        amount: vehicleLoan,
+      {
+        // utility expenses
+        total: Number(cellPlan) + Number(cellLoan) + Number(internetPlan),
+        category: 'utilities',
+        payments: [
+          {
+            amount: cellPlan,
+            name: 'cell plan',
+          },
+          {
+            amount: cellLoan,
+            name: 'cell loan',
+          },
+          {
+            amount: internetPlan,
+            name: 'internet',
+          },
+        ],
       },
-      vehicleInsurance: {
-        amount: vehicleInsurance,
+      {
+        // childcare expenses
+        total: Number(childcareTuition) + Number(childcareDaycare),
+        category: 'childcare',
+        payments: [
+          {
+            amount: childcareTuition,
+            name: 'tuition',
+          },
+          {
+            amount: childcareDaycare,
+            name: 'daycare',
+          },
+        ],
       },
-    },
-
-    // utility expenses
-    utilityExp: {
-      total: Number(cellPlan) + Number(cellLoan) + Number(internetPlan),
-      cellPlan: {
-        amount: cellPlan,
+      {
+        // health expenses
+        total: Number(healthInsurance) + Number(healthFitness),
+        category: 'health',
+        payments: [
+          {
+            amount: healthInsurance,
+            name: 'insurance',
+          },
+          {
+            amount: healthFitness,
+            name: 'fitness',
+          },
+        ],
       },
-      cellLoan: {
-        amount: cellLoan,
+      {
+        // debt payment expenses
+        total: Number(debtStudent) + Number(debtCredit),
+        category: 'debt',
+        payments: [
+          {
+            amount: debtStudent,
+            name: 'student',
+          },
+          {
+            amount: debtCredit,
+            name: 'credit',
+          },
+        ],
       },
-      internetPlan: {
-        amount: internetPlan,
+      {
+        // retirement expenses
+        total:
+          Number(retirement401k) +
+          Number(retirementIra) +
+          Number(retirementBrokerage),
+        category: 'retirement',
+        payments: [
+          {
+            amount: retirement401k,
+            name: '401k',
+          },
+          {
+            amount: retirementIra,
+            name: 'ira',
+          },
+          {
+            amount: retirementBrokerage,
+            name: 'brokerage',
+          },
+        ],
       },
-    },
-
-    // childcare expenses
-    childcareExp: {
-      total: Number(childcareTuition) + Number(childcareDaycare),
-      childcareTuition: {
-        amount: childcareTuition,
-      },
-      childcareDaycare: {
-        amount: childcareDaycare,
-      },
-    },
-
-    // health expenses
-    healthExp: {
-      total: Number(healthInsurance),
-
-      healthInsurance: {
-        amount: healthInsurance,
-      },
-    },
-
-    // debt
-    debt: {
-      total: Number(debtStudent) + Number(debtCredit),
-      debtStudent: {
-        amount: debtStudent,
-      },
-      debtCredit: {
-        amount: debtCredit,
-      },
-    },
-
-    // retirement
-    retirement: {
-      total:
-        Number(retirement401k) +
-        Number(retirementIra) +
-        Number(retirementBrokerage),
-      retirement401k: {
-        amount: retirement401k,
-      },
-      retirementIra: {
-        amount: retirementIra,
-      },
-      retirementBrokerage: {
-        amount: retirementBrokerage,
-      },
-    },
+    ],
   };
 
   try {
