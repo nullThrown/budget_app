@@ -3,7 +3,7 @@ import React from 'react';
 import './recurring.css';
 import { useSelector } from 'react-redux';
 
-const Recurring = ({ data }) => {
+const Recurring = () => {
   const selectPayments = (state) => state.profile.recurringPayments;
   const payments = useSelector(selectPayments);
   return (
