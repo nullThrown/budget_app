@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Alert } from '../../alert/alert';
 import { PasswordCheck } from './passwordCheck';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../../features/auth/user';
+import { useNavigate } from 'react-router-dom';
+import InputItem from '../profile/inputItem';
 import {
   checkPasswordLength,
   checkPasswordNum,
@@ -11,31 +16,36 @@ import {
 // validation import functions do not have access to state variables
 // solution? place callback inside validation functions and then insert state change functions when validate fn are called
 const SignupForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    password2: '',
   });
+  const [password2, setPassword2] = useState('');
   const [isPwordLong, setPwordLong] = useState(false);
   const [pwordHasNum, setPwordHasNum] = useState(false);
   const [pwordHasSym, setPwordHasSym] = useState(false);
   const [pwordHasUpper, setPwordHasUpper] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(true);
 
-  const onChangeHandler = (e) => {
-    if (e.target.name)
+  const onInputChange = (e) => {
+    if (e.target.name === 'password2') {
+      setPassword2(e.target.value);
+    } else if (e.target.name)
       setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-
   const submitHandler = (e) => {
     e.preventDefault();
-    if (userData.password !== userData.password2) {
+    if (userData.password !== password2) {
       setPasswordMatch(false);
-      setUserData({ ...userData, password2: '' });
+      setPassword2('');
     } else {
-      console.log(userData);
+      dispatch(registerUser(userData));
+      navigate('/signup-successful');
     }
   };
   useEffect(() => {
@@ -45,72 +55,72 @@ const SignupForm = () => {
     checkPasswordUpper(userData.password, setPwordHasUpper);
   }, [userData.password]);
   return (
-    <form onSubmit={submitHandler} className='form'>
-      <h2>Signup</h2>
-      <label htmlFor='firstName'>First Name</label>
-      <input
-        type='text'
-        id='firstName'
-        name='firstName'
-        value={userData.firstName}
-        className='mb-1'
-        onChange={(e) => onChangeHandler(e)}
-        required
-      />
-      <label htmlFor='lastName'>Last Name</label>
-      <input
-        type='text'
-        id='lastName'
-        name='lastName'
-        value={userData.lastName}
-        className='mb-1'
-        onChange={(e) => onChangeHandler(e)}
-        required
-      />
-      <label htmlFor='firstName'>email</label>
-      <input
-        type='email'
-        id='email'
-        name='email'
-        value={userData.email}
-        className='mb-1'
-        onChange={(e) => onChangeHandler(e)}
-        required
-      />
-
-      <PasswordCheck
-        isPwordLong={isPwordLong}
-        pwordHasNum={pwordHasNum}
-        pwordHasSym={pwordHasSym}
-        pwordHasUpper={pwordHasUpper}
-      />
-      <label htmlFor='password'>password</label>
-      <input
-        type='password'
-        id='password'
-        name='password'
-        value={userData.password}
-        className='mb-1'
-        onChange={(e) => onChangeHandler(e)}
-        required
-      />
-      <label htmlFor='password2'>Confirm Password</label>
-      <input
-        type='password'
-        id='password2'
-        name='password2'
-        value={userData.password2}
-        className='mb-1'
-        onChange={(e) => onChangeHandler(e)}
-        required
-      />
-      {passwordMatch || (
-        <Alert msg={'passwords do not match'} isSuccess={false} />
-      )}
-      <button type='submit' className='btn btn-submit' disabled={false}>
-        Signup
-      </button>
-    </form>
+    <main className='form-container'>
+      <form onSubmit={submitHandler} className='form'>
+        <h2 className='heading-3 text-center'>Signup</h2>
+        <div className='form-box'>
+          <InputItem
+            autoFocus
+            title='First Name'
+            name='firstName'
+            type='text'
+            value={userData.firstName}
+            onInputChange={onInputChange}
+            required
+          />
+          <InputItem
+            title='Last Name'
+            name='lastName'
+            type='text'
+            value={userData.lastName}
+            onInputChange={onInputChange}
+            required
+          />
+          <InputItem
+            title='Email'
+            name='email'
+            type='email'
+            value={userData.email}
+            onInputChange={onInputChange}
+            required
+          />
+          <PasswordCheck
+            isPwordLong={isPwordLong}
+            pwordHasNum={pwordHasNum}
+            pwordHasSym={pwordHasSym}
+            pwordHasUpper={pwordHasUpper}
+          />
+          <InputItem
+            title='Password'
+            name='password'
+            type='password'
+            value={userData.password}
+            onInputChange={onInputChange}
+            required
+          />
+          <InputItem
+            title='Confirm Password'
+            name='password2'
+            type='password'
+            value={password2}
+            onInputChange={onInputChange}
+            required
+          />
+        </div>
+        {passwordMatch || (
+          <Alert msg={'passwords do not match'} isSuccess={false} />
+        )}
+        <button type='submit' className='btn btn-submit' disabled={false}>
+          Signup
+        </button>
+        <span className='no-account-link'>
+          Already have an account?
+          <Link to='../login' className='link ml-1-2'>
+            Log In
+          </Link>
+        </span>
+      </form>
+    </main>
   );
 };
 
