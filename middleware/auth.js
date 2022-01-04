@@ -1,13 +1,32 @@
 const jwt = require('jsonwebtoken');
 
+// validation method that accesses token from request headers
+// const verifyToken = (req, res, next) => {
+//   const token = req.header('x-auth-token');
+
+//   if (!token) {
+//     return res.status(400).json({ msg: 'not authorized' });
+//   }
+
+//   try {
+//     const decoded = jwt.verify(token, process.env.JWTSECRET);
+//     req.user = decoded.user;
+//   } catch (err) {
+//     return res.status(400).json({ msg: 'token is not valid' });
+//   }
+//   next();
+// };
+
+// validation method that accesses token from request cookies
 const verifyToken = (req, res, next) => {
-  const token = req.header('x-auth-token');
+  const token = req.cookies.x_auth_token;
+  console.log(token);
   if (!token) {
     return res.status(400).json({ msg: 'not authorized' });
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.AUTHSECRET);
+    const decoded = jwt.verify(token, process.env.JWTSECRET);
     req.user = decoded.user;
   } catch (err) {
     return res.status(400).json({ msg: 'token is not valid' });
