@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../forms.css';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../../features/auth/user';
+import { loginUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import InputItem from '../profile/inputItem';
 const LoginForm = () => {
