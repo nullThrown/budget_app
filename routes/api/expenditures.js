@@ -10,11 +10,11 @@ const { response } = require('express');
 const Expenditures = require('../../models/Expenditures');
 const { nextTick } = require('async');
 
-// ROUTE    POST api/profile/
+// ROUTE    POST api/exp/create-new
 // DESC     create new expenditure
 // ACCESS   Private
 router.post(
-  '/expenditures',
+  '/create-new',
   verifyToken,
   validateExpenditure(),
   validate,
@@ -52,10 +52,10 @@ router.post(
   }
 );
 
-// ROUTE    GET api/profile/
+// ROUTE    GET api/exp/get-all
 // DESC     Get all expenditures
 // ACCESS   Private
-router.get('/expenditures', verifyToken, async (req, res) => {
+router.get('/get-all', verifyToken, async (req, res) => {
   try {
     const expenditures = await Expenditures.findOne({ user: req.user.id });
     res.json(expenditures.expenses);
@@ -65,10 +65,10 @@ router.get('/expenditures', verifyToken, async (req, res) => {
   }
 });
 
-// ROUTE    GET api/profile/
+// ROUTE    GET api/exp/current-month
 // DESC     Get all expenditures by current month
 // ACCESS   Private
-router.get('/exp/current-month', verifyToken, async (req, res) => {
+router.get('/current-month', verifyToken, async (req, res) => {
   try {
     const expenditures = await Expenditures.findOne({ user: req.user.id });
     const monthlyExpenses = expenditures.expenses.filter((exp) => {
@@ -84,10 +84,10 @@ router.get('/exp/current-month', verifyToken, async (req, res) => {
     res.status(500).send('server error');
   }
 });
-// ROUTE    GET api/profile/
+// ROUTE    GET api/exp/current-year
 // DESC     Get all expenditures by current year
 // ACCESS   Private
-router.get('/exp/current-year', verifyToken, async (req, res) => {
+router.get('/current-year', verifyToken, async (req, res) => {
   try {
     const expenditures = await Expenditures.findOne({ user: req.user.id });
     const yearlyExpenses = expenditures.expenses.filter((exp) => {
@@ -103,10 +103,10 @@ router.get('/exp/current-year', verifyToken, async (req, res) => {
   }
 });
 
-// ROUTE    DELETE api/profile/
+// ROUTE    DELETE api/exp/delete/:id
 // DESC     Delete a single expenditure
 // ACCESS   Private
-router.delete('/exp/delete/:id', verifyToken, async (req, res) => {
+router.delete('/delete/:id', verifyToken, async (req, res) => {
   try {
     const updatedExp = await Expenditures.findOneAndUpdate(
       { user: req.user.id },
