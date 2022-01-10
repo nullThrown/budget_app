@@ -10,6 +10,7 @@ const {
   validateLogin,
 } = require('../../middleware/validation/validateAuth');
 const validate = require('../../middleware/validation/validate');
+const { nextTick } = require('async');
 // ROUTE    GET api/auth/register
 // DESC     Register a new user
 // ACCESS   Public
@@ -35,6 +36,7 @@ router.post('/register', validateRegistration(), validate, async (req, res) => {
     });
 
     await user.save();
+
     res.json(user);
   } catch (err) {
     console.log(err.message);
@@ -45,7 +47,7 @@ router.post('/register', validateRegistration(), validate, async (req, res) => {
 // ROUTE    POST api/auth/login
 // DESC     login a user
 // ACCESS   Public
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
     // check if {email will work}
@@ -54,7 +56,6 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ err: 'invalid credentials' });
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch);
     if (!isMatch) {
       return res.status(400).json({ err: 'invalid credentials' });
     }
@@ -67,13 +68,19 @@ router.post('/login', async (req, res) => {
     jwt.sign(
       payload,
       //temporary
-      process.env.AUTHSECRET,
+      process.env.JWTSECRET,
       { expiresIn: '2d' },
       (err, token) => {
         if (err) {
           return res.status(400).json(err);
         }
-        res.json({ token: token });
+        // set max age & secure: true for cookie
+        res.cookie('x-auth-token', token, {
+          sameSite: true,
+          httpOnly: true,
+          maxAge: 40000000,
+        });
+        res.json({ user, token });
       }
     );
   } catch (err) {

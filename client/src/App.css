@@ -53,7 +53,7 @@ li {
   list-style: none;
 }
 .link {
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--blue-1);
 }
 
@@ -178,6 +178,11 @@ li {
 /* FLEX */
 .flex {
   display: flex;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .flex-btwn {
   display: flex;
