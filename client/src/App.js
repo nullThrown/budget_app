@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 //import from single page and/or use lazy loading
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -11,6 +10,7 @@ import Home from './pages/home';
 import Landing from './pages/landing';
 import NotFound from './pages/notFound';
 import Year from './pages/year';
+
 function App() {
   return (
     <Router>
