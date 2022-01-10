@@ -1,41 +1,27 @@
-const initialState = [
-  {
-    date: '7-13-21',
-    description: 'movie: Spider Man returns',
-    category: 'misc',
-    necessity: false,
-    amount: 13.27,
-  },
-  {
-    date: '7-13-21',
-    description: 'monster energy',
-    category: 'misc',
-    necessity: false,
-    amount: 3.99,
-  },
-  {
-    date: '7-25-21',
-    description: 'Hello fish',
-    category: 'dining',
-    necessity: true,
-    amount: 43.69,
-  },
-  {
-    date: '7-25-21',
-    description: 'drywall',
-    category: 'housing',
-    necessity: true,
-    amount: 600,
-  },
-];
+import axios from 'axios';
+const initialState = [];
 
 export default function expendituresReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case 'expenditures/':
-      return;
+    case 'exp/expendituresLoaded':
+      return payload;
 
     default:
       return state;
   }
 }
+
+export const getExpByCurrentMonth = () => async (dispatch) => {
+  try {
+    const res = await axios.get('http://localhost:4000/api/exp/current-month', {
+      withCredentials: true,
+    });
+    dispatch({ type: 'exp/expendituresLoaded', payload: res.data });
+  } catch (err) {
+    const { data, status } = err.response;
+    if (status === 400 && data.msg === 'token is not valid') {
+      console.log(data.msg);
+    }
+  }
+};
