@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Alert } from '../../alert/alert';
 import { PasswordCheck } from './passwordCheck';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../../features/auth/user';
+import { registerUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import InputItem from '../profile/inputItem';
 import {
