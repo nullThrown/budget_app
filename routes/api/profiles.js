@@ -11,7 +11,6 @@ const validate = require('../../middleware/validation/validate');
 router.get('/', verifyToken, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
-    console.log(profile.monthlyTakeHome);
     res.json({ profile });
   } catch (err) {
     res.status(500).send('server error');
