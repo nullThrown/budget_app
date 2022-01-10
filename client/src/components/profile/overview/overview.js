@@ -1,18 +1,50 @@
+import { useState, useEffect } from 'react';
 import './overview.css';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { doughnutData } from '../../../data/currentMonth';
+const Overview = ({ doughnutData }) => {
+  const [data, setData] = useState({
+    necessitySpent: 0,
+    indulgentSpent: 0,
+    remaining: 0,
+  });
 
-const Budget = ({ doughnut }) => {
-  const selectProfileData = (state) => {
-    const recurringPayments = state.profile.recurringPayments;
-    return recurringPayments.reduce((acc, obj) => {
-      return acc + obj.total;
+  const selectRecurringTotal = (state) => {
+    return state.profile.recurringPayments.reduce((acc, current) => {
+      return acc + current.total;
     }, 0);
   };
-  const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome);
-  const profileData = useSelector(selectProfileData);
-  const DoughnutData = [takeHomeAmount, profileData, 100];
+  const selectExpNecessityTotal = (state) => {
+    return state.expenditures.reduce((acc, current) => {
+      if (current.necessity) return acc + current.amount;
+      return acc;
+    }, 0);
+  };
+  const selectExpIndulgentTotal = (state) => {
+    return state.expenditures.reduce((acc, current) => {
+      if (!current.necessity) return acc + current.amount;
+      return acc;
+    }, 0);
+  };
+  const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome); // 4000
+  const expNecessityTotal = useSelector(selectExpNecessityTotal); //200
+  const expIndulgentTotal = useSelector(selectExpIndulgentTotal); //233
+  const recurringTotal = useSelector(selectRecurringTotal); //4543
+  //  profile data -- [necessity, indulgent, remaining]
+  // should be [4743, 233, -976]
+
+  useEffect(() => {
+    setData(() => {
+      data.necessitySpent = recurringTotal + expNecessityTotal;
+      data.indulgentSpent = expIndulgentTotal;
+      data.remaining = 0;
+      // takeHomeAmount - (data.induglentSpent + data.necessitySpent);
+      return data;
+    });
+  }, [takeHomeAmount, expNecessityTotal, expIndulgentTotal, recurringTotal]);
+  const DoughnutData = Object.values(data);
+  // console.log(DoughnutData);
+
   return (
     <section className='card budget'>
       <h3 className='heading-4 text-center'>Overview</h3>
@@ -22,7 +54,7 @@ const Budget = ({ doughnut }) => {
           amountClass={'item-amount--green'}
           amount={takeHomeAmount}
         />
-        <Doughnut data={doughnut(DoughnutData)} className='pie-chart' />
+        <Doughnut data={doughnutData(DoughnutData)} className='pie-chart' />
       </div>
     </section>
   );
@@ -40,4 +72,4 @@ const BudgetItem = (props) => {
   );
 };
 
-export default Budget;
+export default Overview;
