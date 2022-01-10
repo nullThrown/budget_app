@@ -23,7 +23,16 @@ CSS STRUCTURE
 ------------------------------------------------------------------------------------------------------------
 
 TODO LIST 1-3-22
-
+  *load all home data into redux state
+  *figure out protected routes for front end 
+    *every protected route should be accompanied by either: 
+                                                   *a custom hook that sends auth token to server 
+                                                   *or check redux state for user
+                                                    if user is present then user is validated
+  *have loading state for all backend api requests 
+    while request has not processed yet --- render loading state 
+    once request has processed --- render components with redux state
+                                                          
   REDUX
   auth
     *login user
@@ -141,7 +150,7 @@ UI TODO LIST
   general
     Eventual integration of redux toolkit
     perhaps different tools like redux-query...
-    find the simplest manner of maintaining state
+    
   budget
     *need to combine state from both expenditures and profile.recurringPayments
     *both arrays are pulled from redux store
