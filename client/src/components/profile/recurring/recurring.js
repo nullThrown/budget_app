@@ -1,4 +1,3 @@
-import { map } from 'async';
 import React from 'react';
 import './recurring.css';
 import { useSelector } from 'react-redux';
