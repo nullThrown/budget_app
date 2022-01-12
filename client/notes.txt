@@ -22,35 +22,34 @@ CSS STRUCTURE
 
 ------------------------------------------------------------------------------------------------------------
 
-TODO LIST 1-3-22
-  *load all home data into redux state
-  *figure out protected routes for front end 
-    *every protected route should be accompanied by either: 
-                                                   *a custom hook that sends auth token to server 
-                                                   *or check redux state for user
-                                                    if user is present then user is validated
-  *have loading state for all backend api requests 
-    while request has not processed yet --- render loading state 
-    once request has processed --- render components with redux state
-                                                          
-  REDUX
-  auth
-    *login user
-      Should logging in a user require redux?
-      if no state is being updated
-  entire home page should be linked up to redux store -- dummy data for now, eventual integration of express API data
-  *restructure models
-        
-    *useSelector for overview component
+TODO LIST
+  Today
+    *create all dispatch actions for slices
+    *create means of getting data by specific month in home page
+    *fix expenditures data display
+
+
+GERNERAL/APP-WIDE
+  *create a front-end protected route system along with proper redirecting behavior
+    *certain pages will require authentication
+    solutions
+      *a custom hook that sends auth token to server
+      *or check redux state for user
+        if user is present then user is validated
+                                                    
+  *proper data loading 
+    *where to place data calls? on page components
+
+    *data calls require a loading state and completed state and error state
+      *loading state -- loading image/component will render
+      *completed state -- actual components
+      *error state (server status code 500) -- error message     
     
-    *useSelector for budget component
-      *will need to use similar technique of combining two separate selections
-
-    *watch traversy video on MERN stack
-
-    questions
-      
-
+    *data calls for different months/years   
+                                                          
+  *proper data manipulation
+    *components will receive data from redux store
+    *that data will need to be altered/moved/calulated on in order to be displayed
 ------------------------------------------------------------------------------------------------------------
 UI TODO LIST
 
@@ -83,7 +82,6 @@ UI TODO LIST
     Footer
       *add background color or image 
       
-
   profile
       general 
         layout
@@ -102,8 +100,6 @@ UI TODO LIST
        *toggle nav visibility/placement upon button press
          *nav menu links need to be set to visibility:none in order to be removed from 
          the focus selection list -- accessibility issue. more research needed.
-
-
 
     /home
       global 
@@ -126,7 +122,7 @@ UI TODO LIST
       recurring
         *add pagination
           *limit number of categories rendered per page
-        *create set height that equals other components of same row
+        *create set height that equals other components of same row and add vertical scroll
         *align dollar signs of the item amounts 
 
       graph
@@ -140,30 +136,16 @@ UI TODO LIST
 
   REDUX STATE
 
-  todo
-    *create auth slice
-      *create dispatch action for register user 
-      *create dispatch action for login user
-      *create dispatch action for logout user
-      
-
   general
-    Eventual integration of redux toolkit
-    perhaps different tools like redux-query...
+    *Eventual integration of redux toolkit
+    *perhaps different tools like redux-query...
     
   budget
     *need to combine state from both expenditures and profile.recurringPayments
     *both arrays are pulled from redux store
     *need to add some sort of business logic that combines the results of these two return state values
-      *react strict mode causes this function to run twice thereby adding the elements twice
-      *this is clearly the wrong solution
 ------------------------------------------------------------------------------------------------------------
 
 EXPRESS API 
 
-  models
-    profile
-      *recurringPayments should be renamed categorySpending
-        *whenever a new category is created -- it will be added to categorySpending array
-        *payments subdoc of recurringPayments should be renamed recurring payments
-    
+
