@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProfile } from '../features/profile/profileSlice';
 import { getExpByCurrentMonth } from '../features/expenditures/expendituresSlice';
@@ -14,8 +14,11 @@ import { categories, barData, doughnutData } from '../data/currentMonth';
 const Home = () => {
   const dispatch = useDispatch();
 
-  dispatch(getProfile());
-  dispatch(getExpByCurrentMonth());
+  useEffect(() => {
+    dispatch(getProfile());
+    dispatch(getExpByCurrentMonth());
+  }, []);
+
   return (
     <div>
       <Nav />
