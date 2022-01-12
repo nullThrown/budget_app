@@ -31,7 +31,6 @@ router.post(
     try {
       let expenditures = await Expenditures.findOne({ user: req.user.id });
       if (expenditures) {
-        console.log(req.user);
         expenditures = await Expenditures.findOneAndUpdate(
           { user: req.user.id },
           { $push: { expenses: expense } },
@@ -66,18 +65,20 @@ router.get('/get-all', verifyToken, async (req, res) => {
 });
 
 // ROUTE    GET api/exp/current-month
-// DESC     Get all expenditures by current month
+// DESC     Get all expenditures by month and year param
 // ACCESS   Private
-router.get('/current-month', verifyToken, async (req, res) => {
+router.get('/month/:year/:month', verifyToken, async (req, res) => {
   try {
+    const { year, month } = req.params;
     const expenditures = await Expenditures.findOne({ user: req.user.id });
+
     const monthlyExpenses = expenditures.expenses.filter((exp) => {
       return (
-        // returns expenses that match current year & current month
-        exp.date.getMonth() === new Date().getMonth() &&
-        exp.date.getYear() === new Date().getYear()
+        exp.date.getMonth() === Number(month) &&
+        exp.date.getFullYear() === Number(year)
       );
     });
+
     res.json(monthlyExpenses);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
@@ -85,17 +86,16 @@ router.get('/current-month', verifyToken, async (req, res) => {
   }
 });
 // ROUTE    GET api/exp/current-year
-// DESC     Get all expenditures by current year
+// DESC     Get all expenditures by year param
 // ACCESS   Private
-router.get('/current-year', verifyToken, async (req, res) => {
+router.get('/year/:year', verifyToken, async (req, res) => {
   try {
     const expenditures = await Expenditures.findOne({ user: req.user.id });
+
     const yearlyExpenses = expenditures.expenses.filter((exp) => {
-      return (
-        // returns expenses that match current year
-        exp.date.getYear() === new Date().getYear()
-      );
+      return exp.date.getFullYear() === Number(req.params.year);
     });
+
     res.json(yearlyExpenses);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
