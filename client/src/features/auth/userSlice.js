@@ -20,6 +20,8 @@ export default function userReducer(state = initialState, action) {
       return { firstName, lastName, email };
     case 'user/logoutUser':
       return;
+    case 'user/updateUser':
+      return { user: payload.user, isAuth: true };
 
     default:
       return state;
