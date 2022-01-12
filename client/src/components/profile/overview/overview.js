@@ -3,11 +3,7 @@ import './overview.css';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 const Overview = ({ doughnutData }) => {
-  const [data, setData] = useState({
-    necessitySpent: 0,
-    indulgentSpent: 0,
-    remaining: 0,
-  });
+  const [data, setData] = useState([]);
 
   const selectRecurringTotal = (state) => {
     return state.profile.recurringPayments.reduce((acc, current) => {
@@ -26,25 +22,16 @@ const Overview = ({ doughnutData }) => {
       return acc;
     }, 0);
   };
-  const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome); // 4000
+  const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome); // 5600
   const expNecessityTotal = useSelector(selectExpNecessityTotal); //200
   const expIndulgentTotal = useSelector(selectExpIndulgentTotal); //233
   const recurringTotal = useSelector(selectRecurringTotal); //4543
-  //  profile data -- [necessity, indulgent, remaining]
-  // should be [4743, 233, -976]
-
+  // [4743, 233, 624 ]
   useEffect(() => {
-    setData(() => {
-      data.necessitySpent = recurringTotal + expNecessityTotal;
-      data.indulgentSpent = expIndulgentTotal;
-      data.remaining = 0;
-      // takeHomeAmount - (data.induglentSpent + data.necessitySpent);
-      return data;
+    setData((data) => {
+      data.push(recurringTotal);
     });
-  }, [takeHomeAmount, expNecessityTotal, expIndulgentTotal, recurringTotal]);
-  const DoughnutData = Object.values(data);
-  // console.log(DoughnutData);
-
+  }, []);
   return (
     <section className='card budget'>
       <h3 className='heading-4 text-center'>Overview</h3>
@@ -54,7 +41,8 @@ const Overview = ({ doughnutData }) => {
           amountClass={'item-amount--green'}
           amount={takeHomeAmount}
         />
-        <Doughnut data={doughnutData(DoughnutData)} className='pie-chart' />
+        {/* nec, indulg, rem */}
+        <Doughnut data={doughnutData([100, 200, 300])} className='pie-chart' />
       </div>
     </section>
   );
