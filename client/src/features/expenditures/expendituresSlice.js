@@ -6,6 +6,10 @@ export default function expendituresReducer(state = initialState, action) {
   switch (type) {
     case 'exp/expendituresLoaded':
       return payload;
+    case 'exp/createExpenditures':
+      return { ...state, payload };
+    case 'exp/deleteExpenditure':
+      return payload;
 
     default:
       return state;
