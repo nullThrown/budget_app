@@ -10,6 +10,7 @@ import Home from './pages/home';
 import Landing from './pages/landing';
 import NotFound from './pages/notFound';
 import Year from './pages/year';
+import Testing from './pages/testing';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/year' element={<Year />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/test' element={<Testing />} />
+
         {/* error path */}
         <Route path='/not-found' element={<NotFound />} />
       </Routes>
