@@ -5,10 +5,13 @@ const User = require('../../models/User');
 const { verifyToken } = require('../../middleware/auth');
 const validateExpenditure = require('../../middleware/validation/validateExpenditure');
 const validate = require('../../middleware/validation/validate');
-const { verify } = require('jsonwebtoken');
 const { response } = require('express');
 const Expenditures = require('../../models/Expenditures');
-const { nextTick } = require('async');
+const {
+  unauthenticated,
+  invalid_data,
+  server_error,
+} = require('../../util/errorTypes');
 
 // ROUTE    POST api/exp/create-new
 // DESC     create new expenditure
@@ -46,7 +49,7 @@ router.post(
       res.json(expenditures);
     } catch (err) {
       console.log({ err: [err.message, err.stack] });
-      res.status(500).send('server error');
+      res.status(500).json({ error: server_error });
     }
   }
 );
@@ -60,7 +63,7 @@ router.get('/get-all', verifyToken, async (req, res) => {
     res.json(expenditures.expenses);
   } catch (err) {
     console.log({ err: [err.message, err.stack] });
-    res.status(500).send('server error');
+    res.status(500).json({ error: server_error });
   }
 });
 
@@ -82,7 +85,7 @@ router.get('/month/:year/:month', verifyToken, async (req, res) => {
     res.json(monthlyExpenses);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
-    res.status(500).send('server error');
+    res.status(500).json({ error: server_error });
   }
 });
 // ROUTE    GET api/exp/current-year
@@ -99,7 +102,7 @@ router.get('/year/:year', verifyToken, async (req, res) => {
     res.json(yearlyExpenses);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
-    res.status(500).send('server error');
+    res.status(500).json({ error: server_error });
   }
 });
 
@@ -116,10 +119,13 @@ router.delete('/delete/:id', verifyToken, async (req, res) => {
     res.json(updatedExp);
   } catch (err) {
     console.log({ err: [err.message, err.stack] });
-    res.status(500).send('server error');
+    res.status(500).json({ error: server_error });
   }
 });
 module.exports = router;
+
+// AGGREGRATE PIPELINE ATTEMPT
+// DESC: should apply a complex match sequence up find requests. Useful for querying by month/year
 
 // const expenditures = await Profile.aggregate([
 //   // { $match: { $month: { date: new Date().now } } },
