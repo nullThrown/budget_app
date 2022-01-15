@@ -24,8 +24,6 @@ CSS STRUCTURE
 
 TODO LIST
   Today
-    *merge current branch into main
-    *add server_error and loading components in react
     *create all dispatch actions for finance slices
     *delete both profile and expenditures reducers
     *populate home page with data
