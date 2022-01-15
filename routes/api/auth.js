@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
@@ -10,7 +9,13 @@ const {
   validateLogin,
 } = require('../../middleware/validation/validateAuth');
 const validate = require('../../middleware/validation/validate');
-const { nextTick } = require('async');
+const {
+  unauthenticated,
+  invalid_data,
+  invalid_credentials,
+  server_error,
+  email_already_exists,
+} = require('../../util/errorTypes');
 // ROUTE    GET api/auth/register
 // DESC     Register a new user
 // ACCESS   Public
@@ -21,7 +26,7 @@ router.post('/register', validateRegistration(), validate, async (req, res) => {
     //check if email already exists
     let user = await User.findOne({ email: email });
     if (user) {
-      return res.status(400).json({ error: ['email already exists'] });
+      return res.status(409).json({ error: email_already_exists });
     }
 
     // password hash
@@ -40,7 +45,7 @@ router.post('/register', validateRegistration(), validate, async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err.message);
-    res.status(500).send('server error');
+    res.status(500).json({ error: server_error });
   }
 });
 
@@ -53,11 +58,11 @@ router.post('/login', async (req, res, next) => {
     // check if {email will work}
     const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(400).json({ err: 'invalid credentials' });
+      return res.status(400).json({ error: invalid_credentials });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ err: 'invalid credentials' });
+      return res.status(400).json({ error: invalid_credentials });
     }
     // authsecret
     const payload = {
@@ -69,13 +74,13 @@ router.post('/login', async (req, res, next) => {
       payload,
       //temporary
       process.env.JWTSECRET,
-      { expiresIn: '2d' },
+      { expiresIn: '20d' },
       (err, token) => {
         if (err) {
-          return res.status(400).json(err);
+          return res.status(400).json({ error: err });
         }
         // set max age & secure: true for cookie
-        res.cookie('x-auth-token', token, {
+        res.cookie('x_auth_token', token, {
           sameSite: true,
           httpOnly: true,
           maxAge: 40000000,
@@ -85,7 +90,7 @@ router.post('/login', async (req, res, next) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).json(err);
+    res.status(500).json({ error: server_error });
   }
 });
 
@@ -102,7 +107,7 @@ router.post('/signout', verifyToken, async (req, res) => {
     res.send(req.user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json(err);
+    res.status(500).json({ error: server_error });
   }
 });
 
