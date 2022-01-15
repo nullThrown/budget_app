@@ -1,18 +1,18 @@
 const jwt = require('jsonwebtoken');
-
+const { unauthenticated } = require('../util/errorTypes');
 // validation method that accesses token from request headers
 // const verifyToken = (req, res, next) => {
 //   const token = req.header('x-auth-token');
 
 //   if (!token) {
-//     return res.status(400).json({ msg: 'not authorized' });
+//     return res.status(400).json({ error: unauthenticated });
 //   }
 
 //   try {
 //     const decoded = jwt.verify(token, process.env.JWTSECRET);
 //     req.user = decoded.user;
 //   } catch (err) {
-//     return res.status(400).json({ msg: 'token is not valid' });
+//     return res.status(400).json({ error: unauthenticated });
 //   }
 //   next();
 // };
@@ -20,16 +20,15 @@ const jwt = require('jsonwebtoken');
 // validation method that accesses token from request cookies
 const verifyToken = (req, res, next) => {
   const token = req.cookies.x_auth_token;
-  console.log(token);
   if (!token) {
-    return res.status(400).json({ msg: 'not authorized' });
+    return res.status(401).json({ error: unauthenticated });
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWTSECRET);
     req.user = decoded.user;
   } catch (err) {
-    return res.status(400).json({ msg: 'token is not valid' });
+    return res.status(403).json({ error: unauthenticated });
   }
   next();
 };
