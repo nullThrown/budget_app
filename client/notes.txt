@@ -24,8 +24,14 @@ CSS STRUCTURE
 
 TODO LIST
   Today
-    *create all dispatch actions for slices
+    *merge current branch into main
+    *add server_error and loading components in react
+    *create all dispatch actions for finance slices
+    *delete both profile and expenditures reducers
+    *populate home page with data
+    *type checking for all database post methods
     *create means of getting data by specific month in home page
+      *import custom state for month and 
     *fix expenditures data display
 
 

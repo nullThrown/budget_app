@@ -3,6 +3,7 @@ const router = express.Router();
 const { verifyToken } = require('../../middleware/auth');
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
+const { server_error } = require('../../util/errorTypes');
 // ROUTE    GET api/user/me
 // DESC     Get current user
 // ACCESS   Private
@@ -12,7 +13,7 @@ router.get('/me', verifyToken, async (req, res) => {
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json(err);
+    res.status(500).json({ error: server_error });
   }
 });
 
@@ -26,7 +27,7 @@ router.delete('/me', verifyToken, async (req, res) => {
     res.json({ success: 'Your account has been deleted' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).json(err);
+    res.status(500).json({ error: server_error });
   }
 });
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProfile } from '../features/profile/profileSlice';
 import { getExpByCurrentMonth } from '../features/expenditures/expendituresSlice';
 import Overview from '../components/profile/overview/overview';
@@ -10,15 +10,30 @@ import Banner from '../components/profile/banner/banner';
 import Nav from '../components/nav/nav';
 import Recurring from '../components/profile/recurring/recurring';
 import { categories, barData, doughnutData } from '../data/currentMonth';
-
+import { getFinancialData } from '../features/finance/financeReducer';
 const Home = () => {
   const dispatch = useDispatch();
 
+  const loadingStatus = useSelector((state) => state.finance.status);
+
   useEffect(() => {
-    dispatch(getProfile());
-    dispatch(getExpByCurrentMonth());
+    dispatch(getFinancialData());
   }, []);
 
+  if (loadingStatus === 'loading') {
+    return (
+      <main className='main-container'>
+        <p>Loading...</p>
+      </main>
+    );
+  }
+  if (loadingStatus === 'failed') {
+    return (
+      <main className='main-container'>
+        <p>Something went wrong :( ... please try again </p>
+      </main>
+    );
+  }
   return (
     <div>
       <Nav />
