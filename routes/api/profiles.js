@@ -4,8 +4,15 @@ const { verifyToken } = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const validateProfile = require('../../middleware/validation/validateProfile');
 const validate = require('../../middleware/validation/validate');
+const {
+  unauthenticated,
+  invalid_data,
+  invalid_credentials,
+  server_error,
+  email_already_exists,
+} = require('../../util/errorTypes');
 
-// ROUTE    POST api/profile/
+// ROUTE    GET api/profile/
 // DESC     Get current user profile
 // ACCESS   Private
 router.get('/', verifyToken, async (req, res) => {
@@ -13,8 +20,8 @@ router.get('/', verifyToken, async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
     res.json({ profile });
   } catch (err) {
-    res.status(500).send('server error');
     console.log({ err: [err.message, err.stack] });
+    res.status(500).json({ error: server_error });
   }
 });
 
@@ -185,7 +192,7 @@ router.post('/', verifyToken, validateProfile(), validate, async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
-    res.status(500).send('server error');
+    res.status(500).json({ error: server_error });
   }
 });
 
