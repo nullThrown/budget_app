@@ -6,7 +6,7 @@ const initialState = {
   salarySchedule: null,
   paycheckAmount: null,
   recurringPayments: [],
-  expenditures: [],
+  expenses: [],
 };
 
 export default function financeReducer(state = initialState, action) {
@@ -26,12 +26,15 @@ export default function financeReducer(state = initialState, action) {
         salarySchedule: profile.salarySchedule,
         paycheckAmount: profile.paycheckAmount,
         recurringPayments: profile.recurringPayments,
-        expenditures: payload[1],
+        expenses: payload[1],
       };
     case 'finance/dataLoadError':
       return { ...state, status: 'failed' };
     case 'finance/createExpense':
-      return;
+      return {
+        ...state,
+        expenses: [...state.expenses, payload],
+      };
     case 'finance/editExpense':
       return;
     case 'finance/deleteExpense':
@@ -69,6 +72,25 @@ export const getFinancialData = () => async (dispatch) => {
       // token is not valid... requires a redirect to login
     } else if (status >= 500 && data.error === 'server_error') {
       dispatch({ type: 'finance/dataLoadError' });
+    }
+  }
+};
+
+export const createExpense = (expense) => async (dispatch) => {
+  try {
+    const newExpense = await axios.post(
+      'http://localhost:4000/api/exp/create-new',
+      expense,
+      { withCredentials: true }
+    );
+    console.log(newExpense.data);
+    dispatch({ type: 'finance/createExpense', payload: newExpense.data });
+  } catch (err) {
+    const { data, status } = err.response;
+    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
+      // token is not valid... requires a redirect to login
+    } else if (status >= 500 && data.error === 'server_error') {
+      // dispatch some type of server error
     }
   }
 };
