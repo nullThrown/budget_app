@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProfile } from '../features/profile/profileSlice';
-import { getExpByCurrentMonth } from '../features/expenditures/expendituresSlice';
 import Loading from '../components/common/loading/loading';
+import ServerError from '../components/alert/serverError';
 import Overview from '../components/profile/overview/overview';
 import Expenditures from '../components/profile/expenditures/expenditures';
 import Header from '../components/profile/header/header';
@@ -12,6 +11,7 @@ import Nav from '../components/nav/nav';
 import Recurring from '../components/profile/recurring/recurring';
 import { categories, barData, doughnutData } from '../data/currentMonth';
 import { getFinancialData } from '../features/finance/financeReducer';
+
 const Home = () => {
   const dispatch = useDispatch();
 
@@ -24,14 +24,14 @@ const Home = () => {
   if (loadingStatus === 'loading') {
     return (
       <main className='center-container'>
-        <Loading />;
+        <Loading />
       </main>
     );
   }
   if (loadingStatus === 'failed') {
     return (
-      <main className='main-container'>
-        <p>Something went wrong :( ... please try again </p>
+      <main className='center-container'>
+        <ServerError />
       </main>
     );
   }
