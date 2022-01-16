@@ -22,11 +22,12 @@ router.post(
   validateExpenditure(),
   validate,
   async (req, res) => {
-    const { title, amount, necessity, category } = req.body;
+    const { title, amount, description, necessity, category } = req.body;
 
     const expense = {
       title,
       amount,
+      description,
       necessity,
       category,
     };
@@ -46,7 +47,7 @@ router.post(
         });
         await expenditures.save();
       }
-      res.json(expenditures);
+      res.json(expenditures.expenses[expenditures.expenses.length - 1]);
     } catch (err) {
       console.log({ err: [err.message, err.stack] });
       res.status(500).json({ error: server_error });
@@ -104,6 +105,13 @@ router.get('/year/:year', verifyToken, async (req, res) => {
     console.error({ err: [err.message, err.stack] });
     res.status(500).json({ error: server_error });
   }
+});
+
+// ROUTE    EDIT api/exp/delete/:id
+// DESC     EDIT a single expenditure
+// ACCESS   Private
+router.put('/edit/:id', verifyToken, async (req, res) => {
+  //
 });
 
 // ROUTE    DELETE api/exp/delete/:id
