@@ -3,8 +3,9 @@ import './recurring.css';
 import { useSelector } from 'react-redux';
 
 const Recurring = () => {
-  const selectPayments = (state) => state.profile.recurringPayments;
+  const selectPayments = (state) => state.finance.recurringPayments;
   const payments = useSelector(selectPayments);
+
   return (
     <section className='card recurring'>
       <h2 className='heading-4 text-center'>Recurring</h2>
