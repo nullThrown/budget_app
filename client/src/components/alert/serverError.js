@@ -1,6 +1,7 @@
 import React from 'react';
 import { GrRefresh } from 'react-icons/gr';
 import './serverError.css';
+
 const ServerError = () => {
   const handleRefresh = () => {
     window.location.reload();
