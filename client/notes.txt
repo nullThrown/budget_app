@@ -24,12 +24,21 @@ CSS STRUCTURE
 
 TODO LIST
   Today
+    *return old lifting belt!!!
     *create all dispatch actions for finance slices
-    *delete both profile and expenditures reducers
+      *edit expenses item requires new route 
+  
+  bugs
+    *expenditures model is not created until a new expense  is added
+    problem: *all get requests (case: initial data load) will throw an error if expenditures model does not exist
+    solution: error checking in API routes that checks if  expenditures model exists
+
+
     *populate home page with data
     *type checking for all database post methods
+    *abstract out mongoose model types i.e., requiredStr = {type: String, required: true}
     *create means of getting data by specific month in home page
-      *import custom state for month and 
+      *import custom state for month and dispatch actions on button press
     *fix expenditures data display
 
 
@@ -139,6 +148,11 @@ UI TODO LIST
 ------------------------------------------------------------------------------------------------------------
 
   REDUX STATE
+
+  error/loading handling
+    *need a more complex way of dealing with error/loading handling
+    *every action that contacts DB will need an error/loading action 
+      *possibly separate status flags for each slice of state
 
   general
     *Eventual integration of redux toolkit
