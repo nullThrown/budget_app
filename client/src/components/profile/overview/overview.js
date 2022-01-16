@@ -6,23 +6,23 @@ const Overview = ({ doughnutData }) => {
   const [data, setData] = useState([]);
 
   const selectRecurringTotal = (state) => {
-    return state.profile.recurringPayments.reduce((acc, current) => {
+    return state.finance.recurringPayments.reduce((acc, current) => {
       return acc + current.total;
     }, 0);
   };
   const selectExpNecessityTotal = (state) => {
-    return state.expenditures.reduce((acc, current) => {
+    return state.finance.expenses.reduce((acc, current) => {
       if (current.necessity) return acc + current.amount;
       return acc;
     }, 0);
   };
   const selectExpIndulgentTotal = (state) => {
-    return state.expenditures.reduce((acc, current) => {
+    return state.finance.expenses.reduce((acc, current) => {
       if (!current.necessity) return acc + current.amount;
       return acc;
     }, 0);
   };
-  const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome); // 5600
+  const takeHomeAmount = useSelector((state) => state.finance.monthlyTakeHome); // 5600
   const expNecessityTotal = useSelector(selectExpNecessityTotal); //200
   const expIndulgentTotal = useSelector(selectExpIndulgentTotal); //233
   const recurringTotal = useSelector(selectRecurringTotal); //4543
