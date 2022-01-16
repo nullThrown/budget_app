@@ -16,6 +16,7 @@ const {
   server_error,
   email_already_exists,
 } = require('../../util/errorTypes');
+
 // ROUTE    GET api/auth/register
 // DESC     Register a new user
 // ACCESS   Public
