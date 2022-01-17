@@ -18,23 +18,24 @@ const Home = () => {
   const loadingStatus = useSelector((state) => state.finance.status);
 
   useEffect(() => {
-    dispatch(getFinancialData());
+    const date = new Date();
+    dispatch(getFinancialData(date.getFullYear(), date.getMonth()));
   }, []);
 
-  if (loadingStatus === 'loading') {
-    return (
-      <main className='center-container'>
-        <Loading />
-      </main>
-    );
-  }
-  if (loadingStatus === 'failed') {
-    return (
-      <main className='center-container'>
-        <ServerError />
-      </main>
-    );
-  }
+  // if (loadingStatus === 'loading') {
+  //   return (
+  //     <main className='center-container'>
+  //       <Loading />
+  //     </main>
+  //   );
+  // }
+  // if (loadingStatus === 'failed') {
+  //   return (
+  //     <main className='center-container'>
+  //       <ServerError />
+  //     </main>
+  //   );
+  // }
   return (
     <div>
       <Nav />
