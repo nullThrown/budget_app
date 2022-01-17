@@ -51,15 +51,18 @@ export default function financeReducer(state = initialState, action) {
   }
 }
 
-export const getFinancialData = () => async (dispatch) => {
+export const getFinancialData = (year, month) => async (dispatch) => {
   dispatch({ type: 'finance/dataLoading' });
   try {
     const profile = axios.get('http://localhost:4000/api/profile', {
       withCredentials: true,
     });
-    const expenses = axios.get('http://localhost:4000/api/exp/month/2022/0', {
-      withCredentials: true,
-    });
+    const expenses = axios.get(
+      `http://localhost:4000/api/exp/month/${year}/${month}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     const res = await Promise.all([profile, expenses]);
     dispatch({
