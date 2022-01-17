@@ -95,7 +95,6 @@ router.get('/month/:year/:month', verifyToken, async (req, res) => {
 router.get('/year/:year', verifyToken, async (req, res) => {
   try {
     const expenditures = await Expenditures.findOne({ user: req.user.id });
-
     const yearlyExpenses = expenditures.expenses.filter((exp) => {
       return exp.date.getFullYear() === Number(req.params.year);
     });
