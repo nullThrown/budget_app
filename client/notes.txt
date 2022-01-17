@@ -28,11 +28,6 @@ TODO LIST
     *create all dispatch actions for finance slices
       *edit expenses item requires new route 
   
-  bugs
-    *expenditures model is not created until a new expense  is added
-    problem: *all get requests (case: initial data load) will throw an error if expenditures model does not exist
-    solution: error checking in API routes that checks if  expenditures model exists
-
 
     *populate home page with data
     *type checking for all database post methods
