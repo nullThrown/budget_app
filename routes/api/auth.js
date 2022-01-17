@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
+const Profile = require('../../models/Profile');
+const Expenditures = require('../../models/Expenditures');
 const { verifyToken } = require('../../middleware/auth');
 const {
   validateRegistration,
@@ -40,9 +42,16 @@ router.post('/register', validateRegistration(), validate, async (req, res) => {
       email,
       password: hashedPassword,
     });
+    const profile = new Profile({
+      user: user.id,
+    });
+    const expenditures = new Expenditures({
+      user: user.id,
+    });
 
+    await profile.save();
+    await expenditures.save();
     await user.save();
-
     res.json(user);
   } catch (err) {
     console.log(err.message);
