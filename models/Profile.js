@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const requiredStr = { type: String, required: true };
-const requiredNum = { type: Number, required: true, default: 0 };
+const requiredStr = { type: String, default: '' };
+const requiredNum = { type: Number, default: 0 };
 
 const profileSchema = new Schema(
   {
