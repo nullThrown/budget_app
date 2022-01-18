@@ -6,6 +6,7 @@ import Signup from './pages/signup';
 import SignupSuccess from './pages/signupSuccess';
 import CreateProfile from './pages/createProfile';
 import Account from './pages/account';
+import Profile from './pages/profile';
 import Home from './pages/home';
 import Landing from './pages/landing';
 import NotFound from './pages/notFound';
@@ -21,8 +22,12 @@ function App() {
         <Route path='/signup-successful' element={<SignupSuccess />} />
         <Route path='/create-profile' element={<CreateProfile />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/year' element={<Year />} />
+        {/* <Route path='/home' element={<Home />} /> */}
+        <Route path='/profile' element={<Profile />}>
+          <Route path='home' element={<Home />} />
+          <Route path='year' element={<Year />} />
+        </Route>
+        {/* <Route path='/year' element={<Year />} /> */}
         <Route path='/account' element={<Account />} />
         <Route path='/test' element={<Testing />} />
 
