@@ -9,7 +9,7 @@ import { getFinancialData } from '../../../features/finance/financeReducer';
 const date = new Date();
 const currentMonthNum = date.getMonth();
 const currentYear = date.getFullYear();
-console.log('these values are being reassigned');
+
 const Banner = () => {
   const dispatch = useDispatch();
 
@@ -25,7 +25,6 @@ const Banner = () => {
     } else {
       setMonthNum(monthNum - 1);
     }
-    // dispatch(getFinancialData(year, monthNum));
   };
 
   const onNextClick = () => {
@@ -37,7 +36,6 @@ const Banner = () => {
     } else {
       setMonthNum(monthNum + 1);
     }
-    dispatch(getFinancialData(year, monthNum));
   };
 
   useEffect(() => {
@@ -53,7 +51,7 @@ const Banner = () => {
   }, [monthNum, year]);
 
   useEffect(() => {
-    // dispatch(getFinancialData(year, monthNum));
+    dispatch(getFinancialData(year, monthNum));
   }, [monthNum]);
   return (
     <div className='banner'>
