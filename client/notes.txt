@@ -34,7 +34,7 @@ TODO LIST
 
     solution 2 implementation: 
     *Create new Page called Profile
-      *inside profile: place <main> tag & nav/dashboard/banner components
+      *inside profile: place <main> tag & nav/header/banner components
       *add Outlet to Profile component inside <main> beneath other components
     *Create Route in App.js that renders on path 'profile'
     *nest 2 routes 
