@@ -13,16 +13,16 @@ const Home = () => {
 
   if (loadingStatus === 'loading') {
     return (
-      <main className='center-container'>
-        <Loading />
-      </main>
+      <div className='profile__error-placement'>
+        <Loading className='profile__error-placement' />;
+      </div>
     );
   }
   if (loadingStatus === 'failed') {
     return (
-      <main className='center-container'>
-        <ServerError />
-      </main>
+      <div className='profile__error-placement'>
+        <ServerError className='profile__error-placement' />
+      </div>
     );
   }
   return (
