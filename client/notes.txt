@@ -25,26 +25,12 @@ CSS STRUCTURE
 TODO LIST
   Today
     *return old lifting belt!!!
-    *state for banner component (month, year for API requests) is lost when banner component is mounted and unmounted
-    *this is a natural occurence of react
-    *solutions: 1.lift state above components that are being mounted/ unmounted
-                 either in a component that stays mounted (impossible!! entire page unmounts) or use redux
-                 2. have header/banner/nav stay mounted during API data requests and conditionally render only the 
-                 components that require the data. This is the best solution. Will require nested routes. Should implement tomorrow
+    *fix rendering of dashboard during 'dataLoading' dispatch
+      *place in dummy data for different months -- test if get requests work properly
+      *grid gets a little wonky prior to rendering of data-filled components
+      *fix server error and loading placements as well
 
-    solution 2 implementation: 
-    *Create new Page called Profile
-      *inside profile: place <main> tag & nav/header/banner components
-      *add Outlet to Profile component inside <main> beneath other components
-    *Create Route in App.js that renders on path 'profile'
-    *nest 2 routes 
-      *route 1: path 'home' element={Home}
-      *route 2: path 'year' element={year}
-
-        
-
-
-
+      *implement a no-response error handler for all server requests 
 
     *create all dispatch actions for finance slices
       *edit expenses item requires new route 
