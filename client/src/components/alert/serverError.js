@@ -3,9 +3,8 @@ import { GrRefresh } from 'react-icons/gr';
 import './serverError.css';
 
 const ServerError = () => {
-  const handleRefresh = () => {
-    window.location.reload();
-  };
+  const handleRefresh = () => window.location.reload();
+
   return (
     <figure className='server-error'>
       <figcaption className='server-error__title'>
