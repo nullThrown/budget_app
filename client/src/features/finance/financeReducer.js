@@ -70,6 +70,9 @@ export const getFinancialData = (year, month) => async (dispatch) => {
       payload: res.map((item) => item.data),
     });
   } catch (err) {
+    if (!err.request.response) {
+      return dispatch({ type: 'finance/dataLoadError' });
+    }
     const { data, status } = err.response;
     if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
       // token is not valid... requires a redirect to login
