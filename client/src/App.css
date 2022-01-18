@@ -117,7 +117,7 @@ li {
       440px,
       700px
     );
-  grid-template-rows: 1fr min-content min-content min-content;
+  grid-template-rows: 100px repeat(3, min-content);
   column-gap: 1em;
   row-gap: 1em;
 }
@@ -142,6 +142,18 @@ li {
   display: flex;
   justify-content: center;
   margin-top: 8em;
+}
+.profile__error-placement {
+  grid-row: 3 /4;
+  grid-column: 2 / 5;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+@media (max-width: 1150px) {
+  .profile__error-placement {
+    grid-column: 1 / 5;
+  }
 }
 
 .main-nav {
