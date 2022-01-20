@@ -1,8 +1,9 @@
-export const Table = ({data}) => {
+export const Table = ({ data }) => {
   return (
     <table>
       <thead>
         <tr className='header-row'>
+          <th className='table-cell-date'>Title</th>
           <th className='table-cell-date'>Date</th>
           <th className='table-cell-desc'>Description</th>
           <th className='table-cell-category'>category</th>
@@ -13,9 +14,13 @@ export const Table = ({data}) => {
       </thead>
       <tbody>
         {data.map((exp, i) => {
+          const newDate = new Date(exp.date);
+          const readableDate = newDate.toLocaleDateString('en-US');
+
           return (
             <tr key={i} className='table-row-data'>
-              <td className='table-cell-date'>{exp.date}</td>
+              <td className='table-cell-date'>{exp.title}</td>
+              <td className='table-cell-date'>{readableDate}</td>
               <td className='table-cell-desc'>{exp.description}</td>
               <td className='table-cell-category'>{exp.category}</td>
               <td className='table-cell-necessity'>
@@ -30,7 +35,6 @@ export const Table = ({data}) => {
 
               <td className='table-cell-amount'>${exp.amount}</td>
               <td className='table-cell-edit'>
-                {' '}
                 <button className='btn link'>edit</button>
               </td>
             </tr>
@@ -40,25 +44,3 @@ export const Table = ({data}) => {
     </table>
   );
 };
-
-{
-  /* <table className='table'>
-<thead>
-  <tr className='table-row'>
-    <th className='table-header'>Date</th>
-    <th className='table-header'>Description</th>
-    <th className='table-header'>category</th>
-    <th className='table-header'>necessity</th>
-    <th className='table-header'>amount</th>
-  </tr>
-</thead>
-<tbody>
-  <tr className='table-row'>
-    <td>5-6-21</td>
-    <td>7-11 Coffee</td>
-    <td>Dining</td>
-    <td>$3.27</td>
-  </tr>
-</tbody>
-</table> */
-}
