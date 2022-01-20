@@ -14,7 +14,7 @@ const Home = () => {
   if (loadingStatus === 'loading') {
     return (
       <div className='profile__error-placement'>
-        <Loading className='profile__error-placement' />;
+        <Loading className='profile__error-placement' />
       </div>
     );
   }
