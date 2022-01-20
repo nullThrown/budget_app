@@ -3,7 +3,7 @@ const router = express.Router();
 const { verifyToken } = require('../../middleware/auth');
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
-const { server_error } = require('../../util/errorTypes');
+const { server_error } = require('../../util/responseTypes');
 // ROUTE    GET api/user/me
 // DESC     Get current user
 // ACCESS   Private
