@@ -30,15 +30,23 @@ export default function financeReducer(state = initialState, action) {
       };
     case 'finance/dataLoadError':
       return { ...state, status: 'failed' };
+
     case 'finance/createExpense':
       return {
         ...state,
         expenses: [...state.expenses, payload],
       };
+
     case 'finance/editExpense':
-      return;
+      return {};
+
     case 'finance/deleteExpense':
-      return;
+      return {
+        ...state,
+        expenses: [
+          ...state.expenses.filter((expense) => expense.id !== payload),
+        ],
+      };
     case 'finance/addRecurring':
       return;
     case 'finance/editRecurring':
@@ -91,6 +99,26 @@ export const createExpense = (expense) => async (dispatch) => {
     );
     console.log(newExpense.data);
     dispatch({ type: 'finance/createExpense', payload: newExpense.data });
+  } catch (err) {
+    const { data, status } = err.response;
+    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
+      // token is not valid... requires a redirect to login
+    } else if (status >= 500 && data.error === 'server_error') {
+      // dispatch some type of server error
+    }
+  }
+};
+
+export const deleteExpense = (expenseId) => async (dispatch) => {
+  try {
+    const deletedExpense = await axios.delete(
+      `http://localhost:4000/api/exp/delete/${expenseId}`,
+      { withCredentials: true }
+    );
+    console.log(deletedExpense);
+    if (deletedExpense) {
+      dispatch({ type: 'finance/deleteExpense', payload: expenseId });
+    }
   } catch (err) {
     const { data, status } = err.response;
     if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
