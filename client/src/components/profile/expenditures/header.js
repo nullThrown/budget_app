@@ -4,7 +4,7 @@ import { Nav } from './nav';
 import { categories } from '../../../data/categories';
 export const Header = () => {
   const [isOpen, setisOpen] = useState();
-  const [current, setCurrent] = useState();
+  // const [current, setCurrent] = useState();
   const toggleMenu = () => setisOpen(!isOpen);
 
   const handleclick = () => {
