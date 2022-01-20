@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import '../expenditures/expenditures.css';
 import { Header } from './header';
 import { Table } from './table';
 import { useSelector, useDispatch } from 'react-redux';
-import { createExpense } from '../../../features/finance/financeReducer';
+import {
+  createExpense,
+  deleteExpense,
+} from '../../../features/finance/financeReducer';
 
 const dummyExpense = {
   title: 'length-1 test',
@@ -22,6 +25,9 @@ const Expenditures = ({ data }) => {
     e.preventDefault();
     dispatch(createExpense(dummyExpense));
   };
+  useEffect(() => {
+    dispatch(deleteExpense('61e7829d5df51034c0fae0dc'));
+  }, []);
 
   return (
     <div className='card expenditures-box'>
