@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { unauthenticated } = require('../util/errorTypes');
+const { unauthenticated } = require('../util/responseTypes');
 // validation method that accesses token from request headers
 // const verifyToken = (req, res, next) => {
 //   const token = req.header('x-auth-token');
