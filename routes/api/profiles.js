@@ -10,7 +10,7 @@ const {
   invalid_credentials,
   server_error,
   email_already_exists,
-} = require('../../util/errorTypes');
+} = require('../../util/responseTypes');
 
 // ROUTE    GET api/profile/
 // DESC     Get current user profile
