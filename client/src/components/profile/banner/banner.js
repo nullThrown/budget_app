@@ -52,7 +52,8 @@ const Banner = () => {
 
   useEffect(() => {
     dispatch(getFinancialData(year, monthNum));
-  }, [monthNum]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [monthNum, year]);
   return (
     <div className='banner'>
       <div className='banner-box'>
