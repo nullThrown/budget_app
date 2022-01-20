@@ -24,13 +24,6 @@ CSS STRUCTURE
 
 TODO LIST
   Today
-    *return old lifting belt!!!
-    *fix rendering of dashboard during 'dataLoading' dispatch
-      *place in dummy data for different months -- test if get requests work properly
-      *grid gets a little wonky prior to rendering of data-filled components
-      *fix server error and loading placements as well
-
-      *implement a no-response error handler for all server requests 
 
     *create all dispatch actions for finance slices
       *edit expenses item requires new route 
@@ -39,9 +32,7 @@ TODO LIST
     *populate home page with data
     *type checking for all database post methods
     *abstract out mongoose model types i.e., requiredStr = {type: String, required: true}
-    *create means of getting data by specific month in home page
-      *import custom state for month and dispatch actions on button press
-    *fix expenditures data display
+    *implement a no-response error handler for all server requests 
 
 
 GERNERAL/APP-WIDE
@@ -53,14 +44,6 @@ GERNERAL/APP-WIDE
         if user is present then user is validated
                                                     
   *proper data loading 
-    *where to place data calls? on page components
-
-    *data calls require a loading state and completed state and error state
-      *loading state -- loading image/component will render
-      *completed state -- actual components
-      *error state (server status code 500) -- error message     
-    
-    *data calls for different months/years   
                                                           
   *proper data manipulation
     *components will receive data from redux store
