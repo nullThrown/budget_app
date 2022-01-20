@@ -17,7 +17,7 @@ const {
   invalid_credentials,
   server_error,
   email_already_exists,
-} = require('../../util/errorTypes');
+} = require('../../util/responseTypes');
 
 // ROUTE    GET api/auth/register
 // DESC     Register a new user
