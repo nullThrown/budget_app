@@ -11,7 +11,9 @@ const {
   unauthenticated,
   invalid_data,
   server_error,
-} = require('../../util/errorTypes');
+  resource_deleted,
+  resource_not_found,
+} = require('../../util/responseTypes');
 
 // ROUTE    POST api/exp/create-new
 // DESC     create new expenditure
@@ -106,7 +108,7 @@ router.get('/year/:year', verifyToken, async (req, res) => {
   }
 });
 
-// ROUTE    EDIT api/exp/delete/:id
+// ROUTE    EDIT api/exp/edit/:id
 // DESC     EDIT a single expenditure
 // ACCESS   Private
 router.put('/edit/:id', verifyToken, async (req, res) => {
@@ -116,14 +118,24 @@ router.put('/edit/:id', verifyToken, async (req, res) => {
 // ROUTE    DELETE api/exp/delete/:id
 // DESC     Delete a single expenditure
 // ACCESS   Private
+// const expenseToBeDeleted = expenditures.expenses.includes()
 router.delete('/delete/:id', verifyToken, async (req, res) => {
   try {
-    const updatedExp = await Expenditures.findOneAndUpdate(
-      { user: req.user.id },
-      { $pull: { expenses: { _id: req.params.id } } },
-      { returnOriginal: false, useFindAndModify: false }
+    const expenditures = await Expenditures.findOne({ user: req.user.id });
+
+    const expenseFound = expenditures.expenses.some(
+      (exp) => exp._id === req.params.id
     );
-    res.json(updatedExp);
+    if (expenseFound) {
+      const updatedExp = await Expenditures.findOneAndUpdate(
+        { user: req.user.id },
+        { $pull: { expenses: { _id: req.params.id } } },
+        { returnOriginal: false, useFindAndModify: false }
+      );
+      res.json({ success: resource_deleted });
+    } else {
+      res.status(404).json({ error: resource_not_found });
+    }
   } catch (err) {
     console.log({ err: [err.message, err.stack] });
     res.status(500).json({ error: server_error });
