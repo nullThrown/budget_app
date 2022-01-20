@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './header.css';
-import { IconContext } from 'react-icons';
 import { BiUserCircle } from 'react-icons/bi';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { GiHamburgerMenu } from 'react-icons/gi';
 const Header = () => {
-  const [isNotification, setIsNotification] = useState(true);
+  // eslint-disable-next-line no-unused-vars
+  const [isNotification, setIsNotification] = useState(false);
 
   return (
     <header className='header'>
