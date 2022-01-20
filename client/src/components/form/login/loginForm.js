@@ -45,9 +45,9 @@ const LoginForm = () => {
             onInputChange={onInputChange}
           />
           <span>
-            <a href='#' className='link'>
+            <p className='btn link' style={{ display: 'inline-block' }}>
               Forgot Password?
-            </a>
+            </p>
           </span>
           <button type='submit' className='btn btn-submit'>
             Login
