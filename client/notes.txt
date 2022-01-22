@@ -24,6 +24,21 @@ CSS STRUCTURE
 
 TODO LIST
   Today
+    *create add recurring payment express route
+    *create edit recurring payment express route
+    *create Delete recurring payment express route
+    *create dispatch actions for above routes
+
+    *build UI for Add New component
+     2 sections: recurring & one-time
+      *recurring 
+        *
+        *
+      *one-time
+        *
+        *
+        
+
 
     *create all dispatch actions for finance slices
       *edit expenses item requires new route 
