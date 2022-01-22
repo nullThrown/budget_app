@@ -123,9 +123,9 @@ router.delete('/delete/:id', verifyToken, async (req, res) => {
   try {
     const expenditures = await Expenditures.findOne({ user: req.user.id });
 
-    const expenseFound = expenditures.expenses.some(
-      (exp) => exp._id === req.params.id
-    );
+    const expenseFound = expenditures.expenses.some((exp) => {
+      return exp._id.toString() === req.params.id;
+    });
     if (expenseFound) {
       const updatedExp = await Expenditures.findOneAndUpdate(
         { user: req.user.id },
