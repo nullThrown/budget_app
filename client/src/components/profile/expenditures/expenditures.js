@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../expenditures/expenditures.css';
 import { Header } from './header';
 import { Table } from './table';
@@ -9,9 +9,9 @@ import {
 } from '../../../features/finance/financeReducer';
 
 const dummyExpense = {
-  title: 'length-1 test',
+  title: 'item 3',
   amount: 11.11,
-  description: 'testing grabbing last element',
+  description: 'test item',
   necessity: true,
   category: 'testing',
 };
@@ -25,17 +25,17 @@ const Expenditures = ({ data }) => {
     e.preventDefault();
     dispatch(createExpense(dummyExpense));
   };
-  useEffect(() => {
-    dispatch(deleteExpense('61e7829d5df51034c0fae0dc'));
-  }, []);
-
+  const handleDeleteExpense = (e) => {
+    e.preventDefault();
+    dispatch(deleteExpense('61e9f361103bf5119c38dc2a'));
+  };
   return (
     <div className='card expenditures-box'>
       <button
         className='btn btn-submit'
         type='submit'
-        onClick={handleNewExpense}>
-        Add Expense
+        onClick={handleDeleteExpense}>
+        Del Expense
       </button>
       <section className='exp-box'>
         <Header />
