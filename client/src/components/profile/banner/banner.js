@@ -10,7 +10,7 @@ const date = new Date();
 const currentMonthNum = date.getMonth();
 const currentYear = date.getFullYear();
 
-const Banner = () => {
+const Banner = ({ openModal }) => {
   const dispatch = useDispatch();
 
   const [monthStr, setMonthStr] = useState(null);
@@ -76,7 +76,7 @@ const Banner = () => {
         </button>
       </div>
       {/* <button type='button' className='btn banner__add-new'>Add New<GrAddCircle className='add-new-btn'/></button> */}
-      <button type='button' className='btn banner__add-new'>
+      <button type='button' className='btn banner__add-new' onClick={openModal}>
         Add New
         <IoMdAddCircleOutline className='add-new-btn' />
       </button>
