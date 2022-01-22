@@ -1,6 +1,8 @@
 import React from 'react';
 
 const ProgressBar = ({ currentPage }) => {
+  // map this from an array of eight items
+  // no reason to hard code this
   return (
     <div className='progress-bar'>
       <span className='progress-sect--complete'></span>
