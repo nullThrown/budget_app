@@ -1,3 +1,4 @@
+// convert into objects
 // error
 const unauthenticated = 'unauthenticated';
 const invalid_data = 'invalid_data';
@@ -19,4 +20,5 @@ module.exports = {
   resource_created,
   resource_deleted,
   resource_edited,
+  resource_not_found,
 };
