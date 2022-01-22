@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ReactModal from 'react-modal';
 //import from single page and/or use lazy loading
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -12,6 +13,8 @@ import Landing from './pages/landing';
 import NotFound from './pages/notFound';
 import Year from './pages/year';
 import Testing from './pages/testing';
+
+ReactModal.setAppElement('#root');
 
 function App() {
   return (
