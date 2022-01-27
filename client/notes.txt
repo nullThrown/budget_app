@@ -23,11 +23,39 @@ CSS STRUCTURE
 ------------------------------------------------------------------------------------------------------------
 
 TODO LIST
+  *split store into separate parts
+    *this will allow error handling on a case by case basis
+    *if there is an error with adding a recurring payment
+    *a status similar to the one used for profile can be used determine UI actions
+  *create loading/error dispatch actions for createRecurring/expenses
+  *after submit -- loading should be displayed 
+  *if error return with a message that is pasted somewhere in the component...
+    *data should stil be there but a 'something went wrong alert'
+  *have ameans of importing status -- once success -- have a screen that says success or whatever and then close the modal
+  *clear state/all data as well  
+  *add new array for profile Model 
+  *one for categories otherwise expenses and recurring will have 2 dif list of categories...
+  these need to be the same
+  *category selector for add new modal needs to be updated to category mix 
   Today
-    *create add recurring payment express route
-    *create edit recurring payment express route
-    *create Delete recurring payment express route
+    Modals 
+      Add Payment
+      *create custom boolean selector for 'indulgent/necessity'
+        *add container to payments sections
+        *fix sizing
+        *fix buttons 
+        *fix return icon size
+        *change submit button
+        *fix cancel button
+        *add char minimum for inputs
+        *add required fields
+        *add necessity button 
+        *add a success/ failure response upon submit
+          *failure dispatches alert with appropriate message
+          *success changes page to green arrow
+          *then closes modal after x amount of time
     *create dispatch actions for above routes
+    *formalize all backend data
 
     *build UI for Add New component
      2 sections: recurring & one-time
