@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Nav from '../components/nav/nav';
 import Header from '../components/profile/header/header';
 import Banner from '../components/profile/banner/banner';
-import PaymentModal from '../components/common/modal/paymentModal';
+import PaymentModal from '../components/common/modal/payment/modal';
 
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
