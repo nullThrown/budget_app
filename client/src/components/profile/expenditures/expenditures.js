@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   createExpense,
   deleteExpense,
-} from '../../../features/finance/financeReducer';
+} from '../../../features/middleware/expense';
 
 const dummyExpense = {
   title: 'item 3',
