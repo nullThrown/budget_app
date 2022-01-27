@@ -9,7 +9,7 @@ mongooseConnect();
 
 const corsOptions = {
   credentials: true,
-  origin: 'http://localhost:3000',
+  origin: process.env.CORSORIGIN,
 };
 
 app.use(cookieParser());
@@ -22,7 +22,7 @@ app.use('/api/user', require('./routes/api/users'));
 app.use('/api/profile', require('./routes/api/profiles'));
 app.use('/api/exp', require('./routes/api/expenditures'));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4001;
 app.listen(port, () => {
   console.log(`listening on port: ${port}`);
 });
