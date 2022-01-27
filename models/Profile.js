@@ -14,7 +14,7 @@ const profileSchema = new Schema(
     salarySchedule: requiredStr,
     recurringPayments: [
       {
-        total: requiredNum,
+        total: { type: Number },
         budget: requiredNum,
         category: requiredStr,
         payments: [
