@@ -10,6 +10,8 @@ const {
   invalid_credentials,
   server_error,
   email_already_exists,
+  resource_created,
+  resource_deleted,
 } = require('../../util/responseTypes');
 
 // ROUTE    GET api/profile/
@@ -24,6 +26,99 @@ router.get('/', verifyToken, async (req, res) => {
     res.status(500).json({ error: server_error });
   }
 });
+
+// ROUTE    POST api/profile/
+// DESC     Create recurring payment
+// ACCESS   Private
+router.post('/recurring/create', verifyToken, async (req, res) => {
+  try {
+    const { amount, name, category, budget } = req.body;
+    const profile = await Profile.findOne({ user: req.user.id });
+    let categoryMatch = false;
+
+    profile.recurringPayments.forEach((rec) => {
+      if (rec.category === category) {
+        categoryMatch = true;
+        rec.payments.push({ name, amount });
+      }
+    });
+
+    if (!categoryMatch) {
+      profile.recurringPayments.push({
+        budget,
+        category,
+        payments: [{ amount, name }],
+      });
+    }
+    profile.save();
+    res.status(201).json(profile.recurringPayments);
+  } catch (err) {
+    console.error({ err: [err.message, err.stack] });
+    res.status(500).json({ error: server_error });
+  }
+});
+
+// ROUTE    POST api/profile/
+// DESC     Update recurring payment
+// ACCESS   Private
+// data shape
+
+router.put('/recurring/edit', verifyToken, async (req, res) => {
+  const { paymentId, name, amount, category } = req.body;
+  try {
+    const profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      {
+        $set: {
+          'recurringPayments.$[i].payments.$[j].name': name,
+          'recurringPayments.$[i].payments.$[j].amount': amount,
+        },
+      },
+      {
+        arrayFilters: [
+          {
+            'i.category': category,
+          },
+          {
+            'j._id': paymentId,
+          },
+        ],
+
+        returnOriginal: false,
+        useFindAndModify: false,
+      }
+    );
+    res.json(profile.recurringPayments);
+  } catch (err) {
+    console.error({ err: [err.message, err.stack] });
+    res.status(500).json({ error: server_error });
+  }
+});
+// ROUTE    POST api/profile/recurring/delete/:id
+// DESC     Delete recurring payment
+// ACCESS   Private
+router.delete(
+  '/recurring/delete/:id/:category',
+  verifyToken,
+  async (req, res) => {
+    const { category, id } = req.params;
+    try {
+      const updatedProfile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $pull: { 'recurringPayments.$[i].payments': { _id: id } } },
+        {
+          arrayFilters: [{ 'i.category': category }],
+          returnOriginal: false,
+          useFindAndModify: false,
+        }
+      );
+      res.json({ success: resource_deleted });
+    } catch (err) {
+      console.error({ err: [err.message, err.stack] });
+      res.status(500).json({ error: server_error });
+    }
+  }
+);
 
 // ROUTE    POST api/profile/
 // DESC     Create or update new profile
