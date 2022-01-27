@@ -21,7 +21,7 @@ const LoginForm = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginUser(userData));
-    navigate('/home');
+    navigate('/profile/home');
   };
   return (
     <main className='form-container'>
