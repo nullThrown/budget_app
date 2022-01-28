@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   createExpense,
   deleteExpense,
-} from '../../../features/middleware/expense';
+} from '../../../features/expenses/middleware';
 
 const dummyExpense = {
   title: 'item 3',
@@ -18,8 +18,8 @@ const dummyExpense = {
 
 const Expenditures = ({ data }) => {
   const dispatch = useDispatch();
-  const selectExpenditures = (state) => state.finance.expenses;
-  const expenditures = useSelector(selectExpenditures);
+  const selectExpenses = (state) => state.expenses.data;
+  const expenditures = useSelector(selectExpenses);
 
   const handleNewExpense = (e) => {
     e.preventDefault();

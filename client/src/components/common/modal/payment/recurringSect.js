@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createRecurring } from '../../../../features/middleware/recurring';
+import { createRecurring } from '../../../../features/recurring/middleware';
 import { useDispatch } from 'react-redux';
 
 const RecurringSection = ({ categories }) => {

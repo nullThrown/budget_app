@@ -4,26 +4,26 @@ import { useSelector } from 'react-redux';
 
 const Overview = ({ doughnutData }) => {
   // eslint-disable-next-line
-  const selectRecurringTotal = (state) => {
-    return state.finance.recurringPayments.reduce((acc, current) => {
-      return acc + current.total;
-    }, 0);
-  };
-  // eslint-disable-next-line
-  const selectExpNecessityTotal = (state) => {
-    return state.finance.expenses.reduce((acc, current) => {
-      if (current.necessity) return acc + current.amount;
-      return acc;
-    }, 0);
-  };
-  // eslint-disable-next-line
-  const selectExpIndulgentTotal = (state) => {
-    return state.finance.expenses.reduce((acc, current) => {
-      if (!current.necessity) return acc + current.amount;
-      return acc;
-    }, 0);
-  };
-  const takeHomeAmount = useSelector((state) => state.finance.monthlyTakeHome);
+  // const selectRecurringTotal = (state) => {
+  //   return state.finance.recurringPayments.reduce((acc, current) => {
+  //     return acc + current.total;
+  //   }, 0);
+  // };
+  // // eslint-disable-next-line
+  // const selectExpNecessityTotal = (state) => {
+  //   return state.finance.expenses.reduce((acc, current) => {
+  //     if (current.necessity) return acc + current.amount;
+  //     return acc;
+  //   }, 0);
+  // };
+  // // eslint-disable-next-line
+  // const selectExpIndulgentTotal = (state) => {
+  //   return state.finance.expenses.reduce((acc, current) => {
+  //     if (!current.necessity) return acc + current.amount;
+  //     return acc;
+  //   }, 0);
+  // };
+  const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome);
   // eslint-disable-next-line
   // const expNecessityTotal = useSelector(selectExpNecessityTotal);
   // const expIndulgentTotal = useSelector(selectExpIndulgentTotal);

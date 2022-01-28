@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createExpense } from '../../../../features/middleware/expense';
+import { createExpense } from '../../../../features/expenses/middleware';
 import { useDispatch } from 'react-redux';
 const ExpenseSection = ({ categories }) => {
   const dispatch = useDispatch();

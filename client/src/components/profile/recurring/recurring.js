@@ -5,25 +5,17 @@ import {
   createRecurring,
   editRecurring,
   deleteRecurring,
-} from '../../../features/middleware/recurring';
+} from '../../../features/recurring/middleware';
+
 const Recurring = () => {
   const dispatch = useDispatch();
-  const selectPayments = (state) => state.finance.recurringPayments;
+  const selectPayments = (state) => state.recurring.data.recurringPayments;
   const payments = useSelector(selectPayments);
-
-  const addNew = () => {
-    dispatch(
-      deleteRecurring({
-        id: '61edf7401a7da730bc60837a',
-        category: 'housing',
-      })
-    );
-  };
 
   return (
     <section className='card recurring'>
       <h2 className='heading-4 text-center'>Recurring</h2>
-      <button type='button' className='btn btn-submit' onClick={addNew}>
+      <button type='button' className='btn btn-submit'>
         Add New
       </button>
       {payments.map((cat, _id) => {

@@ -27,7 +27,7 @@ const PaymentModal = ({ isOpen, closeModal }) => {
   const [currentSect, setCurrentSect] = useState('start');
 
   const categorySelector = (state) =>
-    state.finance.expenses.map((expense) => expense.category);
+    state.expenses.data.map((expense) => expense.category);
 
   const categories = useSelector(categorySelector);
 

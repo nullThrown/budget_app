@@ -112,7 +112,7 @@ router.delete(
           useFindAndModify: false,
         }
       );
-      res.json({ success: resource_deleted });
+      res.json(updatedProfile.recurringPayments);
     } catch (err) {
       console.error({ err: [err.message, err.stack] });
       res.status(500).json({ error: server_error });

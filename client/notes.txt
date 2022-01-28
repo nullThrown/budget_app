@@ -22,6 +22,24 @@ CSS STRUCTURE
 
 ------------------------------------------------------------------------------------------------------------
 
+**Decompose redux store**
+  *state object
+   {
+     user: 
+     profile:
+     recurring:
+     expenses:
+  }
+  *split up financeSlice into its separate components
+  *new folders for each state key
+  *place middleware folders in each features subfolder
+  *fix all imports
+
+
+  *initial page load will need to dispatch from all slices
+  *add status to all slices -- incorporate loading and error handling  
+  
+
 TODO LIST
   *split store into separate parts
     *this will allow error handling on a case by case basis

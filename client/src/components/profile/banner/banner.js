@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import months from '../../../data/months';
 import { useDispatch } from 'react-redux';
-import { getFinancialData } from '../../../features/finance/financeReducer';
+import { getFinancialData } from '../../../features/middleware/financialData';
 
 const date = new Date();
 const currentMonthNum = date.getMonth();

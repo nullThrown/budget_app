@@ -9,7 +9,7 @@ import Recurring from '../components/profile/recurring/recurring';
 import { categories, barData, doughnutData } from '../data/currentMonth';
 
 const Home = () => {
-  const loadingStatus = useSelector((state) => state.finance.status);
+  const loadingStatus = useSelector((state) => state.profile.status);
 
   if (loadingStatus === 'loading') {
     return (
