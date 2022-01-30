@@ -9,15 +9,12 @@ import {
 
 const Recurring = () => {
   const dispatch = useDispatch();
-  const selectPayments = (state) => state.recurring.data.recurringPayments;
+  const selectPayments = (state) => state.recurring.data;
   const payments = useSelector(selectPayments);
 
   return (
     <section className='card recurring'>
       <h2 className='heading-4 text-center'>Recurring</h2>
-      <button type='button' className='btn btn-submit'>
-        Add New
-      </button>
       {payments.map((cat, _id) => {
         const { category, payments } = cat;
         return (
