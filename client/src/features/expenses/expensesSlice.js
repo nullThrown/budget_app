@@ -6,6 +6,11 @@ const initialState = {
 export default function expensesReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case 'expenses/returnToIdle':
+      return {
+        ...state,
+        status: 'idle',
+      };
     case 'expenses/dataLoading':
       return {
         ...state,
@@ -28,6 +33,7 @@ export default function expensesReducer(state = initialState, action) {
     case 'expenses/createExpense':
       return {
         ...state,
+        status: 'success',
         data: [...state.data, payload],
       };
 
@@ -37,6 +43,7 @@ export default function expensesReducer(state = initialState, action) {
     case 'expenses/deleteExpense':
       return {
         ...state,
+        status: 'success',
         data: [...state.data.filter((expense) => expense._id !== payload)],
       };
 
