@@ -7,13 +7,8 @@ import PaymentModal from '../components/common/modal/payment/modal';
 
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-  const openModal = () => {
-    setIsOpen(true);
-  };
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
 
   return (
     <div>

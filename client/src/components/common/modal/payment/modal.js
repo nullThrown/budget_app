@@ -4,7 +4,7 @@ import '../modal.css';
 import RecurringSection from './recurringSect';
 import ExpenseSection from './expenseSect';
 import { BsArrowReturnLeft } from 'react-icons/bs';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 const customStyles = {
   content: {
     // position: 'sticky',
@@ -24,19 +24,25 @@ const customStyles = {
 };
 
 const PaymentModal = ({ isOpen, closeModal }) => {
+  const dispatch = useDispatch();
   const [currentSect, setCurrentSect] = useState('start');
 
   const categorySelector = (state) =>
-    state.finance.expenses.map((expense) => expense.category);
+    state.expenses.data.map((expense) => expense.category);
 
   const categories = useSelector(categorySelector);
+
+  const onRequestClose = () => {
+    dispatch({ type: 'expenses/returnToIdle' });
+    closeModal();
+  };
 
   return (
     <Modal
       isOpen={isOpen}
       shouldCloseOnEsc={true}
       style={customStyles}
-      onRequestClose={closeModal}
+      onRequestClose={onRequestClose}
       shouldCloseOnOverlayClick={true}>
       {currentSect !== 'start' && (
         <button
@@ -52,7 +58,9 @@ const PaymentModal = ({ isOpen, closeModal }) => {
         X
       </button>
       {currentSect === 'start' && (
-        <h3 className='heading-6 text-center'>Add Payment</h3>
+        <>
+          <h3 className='heading-6 text-center'>Add Payment</h3>
+        </>
       )}
       {currentSect === 'start' && (
         <div className='modal__btn-box'>
@@ -71,9 +79,11 @@ const PaymentModal = ({ isOpen, closeModal }) => {
         </div>
       )}
       {currentSect === 'recurring' && (
-        <RecurringSection categories={categories} />
+        <RecurringSection categories={categories} closeModal={closeModal} />
       )}
-      {currentSect === 'expense' && <ExpenseSection categories={categories} />}
+      {currentSect === 'expense' && (
+        <ExpenseSection categories={categories} closeModal={closeModal} />
+      )}
     </Modal>
   );
 };

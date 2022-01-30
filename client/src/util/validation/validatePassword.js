@@ -1,4 +1,6 @@
 // checks string strength upon sign up
+// remove password from fn names
+// these fn should be used for 'text' not 'passwords'
 
 export const checkPasswordLength = (string, cb) => {
   if (string.length >= 8) return cb(true);

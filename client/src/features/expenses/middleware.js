@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const createExpense = (expense) => async (dispatch) => {
+  dispatch({ type: 'expenses/dataLoading' });
   try {
     const newExpense = await axios.post(
       'http://localhost:4000/api/exp/create-new',
@@ -8,13 +9,12 @@ export const createExpense = (expense) => async (dispatch) => {
       { withCredentials: true }
     );
     console.log(newExpense.data);
-    dispatch({ type: 'finance/createExpense', payload: newExpense.data });
+    dispatch({ type: 'expenses/createExpense', payload: newExpense.data });
   } catch (err) {
+    dispatch({ type: 'expenses/dataLoadError' });
     const { data, status } = err.response;
     if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-      // token is not valid... requires a redirect to login
     } else if (status >= 500 && data.error === 'server_error') {
-      // dispatch some type of server error
     }
   }
 };
@@ -26,7 +26,7 @@ export const deleteExpense = (expenseId) => async (dispatch) => {
       `http://localhost:4000/api/exp/delete/${expenseId}`,
       { withCredentials: true }
     );
-    dispatch({ type: 'finance/deleteExpense', payload: expenseId });
+    dispatch({ type: 'expenses/deleteExpense', payload: expenseId });
   } catch (err) {
     const { data, status } = err.response;
     if (status >= 400 && status < 500) {
