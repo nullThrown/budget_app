@@ -14,9 +14,10 @@ export default function ProfileReducer(state = initialState, action) {
         status: 'loading',
       };
     case 'profile/dataLoaded':
-      // state returned will need to be json profile data from API
       return {
-        state,
+        monthlyTakeHome: payload.monthlyTakeHome,
+        salarySchedule: payload.salarySchedule,
+        paycheckAmount: payload.paycheckAmount,
         status: 'idle',
       };
     case 'profile/dataLoadError':
