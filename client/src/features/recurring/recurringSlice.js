@@ -6,6 +6,11 @@ const initialState = {
 export default function recurringReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case 'recurring/returnToIdle':
+      return {
+        ...state,
+        status: 'idle',
+      };
     case 'recurring/dataLoading':
       return {
         ...state,
@@ -21,20 +26,25 @@ export default function recurringReducer(state = initialState, action) {
         ...state,
         status: 'loading',
       };
+
     case 'recurring/createRecurring':
       return {
         ...state,
+        status: 'success',
         data: payload,
       };
     case 'recurring/editRecurring':
       return {
         ...state,
+        status: 'success',
         data: payload,
       };
+
     case 'recurring/deleteRecurring':
       const { id, category } = payload;
       return {
         ...state,
+        status: 'success',
         data: payload,
       };
     default:
