@@ -1,23 +1,46 @@
 import { useState } from 'react';
 import { createExpense } from '../../../../features/expenses/middleware';
-import { useDispatch } from 'react-redux';
-const ExpenseSection = ({ categories }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { inputExists } from '../../../../util/validation/validate';
+import Loading from '../../../common/loading/loading';
+import Success from '../success';
+
+const ExpenseSection = ({ categories, closeModal }) => {
   const dispatch = useDispatch();
+  const status = useSelector((state) => state.expenses.status);
+
   const [expense, setExpense] = useState({
-    title: null,
-    amount: null,
-    description: null,
-    category: null,
+    title: '',
+    amount: '',
+    description: '',
+    category: '',
     necessity: true,
   });
 
   const onInputChange = (e) => {
     setExpense({ ...expense, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createExpense(expense));
   };
+  if (status === 'loading') {
+    return (
+      <div className='center-container'>
+        <Loading />
+      </div>
+    );
+  }
+  if (status === 'success') {
+    return (
+      <Success
+        text='Payment Added Successfully!'
+        actionCreator={{ type: 'expenses/returnToIdle' }}
+        closeModal={closeModal}
+      />
+    );
+  }
 
   return (
     <section className='modal-expense-sect'>
@@ -67,6 +90,7 @@ const ExpenseSection = ({ categories }) => {
           onClick={handleSubmit}>
           Submit
         </button>
+        {status === 'error' && <p>Something went wrong :( try again</p>}
       </form>
     </section>
   );
