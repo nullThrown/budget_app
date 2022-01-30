@@ -1,5 +1,6 @@
 import axios from 'axios';
 export const createRecurring = (recurring) => async (dispatch) => {
+  dispatch({ type: 'recurring/dataLoading' });
   try {
     const newRecurring = await axios.post(
       'http://localhost:4000/api/profile/recurring/create',
@@ -9,13 +10,13 @@ export const createRecurring = (recurring) => async (dispatch) => {
       }
     );
     console.log(newRecurring.data);
-    dispatch({ type: 'finance/createRecurring', payload: newRecurring.data });
+    dispatch({ type: 'recurring/createRecurring', payload: newRecurring.data });
   } catch (err) {
     const { data, status } = err.response;
     if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
       // token is not valid... requires a redirect to login
     } else if (status >= 500 && data.error === 'server_error') {
-      // dispatch some type of server error
+      dispatch({ type: 'recurring/dataLoadError' });
     }
   }
 };
