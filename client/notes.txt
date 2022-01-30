@@ -20,39 +20,28 @@ CSS STRUCTURE
   *each component will then have its own css local file for specific styles
   *refactor after UI complete : local -> global styles
 
-------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------ 
+  *fix inputs for Modals
+  *will require actual labels
 
-**Decompose redux store**
-  *state object
-   {
-     user: 
-     profile:
-     recurring:
-     expenses:
-  }
-  *split up financeSlice into its separate components
-  *new folders for each state key
-  *place middleware folders in each features subfolder
-  *fix all imports
-
-
-  *initial page load will need to dispatch from all slices
-  *add status to all slices -- incorporate loading and error handling  
-  
+  *abstract out modals into single one
 
 TODO LIST
-  *split store into separate parts
-    *this will allow error handling on a case by case basis
-    *if there is an error with adding a recurring payment
-    *a status similar to the one used for profile can be used determine UI actions
-  *create loading/error dispatch actions for createRecurring/expenses
-  *after submit -- loading should be displayed 
-  *if error return with a message that is pasted somewhere in the component...
-    *data should stil be there but a 'something went wrong alert'
-  *have ameans of importing status -- once success -- have a screen that says success or whatever and then close the modal
-  *clear state/all data as well  
-  *add new array for profile Model 
-  *one for categories otherwise expenses and recurring will have 2 dif list of categories...
+    *add validatorJS to all forms
+    *rework validation folder
+  *add modal edit/delete reccuring   
+  *add modal edit/delete expenses
+    *on button press 
+    *open modal
+    *create form within modal 
+      *form will contain inputs for:
+        *title, desc, category, amount
+        *will also contain delete button
+      *form should populate with correct expense
+  *add new categories array stored on profile model 
+    *Add new category upon either create expense or recurring  
+    *categories will then be stored in redux state: profile 
+    *used for budgeting component most likely
   these need to be the same
   *category selector for add new modal needs to be updated to category mix 
   Today
