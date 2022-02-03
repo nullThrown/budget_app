@@ -18,6 +18,25 @@ export const createExpense = (expense) => async (dispatch) => {
     }
   }
 };
+export const editExpense = (expense) => async (dispatch) => {
+  dispatch({ type: 'expenses/dataLoading' });
+  try {
+    const newExpense = await axios.put(
+      'http://localhost:4000/api/exp/edit/',
+      expense,
+      { withCredentials: true }
+    );
+    console.log(newExpense);
+    dispatch({ type: 'expenses/editExpense', payload: newExpense.data });
+  } catch (err) {
+    dispatch({ type: 'expenses/dataLoadError' });
+    console.log(err);
+    const { data, status } = err.response;
+    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
+    } else if (status >= 500 && data.error === 'server_error') {
+    }
+  }
+};
 
 // remove var deleteExpense... just run as a function
 export const deleteExpense = (expenseId) => async (dispatch) => {
