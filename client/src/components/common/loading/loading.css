@@ -6,9 +6,3 @@
   border-radius: 50%;
   animation: 900ms spin infinite ease-in-out;
 }
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}

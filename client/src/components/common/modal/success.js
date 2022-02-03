@@ -4,13 +4,16 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const Success = ({ text, actionCreator, closeModal }) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const clearSuccess = setTimeout(() => {
       dispatch(actionCreator);
       closeModal();
     }, 1500);
+
     return () => clearTimeout(clearSuccess);
   });
+
   return (
     <div className='mt-2 flex-col align-center'>
       <p className='heading-5'>{text}</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import InputItem from '../inputItem';
+import InputItem from '../../inputItem';
 const Retirement = ({ data, onInputChange }) => {
   const { retirementIra, retirement401k, retirementBrokerage } = data;
   return (

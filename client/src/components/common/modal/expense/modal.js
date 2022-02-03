@@ -4,25 +4,8 @@ import '../modal.css';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../../loading/loading';
 import Success from '../success';
-const customStyles = {
-  content: {
-    // position: 'sticky',
-    top: '40%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    maxWidth: '600px',
-    width: '96%',
-    height: '450px',
-    padding: '2.6em',
-    borderRadius: '40px',
-    border: '1px solid var(--grey-2)',
-  },
-};
-// const categorySelector = (state) =>
-//   state.expenses.data.map((expense) => expense.category);
+import customStyles from '../styles';
+
 const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
   const dispatch = useDispatch();
 
@@ -60,7 +43,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
   if (status === 'success') {
     return (
       <Success
-        text='Payment Added Successfully!'
+        text='Payment edited Successfully!'
         actionCreator={{ type: 'expenses/returnToIdle' }}
         closeModal={closeModal}
       />

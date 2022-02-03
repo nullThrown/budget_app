@@ -5,7 +5,7 @@ import { PasswordCheck } from './passwordCheck';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
-import InputItem from '../profile/inputItem';
+import InputItem from '../inputItem';
 import {
   checkPasswordLength,
   checkPasswordNum,
