@@ -7,7 +7,6 @@ import Expenditures from '../components/profile/expenditures/expenditures';
 import BudgetGraph from '../components/profile/budget/budgetGraph';
 import Recurring from '../components/profile/recurring/recurring';
 import { categories, barData, doughnutData } from '../data/currentMonth';
-import ExpenseModal from '../components/common/modal/expense/modal';
 
 const Home = () => {
   const loadingStatus = useSelector((state) => state.profile.status);
