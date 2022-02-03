@@ -7,33 +7,25 @@ CSS STRUCTURE
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
 
-  *fix inputs for Modals
-  *will require actual labels
-
-  *abstract out modals into single one
-
     *add validatorJS to all forms
     *rework validation folder
 
-  *add modal edit/delete reccuring   
-
+  *add edit expense functionality
+  *add delete expense functionality
+  *add statuses for different types of success dispatches (create, edit, delete)
+  
   *add new categories array stored on profile model 
     *Add new category upon either create expense or recurring  
-    *categories will then be stored in redux state: profile 
-  *category selector for add new modal needs to be updated to category mix 
-
-  Today
-    Modals 
-      Add Payment
-      *create custom boolean selector for 'indulgent/necessity'
-      
-        
-
   
+  *rename Expenditures mongoose Model to expenses.data
+  
+  *implement a one-size-fits-all error handler for API calls 
+
+  *create custom boolean selector for 'indulgent/necessity'
+
 
     *type checking for all database post methods
     *abstract out mongoose model types i.e., requiredStr = {type: String, required: true}
-    *implement a no-response error handler for all server requests 
 
 
 GERNERAL/APP-WIDE
