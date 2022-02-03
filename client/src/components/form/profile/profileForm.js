@@ -32,7 +32,6 @@ const Profile = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
 
-  // find smilga project example that has logic that limits a state within a range (e.g., 1-6)
   const onInputChange = (e) => {
     if (e.target.name) {
       setProfileData({ ...profileData, [e.target.name]: e.target.value });

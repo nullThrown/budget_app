@@ -5,23 +5,7 @@ import RecurringSection from './recurringSect';
 import ExpenseSection from './expenseSect';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
-const customStyles = {
-  content: {
-    // position: 'sticky',
-    top: '40%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    maxWidth: '600px',
-    width: '96%',
-    height: '450px',
-    padding: '2.6em',
-    borderRadius: '40px',
-    border: '1px solid var(--grey-2)',
-  },
-};
+import customStyles from '../styles';
 
 const PaymentModal = ({ isOpen, closeModal }) => {
   const dispatch = useDispatch();

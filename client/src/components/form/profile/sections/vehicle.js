@@ -1,5 +1,5 @@
 import React from 'react';
-import InputItem from '../inputItem';
+import InputItem from '../../inputItem';
 const VehicleSect = ({ data, onInputChange }) => {
   const { vehicleLoan, vehicleInsurance } = data;
   return (

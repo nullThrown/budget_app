@@ -4,7 +4,8 @@ import '../forms.css';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
-import InputItem from '../profile/inputItem';
+import InputItem from '../inputItem';
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

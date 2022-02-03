@@ -32,7 +32,7 @@ function App() {
         </Route>
         {/* <Route path='/year' element={<Year />} /> */}
         <Route path='/account' element={<Account />} />
-        <Route path='/test' element={<Testing />} />
+        <Route path='/testing' element={<Testing />} />
 
         {/* error path */}
         <Route path='/not-found' element={<NotFound />} />
