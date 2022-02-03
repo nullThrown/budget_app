@@ -38,12 +38,24 @@ export default function expensesReducer(state = initialState, action) {
       };
 
     case 'expenses/editExpense':
-      return {};
+      return {
+        ...state,
+        status: 'edit_success',
+        data: [
+          ...state.data.map((exp) => {
+            if (exp._id === payload._id) {
+              return payload;
+            } else {
+              return exp;
+            }
+          }),
+        ],
+      };
 
     case 'expenses/deleteExpense':
       return {
         ...state,
-        status: 'success',
+        status: 'delete_success',
         data: [...state.data.filter((expense) => expense._id !== payload)],
       };
 
