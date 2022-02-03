@@ -5,7 +5,6 @@ const User = require('../../models/User');
 const { verifyToken } = require('../../middleware/auth');
 const validateExpenditure = require('../../middleware/validation/validateExpenditure');
 const validate = require('../../middleware/validation/validate');
-const { response } = require('express');
 const Expenditures = require('../../models/Expenditures');
 const {
   unauthenticated,
@@ -111,8 +110,38 @@ router.get('/year/:year', verifyToken, async (req, res) => {
 // ROUTE    EDIT api/exp/edit/:id
 // DESC     EDIT a single expenditure
 // ACCESS   Private
-router.put('/edit/:id', verifyToken, async (req, res) => {
-  //
+router.put('/edit', verifyToken, async (req, res) => {
+  console.log(req.body);
+  const { title, amount, description, necessity, category, _id, date } =
+    req.body;
+
+  const expense = {
+    title,
+    amount,
+    description,
+    necessity,
+    category,
+    _id,
+    date,
+  };
+  try {
+    const expenditures = await Expenditures.findOneAndUpdate(
+      { user: req.user.id, 'expenses._id': _id },
+      {
+        $set: {
+          'expenses.$': expense,
+        },
+      },
+      {
+        returnOriginal: false,
+        useFindAndModify: false,
+      }
+    );
+    res.json(expense);
+  } catch (err) {
+    console.log({ err: [err.message, err.stack] });
+    res.status(500).json({ error: server_error });
+  }
 });
 
 // ROUTE    DELETE api/exp/delete/:id
