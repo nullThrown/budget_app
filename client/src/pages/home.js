@@ -12,15 +12,6 @@ import ExpenseModal from '../components/common/modal/expense/modal';
 const Home = () => {
   const loadingStatus = useSelector((state) => state.profile.status);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [expenseItemId, setExpenseItemId] = useState('');
-
-  const openModal = (id) => {
-    setExpenseItemId(id);
-    setIsOpen(true);
-  };
-  const closeModal = () => setIsOpen(false);
-
   if (loadingStatus === 'loading') {
     return (
       <div className='profile__error-placement'>
@@ -37,15 +28,10 @@ const Home = () => {
   }
   return (
     <>
-      <ExpenseModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        expenseId={expenseItemId}
-      />
       <Overview doughnutData={doughnutData} />
       <Recurring />
       <BudgetGraph data={barData} categories={categories} />
-      <Expenditures openModal={openModal} />
+      <Expenditures />
     </>
   );
 };

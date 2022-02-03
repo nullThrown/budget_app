@@ -4,7 +4,7 @@ import { Header } from './header';
 import { Table } from './table';
 import { useSelector } from 'react-redux';
 
-const Expenditures = ({ openModal }) => {
+const Expenditures = () => {
   const expenses = useSelector((state) => state.expenses.data);
 
   return (
@@ -13,7 +13,7 @@ const Expenditures = ({ openModal }) => {
         <section className='exp-box'>
           <Header />
           <main className='main'>
-            <Table expenses={expenses} openModal={openModal} />
+            <Table expenses={expenses} />
           </main>
         </section>
       </div>
