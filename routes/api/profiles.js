@@ -61,7 +61,6 @@ router.post('/recurring/create', verifyToken, async (req, res) => {
 // ROUTE    POST api/profile/
 // DESC     Update recurring payment
 // ACCESS   Private
-// data shape
 
 router.put('/recurring/edit', verifyToken, async (req, res) => {
   const { paymentId, name, amount, category } = req.body;
