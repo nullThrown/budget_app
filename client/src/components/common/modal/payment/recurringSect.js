@@ -42,7 +42,7 @@ const RecurringSection = ({ categories, closeModal }) => {
 
   return (
     <section className='modal-recurring-sect'>
-      <form className='modal__payment-form'>
+      <form onSubmit={handleSubmit} className='modal__payment-form'>
         <p className='heading-6 text-center modal__payment-title'>Recurring</p>
         <input
           type='text'
@@ -51,6 +51,7 @@ const RecurringSection = ({ categories, closeModal }) => {
           placeholder='Name'
           value={recurring.name}
           onChange={onInputChange}
+          required
         />
         <input
           list='payment-categories'
@@ -59,6 +60,7 @@ const RecurringSection = ({ categories, closeModal }) => {
           placeholder='Category'
           value={recurring.category}
           onChange={onInputChange}
+          required
         />
         <input
           type='number'
@@ -67,6 +69,7 @@ const RecurringSection = ({ categories, closeModal }) => {
           placeholder='Amount'
           value={recurring.amount}
           onChange={onInputChange}
+          required
         />
         <datalist id='payment-categories'>
           {categories.map((cat) => {
@@ -75,8 +78,7 @@ const RecurringSection = ({ categories, closeModal }) => {
         </datalist>
         <button
           type='submit'
-          className='btn btn-submit modal__recurring-submit-btn'
-          onClick={handleSubmit}>
+          className='btn btn-submit modal__recurring-submit-btn'>
           Submit
         </button>
         {status === 'error' && (
