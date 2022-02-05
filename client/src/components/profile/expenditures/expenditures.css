@@ -106,8 +106,6 @@ td {
   border-bottom: 1px solid var(--grey-2);
   font-size: 1rem;
 }
-.table-row-data {
-}
 
 .table-cell-date {
   width: 10%;
@@ -119,14 +117,15 @@ td {
   width: 10%;
 }
 .table-cell-necessity {
-  width: 10%;
+  width: 8%;
   text-align: left;
 }
 .table-cell-amount {
-  width: 15%;
+  width: 10%;
 }
 .table-cell-edit {
-  width: 5%;
+  width: 6%;
+  padding: 0.2em;
 }
 .text {
   color: var(--green-3);
