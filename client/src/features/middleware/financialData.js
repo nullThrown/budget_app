@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import handleErrors from '../../util/api/errorHandler';
 export const getFinancialData = (year, month) => async (dispatch) => {
   dispatch({ type: 'profile/dataLoading' });
   try {
@@ -22,14 +22,6 @@ export const getFinancialData = (year, month) => async (dispatch) => {
     });
     dispatch({ type: 'expenses/dataLoaded', payload: res[1].data });
   } catch (err) {
-    if (!err.request.response) {
-      return dispatch({ type: 'profile/dataLoadError' });
-    }
-    const { data, status } = err.response;
-    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-      // token is not valid... requires a redirect to login
-    } else if (status >= 500 && data.error === 'server_error') {
-      dispatch({ type: 'finance/dataLoadError' });
-    }
+    handleErrors(err, 'profile', dispatch);
   }
 };
