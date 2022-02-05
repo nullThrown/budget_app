@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import handleErrors from '../../util/api/errorHandler';
 export const createExpense = (expense) => async (dispatch) => {
   dispatch({ type: 'expenses/dataLoading' });
   try {
@@ -11,11 +11,7 @@ export const createExpense = (expense) => async (dispatch) => {
     console.log(newExpense.data);
     dispatch({ type: 'expenses/createExpense', payload: newExpense.data });
   } catch (err) {
-    dispatch({ type: 'expenses/dataLoadError' });
-    const { data, status } = err.response;
-    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-    } else if (status >= 500 && data.error === 'server_error') {
-    }
+    handleErrors(err, 'recurring', dispatch);
   }
 };
 export const editExpense = (expense) => async (dispatch) => {
@@ -29,34 +25,19 @@ export const editExpense = (expense) => async (dispatch) => {
     console.log(newExpense);
     dispatch({ type: 'expenses/editExpense', payload: newExpense.data });
   } catch (err) {
-    dispatch({ type: 'expenses/dataLoadError' });
-    console.log(err);
-    const { data, status } = err.response;
-    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-    } else if (status >= 500 && data.error === 'server_error') {
-    }
+    handleErrors(err, 'recurring', dispatch);
   }
 };
 
 // remove var deleteExpense... just run as a function
-export const deleteExpense = (expenseId) => async (dispatch) => {
+export const deleteExpense = (id) => async (dispatch) => {
   try {
     const deletedExpense = await axios.delete(
-      `http://localhost:4000/api/exp/delete/${expenseId}`,
+      `http://localhost:4000/api/exp/delete/${id}`,
       { withCredentials: true }
     );
-    dispatch({ type: 'expenses/deleteExpense', payload: expenseId });
+    dispatch({ type: 'expenses/deleteExpense', payload: id });
   } catch (err) {
-    const { data, status } = err.response;
-    if (status >= 400 && status < 500) {
-      if (data.error === 'unauthenticated') {
-        // token is not valid... requires a redirect to login
-      }
-      if (data.error === 'resource_not_found') {
-        console.log(data.error);
-      }
-    } else if (status >= 500 && data.error === 'server_error') {
-      // dispatch some type of server error
-    }
+    handleErrors(err, 'recurring', dispatch);
   }
 };
