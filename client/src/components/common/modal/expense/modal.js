@@ -6,7 +6,7 @@ import Loading from '../../loading/loading';
 import Success from '../success';
 import customStyles from '../styles';
 import { editExpense } from '../../../../features/expenses/middleware';
-
+import { Alert } from '../../../alert/alert';
 const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
   const dispatch = useDispatch();
 
@@ -116,7 +116,9 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
               onClick={handleSubmit}>
               Submit
             </button>
-            {status === 'error' && <p>Something went wrong :( try again</p>}
+            {status === 'error' && (
+              <Alert msg='Something went wrong :( try again' />
+            )}
           </form>
         </section>
       )}
