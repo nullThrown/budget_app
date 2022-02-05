@@ -2,7 +2,8 @@ const initialState = {
   status: 'idle',
   data: [],
 };
-
+// state updates should be more specific
+// like expense slice
 export default function recurringReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
@@ -30,13 +31,13 @@ export default function recurringReducer(state = initialState, action) {
     case 'recurring/createRecurring':
       return {
         ...state,
-        status: 'success',
+        status: 'create_success',
         data: payload,
       };
     case 'recurring/editRecurring':
       return {
         ...state,
-        status: 'success',
+        status: 'edit_success',
         data: payload,
       };
 
@@ -44,7 +45,7 @@ export default function recurringReducer(state = initialState, action) {
       const { id, category } = payload;
       return {
         ...state,
-        status: 'success',
+        status: 'delete_success',
         data: payload,
       };
     default:
