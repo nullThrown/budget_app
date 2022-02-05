@@ -1,6 +1,14 @@
 import React from 'react';
-
+import { MdDeleteForever } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { deleteExpense } from '../../../features/expenses/middleware';
 const TableCell = ({ exp, date, openModal }) => {
+  const dispatch = useDispatch();
+
+  const handleDeleteExpense = (id) => {
+    dispatch(deleteExpense(id));
+  };
+
   return (
     <tr key={exp._id} className='table-row-data'>
       <td className='table-cell-date'>{exp.title}</td>
@@ -19,7 +27,14 @@ const TableCell = ({ exp, date, openModal }) => {
       <td className='table-cell-amount'>${exp.amount}</td>
       <td className='table-cell-edit'>
         <button className='btn link' onClick={() => openModal(exp._id)}>
-          edit
+          Edit
+        </button>
+      </td>
+      <td>
+        <button
+          className='btn btn--delete-sm flex'
+          onClick={() => handleDeleteExpense(exp._id)}>
+          <MdDeleteForever />
         </button>
       </td>
     </tr>
