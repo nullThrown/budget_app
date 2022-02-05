@@ -9,16 +9,16 @@ import Recurring from '../components/profile/recurring/recurring';
 import { categories, barData, doughnutData } from '../data/currentMonth';
 
 const Home = () => {
-  const loadingStatus = useSelector((state) => state.profile.status);
+  const status = useSelector((state) => state.profile.status);
 
-  if (loadingStatus === 'loading') {
+  if (status === 'loading') {
     return (
       <div className='profile__error-placement'>
         <Loading className='profile__error-placement' />
       </div>
     );
   }
-  if (loadingStatus === 'failed') {
+  if (status === 'error') {
     return (
       <div className='profile__error-placement'>
         <ServerError className='profile__error-placement' />
