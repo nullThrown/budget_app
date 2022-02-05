@@ -7,14 +7,12 @@ import { registerUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import InputItem from '../inputItem';
 import {
-  checkPasswordLength,
-  checkPasswordNum,
-  checkPasswordSym,
-  checkPasswordUpper,
+  checkStrLength,
+  checkStrNum,
+  checkStrSym,
+  checkStrUpper,
 } from '../../../util/validation/validatePassword';
 
-// validation import functions do not have access to state variables
-// solution? place callback inside validation functions and then insert state change functions when validate fn are called
 const SignupForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,10 +47,10 @@ const SignupForm = () => {
     }
   };
   useEffect(() => {
-    checkPasswordLength(userData.password, setPwordLong);
-    checkPasswordNum(userData.password, setPwordHasNum);
-    checkPasswordSym(userData.password, setPwordHasSym);
-    checkPasswordUpper(userData.password, setPwordHasUpper);
+    checkStrLength(userData.password, setPwordLong);
+    checkStrNum(userData.password, setPwordHasNum);
+    checkStrSym(userData.password, setPwordHasSym);
+    checkStrUpper(userData.password, setPwordHasUpper);
   }, [userData.password]);
   return (
     <main className='form-container'>

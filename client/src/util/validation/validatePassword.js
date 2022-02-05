@@ -1,29 +1,17 @@
-// checks string strength upon sign up
-// remove password from fn names
-// these fn should be used for 'text' not 'passwords'
+// callback parameter is to be argued with React setState fn
 
-export const checkPasswordLength = (string, cb) => {
-  if (string.length >= 8) return cb(true);
+//string is 8 chars long
+export const checkStrLength = (string, cb) =>
+  string.length >= 8 ? cb(true) : cb(false);
 
-  return cb(false);
-};
+// string contains number char
+export const checkStrNum = (string, cb) =>
+  string.match('.*[0-9].*') ? cb(true) : cb(false);
 
-// check string has one number
-export const checkPasswordNum = (string, cb) => {
-  if (string.match('.*[0-9].*')) return cb(true);
+// string contains special char
+export const checkStrSym = (string, cb) =>
+  string.match('(?=.*?[#?!@$%^&*-])') ? cb(true) : cb(false);
 
-  return cb(false);
-};
-// check string has one special character
-export const checkPasswordSym = (string, cb) => {
-  if (string.match('(?=.*?[#?!@$%^&*-])')) return cb(true);
-
-  return cb(false);
-};
-
-// check string has one uppercases character
-export const checkPasswordUpper = (string, cb) => {
-  if (string.match('(?=.*?[A-Z])')) return cb(true);
-
-  return cb(false);
-};
+// str contains uppercase char
+export const checkStrUpper = (string, cb) =>
+  string.match('(?=.*?[A-Z])') ? cb(true) : cb(false);
