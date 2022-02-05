@@ -8,6 +8,8 @@ const handleErrors = (err, sliceName, dispatch) => {
   const { error } = data;
 
   if (status >= 400 && status < 500) {
+    if (error === 'invalid_credentials') {
+    }
     if (error === 'unauthenticated') {
       // redirect to login page
       console.log('unauth');
