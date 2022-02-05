@@ -3,6 +3,7 @@ import { createRecurring } from '../../../../features/recurring/middleware';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../loading/loading';
 import Success from '../success';
+import { Alert } from '../../../alert/alert';
 const RecurringSection = ({ categories, closeModal }) => {
   const dispatch = useDispatch();
   const [recurring, setRecurring] = useState({
@@ -29,7 +30,7 @@ const RecurringSection = ({ categories, closeModal }) => {
       </div>
     );
   }
-  if (status === 'success') {
+  if (status === 'create_success') {
     return (
       <Success
         text='Payment Added Successfully'
@@ -51,7 +52,6 @@ const RecurringSection = ({ categories, closeModal }) => {
           value={recurring.name}
           onChange={onInputChange}
         />
-
         <input
           list='payment-categories'
           name='category'
@@ -60,7 +60,6 @@ const RecurringSection = ({ categories, closeModal }) => {
           value={recurring.category}
           onChange={onInputChange}
         />
-
         <input
           type='number'
           name='amount'
@@ -74,14 +73,15 @@ const RecurringSection = ({ categories, closeModal }) => {
             return <option value={cat}></option>;
           })}
         </datalist>
-
         <button
           type='submit'
           className='btn btn-submit modal__recurring-submit-btn'
           onClick={handleSubmit}>
           Submit
         </button>
-        {status === 'error' && <p>Something went wrong :( try again</p>}
+        {status === 'error' && (
+          <Alert msg='Something went wrong :( try again' />
+        )}
       </form>
     </section>
   );
