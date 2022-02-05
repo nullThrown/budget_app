@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { createExpense } from '../../../../features/expenses/middleware';
 import { useDispatch, useSelector } from 'react-redux';
-import { inputExists } from '../../../../util/validation/validate';
 import Loading from '../../../common/loading/loading';
 import Success from '../success';
 import { Alert } from '../../../alert/alert';
@@ -44,7 +43,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
 
   return (
     <section className='modal-expense-sect'>
-      <form className='modal__payment-form'>
+      <form onSubmit={handleSubmit} className='modal__payment-form'>
         <p className='heading-6 text-center modal__payment-title'>One Time</p>
         <input
           type='text'
@@ -53,6 +52,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
           placeholder='title'
           onChange={onInputChange}
           value={expense.title}
+          required
         />
         <input
           name='category'
@@ -61,6 +61,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
           className='input-border-bottom input-expense__categories'
           onChange={onInputChange}
           value={expense.category}
+          required
         />
         <input
           type='text'
@@ -77,6 +78,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
           placeholder='amount'
           onChange={onInputChange}
           value={expense.amount}
+          required
         />
         <datalist id='payment-categories'>
           {categories.map((cat) => {
@@ -86,8 +88,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
 
         <button
           type='submit'
-          className='btn btn-submit modal__expense-submit-btn'
-          onClick={handleSubmit}>
+          className='btn btn-submit modal__expense-submit-btn'>
           Submit
         </button>
 
