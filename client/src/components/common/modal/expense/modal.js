@@ -68,7 +68,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
 
       {(status === 'idle' || status === 'error') && (
         <section className='modal-expense-sect'>
-          <form className='modal__payment-form'>
+          <form onSubmit={handleSubmit} className='modal__payment-form'>
             <p className='heading-6 text-center modal__payment-title'>
               Edit Expense
             </p>
@@ -79,6 +79,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
               placeholder='title'
               onChange={onInputChange}
               value={expense.title}
+              required
             />
             <input
               name='category'
@@ -87,6 +88,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
               className='input-border-bottom input-expense__categories'
               onChange={onInputChange}
               value={expense.category}
+              required
             />
             <input
               type='text'
@@ -97,12 +99,13 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
               value={expense.description}
             />
             <input
-              type='text'
+              type='number'
               className='input-border-bottom input-expense__amount'
               name='amount'
               placeholder='amount'
               onChange={onInputChange}
               value={expense.amount}
+              required
             />
             <datalist id='payment-categories'>
               {categories.map((cat) => {
@@ -112,8 +115,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
 
             <button
               type='submit'
-              className='btn btn-submit modal__expense-submit-btn'
-              onClick={handleSubmit}>
+              className='btn btn-submit modal__expense-submit-btn'>
               Submit
             </button>
             {status === 'error' && (
