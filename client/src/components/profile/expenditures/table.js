@@ -28,6 +28,7 @@ export const Table = ({ expenses }) => {
             <th className='table-cell-necessity'></th>
             <th className='table-cell-amount'>amount</th>
             <th className='table-cell-edit'></th>
+            <th className='table-cell-edit'></th>
           </tr>
         </thead>
         <tbody>
