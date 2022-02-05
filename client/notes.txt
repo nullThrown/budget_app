@@ -8,6 +8,26 @@ CSS STRUCTURE
 TODO LIST
 
     *add validatorJS to all forms
+
+      Signup
+        password: 
+          * length >= 8
+          *contain 1 number
+          *contain 1 symbol
+          *contain 1 uppercase
+        
+
+     
+        
+
+      Create profile
+
+
+
+
+
+
+
     *integrate validation with error handling
     *rework validation folder (react)
     *rename Expenditures mongoose Model to expenses.data
