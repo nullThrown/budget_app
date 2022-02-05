@@ -1,4 +1,5 @@
 import axios from 'axios';
+import handleErrors from '../../util/api/errorHandler';
 export const createRecurring = (recurring) => async (dispatch) => {
   dispatch({ type: 'recurring/dataLoading' });
   try {
@@ -12,12 +13,7 @@ export const createRecurring = (recurring) => async (dispatch) => {
     console.log(newRecurring.data);
     dispatch({ type: 'recurring/createRecurring', payload: newRecurring.data });
   } catch (err) {
-    const { data, status } = err.response;
-    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-      // token is not valid... requires a redirect to login
-    } else if (status >= 500 && data.error === 'server_error') {
-      dispatch({ type: 'recurring/dataLoadError' });
-    }
+    handleErrors(err, 'recurring', dispatch);
   }
 };
 
@@ -33,12 +29,7 @@ export const editRecurring = (recurring) => async (dispatch) => {
     console.log(newRecurring.data);
     dispatch({ type: 'finance/editRecurring', payload: newRecurring.data });
   } catch (err) {
-    const { data, status } = err.response;
-    if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-      // token is not valid... requires a redirect to login
-    } else if (status >= 500 && data.error === 'server_error') {
-      // dispatch some type of server error
-    }
+    handleErrors(err, 'recurring', dispatch);
   }
 };
 
@@ -55,11 +46,6 @@ export const deleteRecurring =
       console.log('axios delete success');
       dispatch({ type: 'finance/deleteRecurring', payload: { id, category } });
     } catch (err) {
-      const { data, status } = err.response;
-      if (status >= 400 && status < 500 && data.error === 'unauthenticated') {
-        // token is not valid... requires a redirect to login
-      } else if (status >= 500 && data.error === 'server_error') {
-        // dispatch some type of server error
-      }
+      handleErrors(err, 'recurring', dispatch);
     }
   };
