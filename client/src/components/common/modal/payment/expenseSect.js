@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { inputExists } from '../../../../util/validation/validate';
 import Loading from '../../../common/loading/loading';
 import Success from '../success';
-
+import { Alert } from '../../../alert/alert';
 const ExpenseSection = ({ categories, closeModal }) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.expenses.status);
@@ -90,7 +90,10 @@ const ExpenseSection = ({ categories, closeModal }) => {
           onClick={handleSubmit}>
           Submit
         </button>
-        {status === 'error' && <p>Something went wrong :( try again</p>}
+
+        {status === 'error' && (
+          <Alert msg='Something went wrong :( try again' />
+        )}
       </form>
     </section>
   );
