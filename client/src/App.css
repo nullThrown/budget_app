@@ -56,7 +56,20 @@ li {
   font-size: 1rem;
   color: var(--blue-1);
 }
+.link:hover {
+  color: var(--blue-3);
+}
+.btn--delete-sm {
+  font-size: 1rem;
+  color: var(--red-4);
+  border: 1px solid var(--red-4) !important;
+  padding: 2px;
+  border-radius: 2px;
+}
 
+.btn--delete-sm:hover {
+  background-color: var(--red-1);
+}
 /* TYPOGRAPHY */
 .main-heading {
   font-size: 4rem;
