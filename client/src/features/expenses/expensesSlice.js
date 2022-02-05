@@ -55,7 +55,6 @@ export default function expensesReducer(state = initialState, action) {
     case 'expenses/deleteExpense':
       return {
         ...state,
-        status: 'delete_success',
         data: [...state.data.filter((expense) => expense._id !== payload)],
       };
 
