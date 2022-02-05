@@ -8,18 +8,15 @@ CSS STRUCTURE
 TODO LIST
 
     *add validatorJS to all forms
-    *rework validation folder
-
-  *add edit expense functionality
-  *add delete expense functionality
-  *add statuses for different types of success dispatches (create, edit, delete)
-  
+    *integrate validation with error handling
+    *rework validation folder (react)
+    *rename Expenditures mongoose Model to expenses.data
+    *fix signUp password checks
+    
   *add new categories array stored on profile model 
     *Add new category upon either create expense or recurring  
   
-  *rename Expenditures mongoose Model to expenses.data
   
-  *implement a one-size-fits-all error handler for API calls 
 
   *create custom boolean selector for 'indulgent/necessity'
 
