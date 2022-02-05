@@ -38,12 +38,12 @@ const LoginForm = () => {
             onInputChange={onInputChange}
           />
           <InputItem
-            autoFocus
             title='Password'
             name='password'
             type='password'
             value={userData.password}
             onInputChange={onInputChange}
+            required
           />
           <span>
             <p className='btn link' style={{ display: 'inline-block' }}>
