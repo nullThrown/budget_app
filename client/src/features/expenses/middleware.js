@@ -1,15 +1,17 @@
 import axios from 'axios';
 import handleErrors from '../../util/api/errorHandler';
+
 export const createExpense = (expense) => async (dispatch) => {
   dispatch({ type: 'expenses/dataLoading' });
   try {
-    const newExpense = await axios.post(
-      'http://localhost:4000/api/exp/create-new',
+    const res = await axios.post(
+      'http://localhost:4000/api/exp/create',
       expense,
       { withCredentials: true }
     );
-    console.log(newExpense.data);
-    dispatch({ type: 'expenses/createExpense', payload: newExpense.data });
+    const [newExpense, categories] = res.data;
+    dispatch({ type: 'expenses/createExpense', payload: newExpense });
+    dispatch({ type: 'profile/updateCategories', payload: categories });
   } catch (err) {
     handleErrors(err, 'recurring', dispatch);
   }
@@ -17,13 +19,12 @@ export const createExpense = (expense) => async (dispatch) => {
 export const editExpense = (expense) => async (dispatch) => {
   dispatch({ type: 'expenses/dataLoading' });
   try {
-    const newExpense = await axios.put(
+    const res = await axios.put(
       'http://localhost:4000/api/exp/edit/',
       expense,
       { withCredentials: true }
     );
-    console.log(newExpense);
-    dispatch({ type: 'expenses/editExpense', payload: newExpense.data });
+    dispatch({ type: 'expenses/editExpense', payload: res.data });
   } catch (err) {
     handleErrors(err, 'recurring', dispatch);
   }
@@ -32,7 +33,7 @@ export const editExpense = (expense) => async (dispatch) => {
 // remove var deleteExpense... just run as a function
 export const deleteExpense = (id) => async (dispatch) => {
   try {
-    const deletedExpense = await axios.delete(
+    const res = await axios.delete(
       `http://localhost:4000/api/exp/delete/${id}`,
       { withCredentials: true }
     );
