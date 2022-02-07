@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../forms.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import InputItem from '../inputItem';
+import { Alert } from '../../alert/alert';
+import Loading from '../../common/loading/loading';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userStatus = useSelector((state) => state.user.status);
 
   const [userData, setUserData] = useState({
     email: '',
@@ -16,18 +20,35 @@ const LoginForm = () => {
   });
 
   const onInputChange = (e) => {
-    if (e.target.name)
-      setUserData({ ...userData, [e.target.name]: e.target.value });
+    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginUser(userData));
-    navigate('/profile/home');
   };
+
+  useEffect(() => {
+    if (userStatus === 'success') {
+      navigate('/profile/home');
+      dispatch({ type: 'user/returnToIdle' });
+    }
+  }, [userStatus, navigate]);
+
+  if (userStatus === 'loading') {
+    return (
+      <main className='form-container'>
+        <Loading />
+      </main>
+    );
+  }
   return (
     <main className='form-container'>
       <form className='form' onSubmit={(e) => submitHandler(e)}>
         <h2 className='heading-3 text-center'>Login</h2>
+        {userStatus === 'invalid_credentials' && (
+          <Alert msg={'Invalid Credentials '} />
+        )}
+        {userStatus === 'error' && <Alert msg={'Something went wrong'} />}
         <div className='form-box'>
           <InputItem
             autoFocus
