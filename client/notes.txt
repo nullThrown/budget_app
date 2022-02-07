@@ -7,36 +7,15 @@ CSS STRUCTURE
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
 
-    *add validatorJS to all forms
+    Validation
+    forms
+      *fix signup password validation
+      *check validation for create-profile
+      *integrate validation with error handling
 
-      Signup
-        password: 
-          * length >= 8
-          *contain 1 number
-          *contain 1 symbol
-          *contain 1 uppercase
-        
-
-     
-        
-
-      Create profile
-
-
-
-
-
-
-
-    *integrate validation with error handling
-    *rework validation folder (react)
-    *rename Expenditures mongoose Model to expenses.data
-    *fix signUp password checks
-    
-  *add new categories array stored on profile model 
-    *Add new category upon either create expense or recurring  
-  
-  
+    *fix create profile form
+    *create edit recurring form
+    *fix data population for graphs
 
   *create custom boolean selector for 'indulgent/necessity'
 
@@ -46,6 +25,7 @@ TODO LIST
 
 
 GERNERAL/APP-WIDE
+  *forms UI must be improved
   *create a front-end protected route system along with proper redirecting behavior
     *certain pages will require authentication
     solutions
