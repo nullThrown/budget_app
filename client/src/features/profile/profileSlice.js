@@ -3,6 +3,7 @@ const initialState = {
   monthlyTakeHome: null,
   salarySchedule: null,
   paycheckAmount: null,
+  categories: [],
 };
 
 export default function ProfileReducer(state = initialState, action) {
@@ -15,15 +16,21 @@ export default function ProfileReducer(state = initialState, action) {
       };
     case 'profile/dataLoaded':
       return {
+        status: 'idle',
         monthlyTakeHome: payload.monthlyTakeHome,
         salarySchedule: payload.salarySchedule,
         paycheckAmount: payload.paycheckAmount,
-        status: 'idle',
+        categories: payload.categories,
       };
     case 'profile/dataLoadError':
       return {
         ...state,
         status: 'error',
+      };
+    case 'profile/updateCategories':
+      return {
+        ...state,
+        categories: payload,
       };
 
     default:
