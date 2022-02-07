@@ -20,7 +20,7 @@ const {
 router.get('/', verifyToken, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
-    res.json({ profile });
+    res.json(profile);
   } catch (err) {
     console.log({ err: [err.message, err.stack] });
     res.status(500).json({ error: server_error });
@@ -32,7 +32,8 @@ router.get('/', verifyToken, async (req, res) => {
 // ACCESS   Private
 router.post('/recurring/create', verifyToken, async (req, res) => {
   try {
-    const { amount, name, category, budget } = req.body;
+    let { amount, name, category, budget } = req.body;
+    category = category.toLowerCase();
     const profile = await Profile.findOne({ user: req.user.id });
     let categoryMatch = false;
 
@@ -49,9 +50,10 @@ router.post('/recurring/create', verifyToken, async (req, res) => {
         category,
         payments: [{ amount, name }],
       });
+      profile.categories.push(category.toLowerCase());
     }
     profile.save();
-    res.status(201).json(profile.recurringPayments);
+    res.status(201).json(profile);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
     res.status(500).json({ error: server_error });
@@ -265,6 +267,15 @@ router.post('/', verifyToken, validateProfile(), validate, async (req, res) => {
           },
         ],
       },
+    ],
+    categories: [
+      'housing',
+      'vehicle',
+      'utilites',
+      'childcare',
+      'health',
+      'debt',
+      'retirement',
     ],
   };
 
