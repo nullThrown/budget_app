@@ -25,6 +25,7 @@ const profileSchema = new Schema(
         ],
       },
     ],
+    categories: [{ type: String }],
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
