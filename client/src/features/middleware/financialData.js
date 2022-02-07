@@ -14,11 +14,10 @@ export const getFinancialData = (year, month) => async (dispatch) => {
     );
 
     const res = await Promise.all([profile, expenses]);
-
-    dispatch({ type: 'profile/dataLoaded', payload: res[0].data.profile });
+    dispatch({ type: 'profile/dataLoaded', payload: res[0].data });
     dispatch({
       type: 'recurring/dataLoaded',
-      payload: res[0].data.profile.recurringPayments,
+      payload: res[0].data.recurringPayments,
     });
     dispatch({ type: 'expenses/dataLoaded', payload: res[1].data });
   } catch (err) {
