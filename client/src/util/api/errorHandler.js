@@ -9,18 +9,18 @@ const handleErrors = (err, sliceName, dispatch) => {
 
   if (status >= 400 && status < 500) {
     if (error === 'invalid_credentials') {
+      console.log('invalid credentials');
+      dispatch({ type: `${sliceName}/invalidCredentials` });
     }
     if (error === 'unauthenticated') {
       // redirect to login page
-      console.log('unauth');
     }
     if (error === 'invalid_data') {
       // dispatch errors array to appropriate state
-      console.log('invalid');
     }
     if (error === 'email_already_exists') {
-      // dispatch error msg to appropriate state
-      console.log('email already');
+      dispatch({ type: `${sliceName}/emailAlreadyExists` });
+      console.log('email already exists');
     }
   } else if (status >= 500) {
     if (error === 'server_error') {
