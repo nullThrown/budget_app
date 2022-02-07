@@ -1,6 +1,7 @@
 import axios from 'axios';
-// watch brad traversy video to see his user state implementation
+import handleErrors from '../../util/api/errorHandler';
 const initialState = {
+  status: 'idle',
   user: {},
   isAuth: null,
 };
@@ -8,20 +9,38 @@ export default function userReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case 'user/userLoaded':
-      return { ...state, user: payload.user, isAuth: true };
-    case 'user/userLoadedError':
-      return { user: {}, isAuth: false };
-    case 'user/registerUser':
-      return state;
+    case 'user/returnToIdle':
+      return {
+        ...state,
+        status: 'idle',
+      };
+    case 'user/dataLoading':
+      return {
+        ...state,
+        status: 'loading',
+      };
+    case 'user/dataLoaded':
+      return { status: 'success', user: payload.user, isAuth: true };
 
-    case 'user/loginUser':
-      const { firstName, lastName, email } = payload;
-      return { firstName, lastName, email };
+    case 'user/dataLoadError':
+      return { ...state, status: 'error' };
+
+    case 'user/invalidCredentials':
+      return {
+        ...state,
+        status: 'invalid_credentials',
+      };
+    case 'user/emailAlreadyExists':
+      return {
+        ...state,
+        status: 'email_already_exists',
+      };
+
     case 'user/logoutUser':
       return;
+
     case 'user/updateUser':
-      return { user: payload.user, isAuth: true };
+      return { ...state, user: payload.user };
 
     default:
       return state;
@@ -29,27 +48,38 @@ export default function userReducer(state = initialState, action) {
 }
 
 export const registerUser = (user) => async (dispatch) => {
-  const res = await axios.post(
-    'http://localhost:4000/api/auth/register',
-    user,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-    }
-  );
-  dispatch({ type: 'user/registerUser', payload: res.data });
+  dispatch({ type: 'user/dataLoading' });
+  try {
+    const res = await axios.post(
+      'http://localhost:4000/api/auth/register',
+      user,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      }
+    );
+    console.log(res.data);
+    dispatch({ type: 'user/dataLoaded', payload: res.data });
+  } catch (err) {
+    handleErrors(err, 'user', dispatch);
+  }
 };
 
 export const loginUser = (user) => async (dispatch) => {
-  const res = await axios.post('http://localhost:4000/api/auth/login', user, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  console.log(res);
-  dispatch({ type: 'user/loginUser', payload: res.data });
+  dispatch({ type: 'user/dataLoading' });
+  try {
+    const res = await axios.post('http://localhost:4000/api/auth/login', user, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(res);
+    dispatch({ type: 'user/dataLoaded', payload: res.data });
+  } catch (err) {
+    handleErrors(err, 'user', dispatch);
+  }
 };
 
 export const getUser = () => async (dispatch) => {
