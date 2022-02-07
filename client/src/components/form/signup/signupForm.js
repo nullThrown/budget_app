@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert } from '../../alert/alert';
 import { PasswordCheck } from './passwordCheck';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../features/auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import InputItem from '../inputItem';
+import Loading from '../../common/loading/loading';
+import { Alert } from '../../alert/alert';
 import {
   checkStrLength,
   checkStrNum,
@@ -16,6 +17,8 @@ import {
 const SignupForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userStatus = useSelector((state) => state.user.status);
 
   const [userData, setUserData] = useState({
     firstName: '',
@@ -42,8 +45,8 @@ const SignupForm = () => {
       setPasswordMatch(false);
       setPassword2('');
     } else {
+      setPasswordMatch(true);
       dispatch(registerUser(userData));
-      navigate('/signup-successful');
     }
   };
   useEffect(() => {
@@ -52,10 +55,27 @@ const SignupForm = () => {
     checkStrSym(userData.password, setPwordHasSym);
     checkStrUpper(userData.password, setPwordHasUpper);
   }, [userData.password]);
+  useEffect(() => {
+    if (userStatus === 'success') {
+      navigate('/signup-successful');
+      dispatch({ type: 'user/returnToIdle' });
+    }
+  }, [userStatus, navigate]);
+  if (userStatus === 'loading') {
+    return (
+      <main className='form-container'>
+        <Loading />
+      </main>
+    );
+  }
   return (
     <main className='form-container'>
       <form onSubmit={submitHandler} className='form'>
         <h2 className='heading-3 text-center'>Signup</h2>
+        {userStatus === 'email_already_exists' && (
+          <Alert msg='Email already exists' />
+        )}
+        {userStatus === 'error' && <Alert msg='Something went wrong' />}
         <div className='form-box'>
           <InputItem
             autoFocus
@@ -105,9 +125,7 @@ const SignupForm = () => {
             required
           />
         </div>
-        {passwordMatch || (
-          <Alert msg={'passwords do not match'} isSuccess={false} />
-        )}
+        {passwordMatch || <Alert msg='passwords do not match' />}
         <button type='submit' className='btn btn-submit' disabled={false}>
           Signup
         </button>
