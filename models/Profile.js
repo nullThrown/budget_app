@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const requiredStr = { type: String, default: '' };
-const requiredNum = { type: Number, default: 0 };
+const defaultedStr = { type: String, default: '' };
+const defaultedNum = { type: Number, default: 0 };
 
 const profileSchema = new Schema(
   {
@@ -10,17 +10,17 @@ const profileSchema = new Schema(
     createdAt: { type: Date, default: Date.now() },
     updatedAt: { type: Date },
 
-    paycheckAmount: requiredNum,
-    salarySchedule: requiredStr,
+    paycheckAmount: defaultedNum,
+    salarySchedule: defaultedStr,
     recurringPayments: [
       {
         total: { type: Number },
-        budget: requiredNum,
-        category: requiredStr,
+        budget: defaultedNum,
+        category: defaultedStr,
         payments: [
           {
-            amount: requiredNum,
-            name: requiredStr,
+            amount: defaultedNum,
+            name: defaultedStr,
           },
         ],
       },
