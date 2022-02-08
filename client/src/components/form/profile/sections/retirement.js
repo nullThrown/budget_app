@@ -1,10 +1,12 @@
 import React from 'react';
 import InputItem from '../../inputItem';
-const Retirement = ({ data, onInputChange }) => {
+import { Alert } from '../../../alert/alert';
+const Retirement = ({ data, onInputChange, profileStatus }) => {
   const { retirementIra, retirement401k, retirementBrokerage } = data;
   return (
     <>
       <h2 className='heading-3 text-center'>Retirement</h2>
+      {profileStatus === 'error' && <Alert msg='Something went wrong' />}
       <section className='form-box'>
         <InputItem
           autoFocus
@@ -13,6 +15,8 @@ const Retirement = ({ data, onInputChange }) => {
           type='number'
           value={retirementIra}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='401k'
@@ -20,6 +24,8 @@ const Retirement = ({ data, onInputChange }) => {
           type='number'
           value={retirement401k}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Brokerage'
@@ -27,6 +33,8 @@ const Retirement = ({ data, onInputChange }) => {
           type='number'
           value={retirementBrokerage}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>

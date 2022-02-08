@@ -13,6 +13,7 @@ const HousingSect = ({ data, onInputChange }) => {
           type='number'
           value={housingPayment}
           onInputChange={onInputChange}
+          placeHolder={0}
         />
         <InputItem
           title='Insurance'
@@ -20,6 +21,7 @@ const HousingSect = ({ data, onInputChange }) => {
           type='number'
           value={housingInsurance}
           onInputChange={onInputChange}
+          placeHolder={0}
         />
       </section>
     </>

@@ -13,6 +13,8 @@ const SalarySect = ({ data, onInputChange }) => {
           type='number'
           value={paycheckAmount}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>

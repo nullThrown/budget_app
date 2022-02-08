@@ -13,6 +13,8 @@ const Utilities = ({ data, onInputChange }) => {
           type='number'
           value={cellPlan}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Cell Loan'
@@ -20,6 +22,8 @@ const Utilities = ({ data, onInputChange }) => {
           type='number'
           value={cellLoan}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Internet Plan'
@@ -27,6 +31,8 @@ const Utilities = ({ data, onInputChange }) => {
           type='number'
           value={internetPlan}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>

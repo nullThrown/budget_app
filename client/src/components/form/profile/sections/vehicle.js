@@ -13,6 +13,8 @@ const VehicleSect = ({ data, onInputChange }) => {
           type='number'
           value={vehicleLoan}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Insurance'
@@ -20,6 +22,8 @@ const VehicleSect = ({ data, onInputChange }) => {
           type='number'
           value={vehicleInsurance}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>
