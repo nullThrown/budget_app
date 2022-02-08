@@ -57,6 +57,7 @@ const LoginForm = () => {
             type='email'
             value={userData.email}
             onInputChange={onInputChange}
+            required
           />
           <InputItem
             title='Password'
