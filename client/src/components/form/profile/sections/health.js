@@ -13,6 +13,8 @@ const Health = ({ data, onInputChange }) => {
           type='number'
           value={healthInsurance}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Fitness'
@@ -20,6 +22,8 @@ const Health = ({ data, onInputChange }) => {
           type='number'
           value={healthFitness}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>

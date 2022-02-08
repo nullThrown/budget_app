@@ -13,6 +13,8 @@ const Debt = ({ data, onInputChange }) => {
           type='number'
           value={debtStudent}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Credit'
@@ -20,6 +22,8 @@ const Debt = ({ data, onInputChange }) => {
           type='number'
           value={debtCredit}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>
