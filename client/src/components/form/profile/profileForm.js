@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../forms.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { createProfile } from '../../../features/profile/middleware';
+import defaultObjectProperties from '../../../util/defaultObjProp';
 import Housing from './sections/housing';
 import Salary from './sections/salaray';
 import Vehicle from './sections/vehicle';
@@ -9,26 +12,30 @@ import Health from './sections/health';
 import Debt from './sections/debt';
 import Retirement from './sections/retirement';
 import ProgressBar from './progressBar';
+import Loading from '../../common/loading/loading';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const profileStatus = useSelector((state) => state.profile.status);
+
   const [profileData, setProfileData] = useState({
-    paycheckAmount: 0,
-    housingPayment: 0,
-    housingInsurance: 0,
-    vehicleLoan: 0,
-    vehicleInsurance: 0,
-    cellPlan: 0,
-    cellLoan: 0,
-    internetPlan: 0,
-    childcareTuition: 0,
-    childcareDaycare: 0,
-    healthInsurance: 0,
-    healthFitness: 0,
-    debtStudent: 0,
-    debtCredit: 0,
-    retirementIra: 0,
-    retirementBrokerage: 0,
-    retirement401k: 0,
+    paycheckAmount: null,
+    housingPayment: null,
+    housingInsurance: null,
+    vehicleLoan: null,
+    vehicleInsurance: null,
+    cellPlan: null,
+    cellLoan: null,
+    internetPlan: null,
+    childcareTuition: null,
+    childcareDaycare: null,
+    healthInsurance: null,
+    healthFitness: null,
+    debtStudent: null,
+    debtCredit: null,
+    retirementIra: null,
+    retirementBrokerage: null,
+    retirement401k: null,
   });
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -47,10 +54,18 @@ const Profile = () => {
   };
 
   const onSubmit = (e) => {
+    defaultObjectProperties(profileData, 0);
     e.preventDefault();
-    console.log(profileData);
+    dispatch(createProfile(profileData));
   };
 
+  if (profileStatus === 'loading') {
+    return (
+      <main className='form-container'>
+        <Loading />
+      </main>
+    );
+  }
   return (
     <main className='form-container'>
       <form className='form'>
@@ -76,7 +91,11 @@ const Profile = () => {
           <Debt data={profileData} onInputChange={onInputChange} />
         )}
         {currentPage === 8 && (
-          <Retirement data={profileData} onInputChange={onInputChange} />
+          <Retirement
+            data={profileData}
+            onInputChange={onInputChange}
+            profileStatus={profileStatus}
+          />
         )}
         <ProgressBar currentPage={currentPage} />
         <div className='flex justify-center mt-1'>
@@ -108,10 +127,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-// iterates over an objects own properties and changes all null values to 0
-// Object.keys(obj).forEach((key) => {
-//   if (obj[key] === null) {
-//     obj[key] = 0;
-//   }
-// });
