@@ -8,6 +8,7 @@ const InputItem = ({
   onInputChange,
   autoFocus,
   required,
+  placeHolder,
 }) => {
   return (
     <div className='input-item'>
@@ -20,6 +21,7 @@ const InputItem = ({
         value={value}
         min={0}
         onChange={onInputChange}
+        placeHolder={placeHolder}
         required={required}
       />
     </div>
