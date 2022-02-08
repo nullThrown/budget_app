@@ -13,6 +13,8 @@ const ChildCare = ({ data, onInputChange }) => {
           type='number'
           value={childcareTuition}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
         <InputItem
           title='Daycare'
@@ -20,6 +22,8 @@ const ChildCare = ({ data, onInputChange }) => {
           type='number'
           value={childcareDaycare}
           onInputChange={onInputChange}
+          placeHolder={0}
+          required
         />
       </section>
     </>
