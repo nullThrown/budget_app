@@ -13,7 +13,7 @@ export const createExpense = (expense) => async (dispatch) => {
     dispatch({ type: 'expenses/createExpense', payload: newExpense });
     dispatch({ type: 'profile/updateCategories', payload: categories });
   } catch (err) {
-    handleErrors(err, 'recurring', dispatch);
+    handleErrors(err, 'expenses', dispatch);
   }
 };
 export const editExpense = (expense) => async (dispatch) => {
@@ -26,7 +26,7 @@ export const editExpense = (expense) => async (dispatch) => {
     );
     dispatch({ type: 'expenses/editExpense', payload: res.data });
   } catch (err) {
-    handleErrors(err, 'recurring', dispatch);
+    handleErrors(err, 'expenses', dispatch);
   }
 };
 
@@ -39,6 +39,6 @@ export const deleteExpense = (id) => async (dispatch) => {
     );
     dispatch({ type: 'expenses/deleteExpense', payload: id });
   } catch (err) {
-    handleErrors(err, 'recurring', dispatch);
+    handleErrors(err, 'expenses', dispatch);
   }
 };
