@@ -7,17 +7,20 @@ CSS STRUCTURE
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
 
-    Validation
-    forms
-      *fix signup password validation
-      *check validation for create-profile
-      *integrate validation with error handling
+      forms
+        *add dollar symbols before each input item 
+        
+        recurring/one time/edit
+          *create custom boolean selector for 'indulgent/necessity' one-time
 
-    *fix create profile form
-    *create edit recurring form
-    *fix data population for graphs
+        signup
+          *fix signup password validation
 
-  *create custom boolean selector for 'indulgent/necessity'
+      
+      *fix data population for graphs
+      *move thru each component on home 
+      *fix UI of each component
+
 
 
     *type checking for all database post methods
