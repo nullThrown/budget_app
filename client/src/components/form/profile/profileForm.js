@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createProfile } from '../../../features/profile/middleware';
 import defaultObjectProperties from '../../../util/defaultObjProp';
 import Housing from './sections/housing';
-import Salary from './sections/salaray';
+import Salary from './sections/salary';
 import Vehicle from './sections/vehicle';
 import Utilities from './sections/utilities';
 import ChildCare from './sections/childcare';
