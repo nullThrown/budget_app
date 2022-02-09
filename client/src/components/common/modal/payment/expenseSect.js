@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { createExpense } from '../../../../features/expenses/middleware';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../../common/loading/loading';
-import Success from '../success';
+import Success from '../../../alert/success';
 import { Alert } from '../../../alert/alert';
 const ExpenseSection = ({ categories, closeModal }) => {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.expenses.status);
+  const expenseStatus = useSelector((state) => state.expenses.status);
 
   const [expense, setExpense] = useState({
     title: '',
@@ -24,14 +24,14 @@ const ExpenseSection = ({ categories, closeModal }) => {
     e.preventDefault();
     dispatch(createExpense(expense));
   };
-  if (status === 'loading') {
+  if (expenseStatus === 'loading') {
     return (
       <div className='center-container'>
         <Loading />
       </div>
     );
   }
-  if (status === 'success') {
+  if (expenseStatus === 'success') {
     return (
       <Success
         text='Payment Added Successfully!'
@@ -43,6 +43,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
 
   return (
     <section className='modal-expense-sect'>
+      {expenseStatus === 'error' && <Alert msg='Something went wrong' />}
       <form onSubmit={handleSubmit} className='modal__payment-form'>
         <p className='heading-6 text-center modal__payment-title'>One Time</p>
         <input
@@ -91,10 +92,6 @@ const ExpenseSection = ({ categories, closeModal }) => {
           className='btn btn-submit modal__expense-submit-btn'>
           Submit
         </button>
-
-        {status === 'error' && (
-          <Alert msg='Something went wrong :( try again' />
-        )}
       </form>
     </section>
   );
