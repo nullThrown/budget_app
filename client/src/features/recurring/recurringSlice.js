@@ -25,7 +25,7 @@ export default function recurringReducer(state = initialState, action) {
     case 'recurring/dataLoadError':
       return {
         ...state,
-        status: 'loading',
+        status: 'error',
       };
 
     case 'recurring/createRecurring':
