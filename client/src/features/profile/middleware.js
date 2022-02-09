@@ -13,7 +13,7 @@ export const createProfile = (profile) => async (dispatch) => {
     );
     const { data } = res;
     console.log(res);
-    dispatch({ type: 'profile/dataLoaded', payload: data });
+    dispatch({ type: 'profile/profileCreated', payload: data });
     dispatch({ type: 'recurring/dataLoaded', payload: data.recurringPayments });
   } catch (err) {
     handleErrors(err, 'profile', dispatch);
