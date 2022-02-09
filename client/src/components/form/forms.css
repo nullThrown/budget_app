@@ -57,9 +57,9 @@
 }
 .progress-bar {
   width: 90%;
-  height: 20px;
+  height: 15px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   column-gap: 1px;
 }
 .progress-sect--complete {
@@ -68,6 +68,13 @@
 .progress-sect--incomplete {
   background-color: var(--grey-1);
 }
+.create-profile-desc {
+  padding: 1em 0;
+}
+.create-profile-desc > p {
+  padding: 0.5em 0;
+}
+
 .btn-page-select {
   font-size: 1.2rem;
   border: 1px solid var(--grey-2);
