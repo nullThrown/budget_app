@@ -34,6 +34,10 @@ const ProgressBar = ({ currentPage }) => {
         className={`progress-sect--${
           currentPage >= 8 ? 'complete' : 'incomplete'
         }`}></span>
+      <span
+        className={`progress-sect--${
+          currentPage >= 9 ? 'complete' : 'incomplete'
+        }`}></span>
     </div>
   );
 };
