@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { PasswordCheck } from './passwordCheck';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../../features/auth/userSlice';
-import { useNavigate } from 'react-router-dom';
 import InputItem from '../inputItem';
 import Loading from '../../common/loading/loading';
 import { Alert } from '../../alert/alert';
+import Success from '../../alert/success';
 import {
   checkStrLength,
   checkStrNum,
@@ -16,7 +16,6 @@ import {
 
 const SignupForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const userStatus = useSelector((state) => state.user.status);
 
@@ -55,16 +54,22 @@ const SignupForm = () => {
     checkStrSym(userData.password, setPwordHasSym);
     checkStrUpper(userData.password, setPwordHasUpper);
   }, [userData.password]);
-  useEffect(() => {
-    if (userStatus === 'success') {
-      navigate('/signup-successful');
-      dispatch({ type: 'user/returnToIdle' });
-    }
-  }, [userStatus, navigate]);
+
   if (userStatus === 'loading') {
     return (
       <main className='form-container'>
         <Loading />
+      </main>
+    );
+  }
+  if (userStatus === 'success') {
+    return (
+      <main className='form-container'>
+        <Success
+          text='Account Created!'
+          actionCreator={{ type: 'user/returnToIdle' }}
+          redirectPath='/create-profile'
+        />
       </main>
     );
   }
