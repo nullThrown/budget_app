@@ -1,6 +1,7 @@
 import React from 'react';
 import InputItem from '../../inputItem';
 import { Alert } from '../../../alert/alert';
+
 const Retirement = ({ data, onInputChange, profileStatus }) => {
   const { retirementIra, retirement401k, retirementBrokerage } = data;
   return (
