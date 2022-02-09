@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import '../modal.css';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../../loading/loading';
-import Success from '../success';
+import Success from '../../../alert/success';
 import customStyles from '../styles';
 import { editExpense } from '../../../../features/expenses/middleware';
 import { Alert } from '../../../alert/alert';
