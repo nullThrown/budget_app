@@ -188,6 +188,9 @@ li {
   background-color: white;
   border-radius: 10px;
 }
+.text-default {
+  font-size: 1rem;
+}
 /* UTILITY CLASSES */
 .text-white {
   color: var(--soft-white);
@@ -204,6 +207,9 @@ li {
 }
 .text-center {
   text-align: center;
+}
+.text-bold {
+  font-weight: 700;
 }
 
 /* FLEX */
