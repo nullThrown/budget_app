@@ -13,7 +13,8 @@ import Debt from './sections/debt';
 import Retirement from './sections/retirement';
 import ProgressBar from './progressBar';
 import Loading from '../../common/loading/loading';
-
+import Success from '../../alert/success';
+import Description from './sections/description';
 const Profile = () => {
   const dispatch = useDispatch();
   const profileStatus = useSelector((state) => state.profile.status);
@@ -66,31 +67,43 @@ const Profile = () => {
       </main>
     );
   }
+  if (profileStatus === 'success') {
+    return (
+      <main className='form-container'>
+        <Success
+          text='Profile created'
+          actionCreator={{ type: 'profile/returnToIdle' }}
+          redirectPath='/profile/home'
+        />
+      </main>
+    );
+  }
   return (
     <main className='form-container'>
       <form className='form'>
-        {currentPage === 1 && (
+        {currentPage === 1 && <Description onInputChange={onInputChange} />}
+        {currentPage === 2 && (
           <Salary data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 2 && (
+        {currentPage === 3 && (
           <Housing data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 3 && (
+        {currentPage === 4 && (
           <Vehicle data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 4 && (
+        {currentPage === 5 && (
           <Utilities data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 5 && (
+        {currentPage === 6 && (
           <Health data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 6 && (
+        {currentPage === 7 && (
           <ChildCare data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 7 && (
+        {currentPage === 8 && (
           <Debt data={profileData} onInputChange={onInputChange} />
         )}
-        {currentPage === 8 && (
+        {currentPage === 9 && (
           <Retirement
             data={profileData}
             onInputChange={onInputChange}
@@ -111,12 +124,12 @@ const Profile = () => {
             type='button'
             className='btn btn-page-select'
             name='next'
-            disabled={currentPage >= 8}
+            disabled={currentPage >= 9}
             onClick={onPageChange}>
             Next
           </button>
         </div>
-        {currentPage === 8 && (
+        {currentPage === 9 && (
           <button type='submit' className='btn btn-submit' onClick={onSubmit}>
             Submit
           </button>
