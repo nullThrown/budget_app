@@ -35,13 +35,18 @@
 }
 .modal__expense-submit-btn {
   grid-column: 1 / 3;
-  grid-row: 5/ 6;
+  grid-row: 6/ 7;
   justify-self: start;
 }
 .modal__recurring-submit-btn {
   grid-column: 1 / 3;
   grid-row: 4/ 5;
   justify-self: start;
+}
+.modal__expense-nec-select {
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+  justify-self: center;
 }
 .input-expense__title {
   grid-column: 1/ 2;
