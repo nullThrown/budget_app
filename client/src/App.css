@@ -1,7 +1,3 @@
-/* NOTES  */
-/* create card class that will have a set amount of padding, border, radius, etc. */
-/* create a card box class(for card content) that creates an even space btween titles and card contents */
-
 /* VARIABLES */
 :root {
   --soft-white: rgb(250, 250, 250);
@@ -12,6 +8,7 @@
   --grey-4: rgba(163, 160, 160, 0.4);
   --grey-5: rgba(163, 160, 160, 0.822);
   --grey-6: rgb(109, 107, 107);
+  --grey-7: rgb(87, 86, 86);
 
   --green-1: rgb(196, 248, 221);
   --green-2: rgba(203, 246, 203, 0.76);
@@ -19,6 +16,7 @@
   --green-4: rgba(35, 211, 35, 0.822);
   --green-5: rgb(57, 153, 57);
   --green-6: rgb(26, 83, 26);
+  --green-7: rgba(163, 230, 163, 0.863);
 
   --blue-1: rgb(31, 95, 155);
   --blue-2: rgb(25, 52, 92);
@@ -166,9 +164,6 @@ li {
   .profile__error-placement {
     grid-column: 1 / 5;
   }
-}
-
-.main-nav {
 }
 
 /* BUTTONS */
