@@ -7,10 +7,11 @@ import Success from '../../../alert/success';
 import customStyles from '../styles';
 import { editExpense } from '../../../../features/expenses/middleware';
 import { Alert } from '../../../alert/alert';
+import NecessitySelect from '../payment/necessitySelect';
 const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
   const dispatch = useDispatch();
 
-  const status = useSelector((state) => state.expenses.status);
+  const expensesStatus = useSelector((state) => state.expenses.status);
 
   const expenseItem = useSelector((state) =>
     state.expenses.data.find((exp) => exp._id === expenseId)
@@ -22,7 +23,15 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
   const [expense, setExpense] = useState(expenseItem || {});
 
   const onInputChange = (e) => {
-    setExpense({ ...expense, [e.target.name]: e.target.value });
+    const name = e.target.name;
+
+    if (name === 'necessity' && expense.necessity === false) {
+      setExpense({ ...expense, necessity: true });
+    } else if (name === 'indulgent' && expense.necessity === true) {
+      setExpense({ ...expense, necessity: false });
+    } else {
+      setExpense({ ...expense, [name]: e.target.value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -52,13 +61,13 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
         X
       </button>
 
-      {status === 'loading' && (
+      {expensesStatus === 'loading' && (
         <div className='center-container'>
           <Loading />
         </div>
       )}
 
-      {status === 'edit_success' && (
+      {expensesStatus === 'edit_success' && (
         <Success
           text='Payment edited Successfully!'
           actionCreator={{ type: 'expenses/returnToIdle' }}
@@ -66,7 +75,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
         />
       )}
 
-      {(status === 'idle' || status === 'error') && (
+      {(expensesStatus === 'idle' || expensesStatus === 'error') && (
         <section className='modal-expense-sect'>
           <form onSubmit={handleSubmit} className='modal__payment-form'>
             <p className='heading-6 text-center modal__payment-title'>
@@ -112,13 +121,18 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
                 return <option value={cat}></option>;
               })}
             </datalist>
+            <NecessitySelect
+              necessity={expense.necessity}
+              onInputChange={onInputChange}
+              className='modal__expense-nec-select'
+            />
 
             <button
               type='submit'
               className='btn btn-submit modal__expense-submit-btn'>
               Submit
             </button>
-            {status === 'error' && (
+            {expensesStatus === 'error' && (
               <Alert msg='Something went wrong :( try again' />
             )}
           </form>
