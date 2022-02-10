@@ -8,7 +8,7 @@ const RecurringSection = ({ categories, closeModal }) => {
   const dispatch = useDispatch();
   const [recurring, setRecurring] = useState({
     name: '',
-    amount: 0,
+    amount: '',
     category: '',
     budget: 100,
   });
@@ -63,15 +63,18 @@ const RecurringSection = ({ categories, closeModal }) => {
           onChange={onInputChange}
           required
         />
-        <input
-          type='number'
-          name='amount'
-          className='input-border-bottom input-recurring__amount'
-          placeholder='Amount'
-          value={recurring.amount}
-          onChange={onInputChange}
-          required
-        />
+        <span className='flex align-center input-recurring__amount '>
+          <p className='dollar-symbol'>$</p>
+          <input
+            type='number'
+            name='amount'
+            className='input-border-bottom '
+            placeholder='Amount'
+            value={recurring.amount}
+            onChange={onInputChange}
+            required
+          />
+        </span>
         <datalist id='payment-categories'>
           {categories.map((cat) => {
             return <option value={cat}></option>;
