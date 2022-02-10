@@ -1,9 +1,10 @@
 import React from 'react';
-import { Alert } from '../components/alert/alert';
+import NecessitySelect from '../components/common/modal/payment/necessitySelect';
+
 const Testing = () => {
   return (
     <main className='center-container'>
-      <Alert msg={'something went wrong'} />
+      <NecessitySelect />
     </main>
   );
 };
