@@ -118,7 +118,6 @@ router.get('/year/:year', verifyToken, async (req, res) => {
 // DESC     EDIT a single expenditure
 // ACCESS   Private
 router.put('/edit', verifyToken, async (req, res) => {
-  console.log(req.body);
   const { title, amount, description, necessity, category, _id, date } =
     req.body;
 
