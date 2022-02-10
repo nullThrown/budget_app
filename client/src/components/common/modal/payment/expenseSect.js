@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../../common/loading/loading';
 import Success from '../../../alert/success';
 import { Alert } from '../../../alert/alert';
+import NecessitySelect from './necessitySelect';
 const ExpenseSection = ({ categories, closeModal }) => {
   const dispatch = useDispatch();
   const expenseStatus = useSelector((state) => state.expenses.status);
@@ -17,7 +18,15 @@ const ExpenseSection = ({ categories, closeModal }) => {
   });
 
   const onInputChange = (e) => {
-    setExpense({ ...expense, [e.target.name]: e.target.value });
+    const name = e.target.name;
+
+    if (name === 'necessity' && expense.necessity === false) {
+      setExpense({ ...expense, necessity: true });
+    } else if (name === 'indulgent' && expense.necessity === true) {
+      setExpense({ ...expense, necessity: false });
+    } else {
+      setExpense({ ...expense, [name]: e.target.value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -86,6 +95,11 @@ const ExpenseSection = ({ categories, closeModal }) => {
             return <option value={cat}></option>;
           })}
         </datalist>
+        <NecessitySelect
+          necessity={expense.necessity}
+          onInputChange={onInputChange}
+          className='modal__expense-nec-select'
+        />
 
         <button
           type='submit'
