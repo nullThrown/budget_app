@@ -9,12 +9,9 @@ TODO LIST
 
       forms
         *add dollar symbols before each input item 
-        
-        recurring/one time/edit
-          *create custom boolean selector for 'indulgent/necessity' one-time
-
-        signup
+          
           *fix signup password validation
+            *needs to run checks prior to submit
 
       
       *fix data population for graphs
