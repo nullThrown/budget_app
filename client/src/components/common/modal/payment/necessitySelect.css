@@ -1,0 +1,70 @@
+.select-container {
+  border: 1px solid var(--grey-2);
+  padding: 2px 2px;
+}
+.widget-container {
+  height: auto;
+  width: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  margin: 0 0.2em;
+}
+.widget {
+  width: 20px;
+  height: 20px;
+  align-self: center;
+  border-radius: 50%;
+  background-color: rgb(40, 76, 117);
+}
+
+@keyframes slideRight {
+  to {
+    transform: translateX(18px);
+  }
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(18px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.indulgent-selected {
+  animation: slideRight 250ms ease-out forwards;
+}
+.necessity-selected {
+  animation: slideLeft 250ms ease-out forwards;
+}
+@keyframes fadeInGreen {
+  from {
+    color: var(--grey-7);
+  }
+  to {
+    color: var(--green-6);
+    background-color: var(--green-7);
+  }
+}
+@keyframes fadeInRed {
+  from {
+    color: var(--grey-7);
+  }
+  to {
+    color: var(--red-6);
+    background-color: var(--red-2);
+  }
+}
+.btns-default {
+  color: var(--grey-7);
+  padding: 0.3em;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.necessity-selected-btn {
+  animation: fadeInGreen 250ms ease-out forwards;
+}
+.indulgent-selected-btn {
+  animation: fadeInRed 250ms ease-out forwards;
+}
