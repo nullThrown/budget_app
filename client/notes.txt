@@ -7,16 +7,19 @@ CSS STRUCTURE
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
 
-      forms
-        *add dollar symbols before each input item 
           
-          *fix signup password validation
-            *needs to run checks prior to submit
+        *fix signup password validation
+          *needs to run checks prior to submit
 
-      
-      *fix data population for graphs
-      *move thru each component on home 
-      *fix UI of each component
+        *abstract modal and modal contents
+          *props.children is built for this purpose
+        *add a colored top bar with title, close button, and return 
+        *keep one modal component 
+        and place the other sections into their own container
+
+        *fix data population for graphs
+        *move thru each component on home 
+        *fix UI of each component
 
 
 
