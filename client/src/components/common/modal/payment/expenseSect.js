@@ -81,15 +81,18 @@ const ExpenseSection = ({ categories, closeModal }) => {
           onChange={onInputChange}
           value={expense.description}
         />
-        <input
-          type='text'
-          className='input-border-bottom input-expense__amount'
-          name='amount'
-          placeholder='amount'
-          onChange={onInputChange}
-          value={expense.amount}
-          required
-        />
+        <span className='flex align-center input-expense__amount'>
+          <p className='dollar-symbol'>$</p>
+          <input
+            type='text'
+            className='input-border-bottom align-'
+            name='amount'
+            placeholder='amount'
+            onChange={onInputChange}
+            value={expense.amount}
+            required
+          />
+        </span>
         <datalist id='payment-categories'>
           {categories.map((cat) => {
             return <option value={cat}></option>;
