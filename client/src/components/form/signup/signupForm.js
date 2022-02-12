@@ -60,6 +60,8 @@ const SignupForm = () => {
       }
       // all checks pass
     } else {
+      setValidationFailed(false);
+      setPasswordMatch(true);
       dispatch(registerUser(userData));
     }
   };
@@ -143,6 +145,7 @@ const SignupForm = () => {
         {validationFailed && (
           <Alert msg='Oops! Check the password requirements' />
         )}
+
         <button type='submit' className='btn btn-submit' disabled={false}>
           Signup
         </button>
