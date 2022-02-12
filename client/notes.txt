@@ -8,20 +8,18 @@ CSS STRUCTURE
 TODO LIST
 
           
-        *fix signup password validation
-          *needs to run checks prior to submit
 
-        *abstract modal and modal contents
-          *props.children is built for this purpose
-        *add a colored top bar with title, close button, and return 
         *keep one modal component 
         and place the other sections into their own container
+          *props.children is built for this purpose
+        *add a colored top bar with title, close button, and return 
+        *add color to overlay -- soft gray to focus user's attention
 
         *fix data population for graphs
         *move thru each component on home 
         *fix UI of each component
-
-
+        *categories for modals should be pulled from profile.categories in store 
+        *complete year page
 
     *type checking for all database post methods
     *abstract out mongoose model types i.e., requiredStr = {type: String, required: true}
