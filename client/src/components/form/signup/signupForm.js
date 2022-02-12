@@ -7,12 +7,7 @@ import InputItem from '../inputItem';
 import Loading from '../../common/loading/loading';
 import { Alert } from '../../alert/alert';
 import Success from '../../alert/success';
-import {
-  checkStrLength,
-  checkStrNum,
-  checkStrSym,
-  checkStrUpper,
-} from '../../../util/validation/validatePassword';
+import useValidatePassword from '../../../hooks/useValidatePword';
 
 const SignupForm = () => {
   const dispatch = useDispatch();
@@ -26,11 +21,9 @@ const SignupForm = () => {
     password: '',
   });
   const [password2, setPassword2] = useState('');
-  const [isPwordLong, setPwordLong] = useState(false);
-  const [pwordHasNum, setPwordHasNum] = useState(false);
-  const [pwordHasSym, setPwordHasSym] = useState(false);
-  const [pwordHasUpper, setPwordHasUpper] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const validators = useValidatePassword(userData.password);
+  const [validationFailed, setValidationFailed] = useState(false);
 
   const onInputChange = (e) => {
     if (e.target.name === 'password2') {
@@ -40,20 +33,36 @@ const SignupForm = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    if (userData.password !== password2) {
-      setPasswordMatch(false);
-      setPassword2('');
+    const { isLong, hasNumber, hasSymbol, hasUpper } = validators;
+
+    // error handler
+    //  error caught -- prevent submit & display corresponding error msg
+    // no error caught -- submit form
+    if (
+      userData.password !== password2 ||
+      !isLong ||
+      !hasNumber ||
+      !hasSymbol ||
+      !hasUpper
+    ) {
+      // if/else determine if 'no match' error message is displayed
+      if (userData.password !== password2) {
+        setPasswordMatch(false);
+        setPassword2('');
+      } else {
+        setPasswordMatch(true);
+      }
+      // if/else determine if 'check validators' error message is displayed
+      if (!isLong || !hasNumber || !hasSymbol || !hasUpper) {
+        setValidationFailed(true);
+      } else {
+        setValidationFailed(false);
+      }
+      // all checks pass
     } else {
-      setPasswordMatch(true);
       dispatch(registerUser(userData));
     }
   };
-  useEffect(() => {
-    checkStrLength(userData.password, setPwordLong);
-    checkStrNum(userData.password, setPwordHasNum);
-    checkStrSym(userData.password, setPwordHasSym);
-    checkStrUpper(userData.password, setPwordHasUpper);
-  }, [userData.password]);
 
   if (userStatus === 'loading') {
     return (
@@ -108,10 +117,10 @@ const SignupForm = () => {
             required
           />
           <PasswordCheck
-            isPwordLong={isPwordLong}
-            pwordHasNum={pwordHasNum}
-            pwordHasSym={pwordHasSym}
-            pwordHasUpper={pwordHasUpper}
+            isPwordLong={validators.isLong}
+            pwordHasNum={validators.hasNumber}
+            pwordHasSym={validators.hasSymbol}
+            pwordHasUpper={validators.hasUpper}
           />
           <InputItem
             title='Password'
@@ -131,6 +140,9 @@ const SignupForm = () => {
           />
         </div>
         {passwordMatch || <Alert msg='passwords do not match' />}
+        {validationFailed && (
+          <Alert msg='Oops! Check the password requirements' />
+        )}
         <button type='submit' className='btn btn-submit' disabled={false}>
           Signup
         </button>
