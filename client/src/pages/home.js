@@ -6,7 +6,7 @@ import Overview from '../components/profile/overview/overview';
 import Expenditures from '../components/profile/expenditures/expenditures';
 import BudgetGraph from '../components/profile/budget/budgetGraph';
 import Recurring from '../components/profile/recurring/recurring';
-import { categories, barData, doughnutData } from '../data/currentMonth';
+import { barData, categories, doughnutData } from '../data/currentMonth';
 
 const Home = () => {
   const status = useSelector((state) => state.profile.status);
@@ -29,7 +29,7 @@ const Home = () => {
     <>
       <Overview doughnutData={doughnutData} />
       <Recurring />
-      <BudgetGraph data={barData} categories={categories} />
+      <BudgetGraph barData={barData} categories={categories} />
       <Expenditures />
     </>
   );

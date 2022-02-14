@@ -27,9 +27,12 @@
   grid-row: 3 / 4;
   justify-content: center;
 }
+.budget-item-box {
+  border-bottom: 1px solid var(--grey-2);
+}
+
 .budget-item {
   padding-bottom: 0.4em;
-  border-bottom: 1px solid var(--grey-2);
   display: flex;
   align-items: center;
   justify-content: center;

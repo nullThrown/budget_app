@@ -3,8 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Nav from '../components/nav/nav';
 import Header from '../components/profile/header/header';
 import Banner from '../components/profile/banner/banner';
-import PaymentModal from '../components/common/modal/payment/modal';
-
+import AddPayment from '../components/common/modal/sections/addPayment';
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
@@ -12,7 +11,7 @@ const Profile = () => {
 
   return (
     <div>
-      <PaymentModal isOpen={isOpen} closeModal={closeModal} />
+      <AddPayment isOpen={isOpen} closeModal={closeModal} />
       <Nav />
       <main className='main-container'>
         <Header />

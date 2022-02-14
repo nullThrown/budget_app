@@ -1,72 +1,116 @@
-.modal-close-btn {
-  position: absolute;
-  font-size: 1.2rem;
-  top: 20px;
-  left: 95%;
+.modal__header {
+  height: 80px;
+  background-color: var(--blue-2);
+  display: grid;
+  grid-column: repeat(3, 1fr);
+  padding: 6px 18px;
 }
-.modal__btn-box {
-  margin: 2em auto 0;
+
+.modal__title {
+  color: var(--soft-white);
+  grid-column: 2 /3;
+  justify-self: center;
+  align-self: center;
+}
+.modal__close-btn {
+  font-size: 2.4rem;
+  color: var(--soft-white);
+  grid-column: 3 /4;
+  justify-self: right;
+  align-self: start;
+}
+.modal__close-btn:hover {
+  color: var(--grey-3);
+}
+.modal__add-pay-btn-box {
+  margin: 4em auto 0;
   display: flex;
   justify-content: center;
 }
-.modal__btn {
+.modal__add-pay-btn {
   padding: 0.8em 0.8em;
   font-size: 1rem;
-  border-radius: 30px;
-  background-color: var(--blue-4);
+  border-radius: 3px;
+  background-color: var(--blue-1);
+  box-shadow: 4px 4px 10px var(--grey-5);
   color: white;
 }
-.modal__btn:hover {
+.modal__add-pay-btn:hover {
   background-color: var(--blue-2);
 }
-.modal__return-btn {
+.modal__add-pay-return-btn {
   font-size: 1.3rem;
 }
-.modal__payment-form {
-  padding: 0em;
+.modal__form-sect {
+  padding: 1em 2em;
+}
+.modal__form {
+  padding-top: 0.6em;
   display: grid;
   grid-column: repeat(2, 1fr);
   row-gap: 20px;
   column-gap: 15px;
 }
-.modal__payment-title {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
+.modal__return-btn {
+  font-size: 2rem;
+  color: var(--grey-7);
 }
-.modal__expense-submit-btn {
-  grid-column: 1 / 3;
-  grid-row: 6/ 7;
-  justify-self: start;
+.modal__return-btn:hover {
+  animation: scaleUp 200ms ease-in forwards;
 }
-.modal__recurring-submit-btn {
+
+/* ADD/EDIT EXPENSE GRID   */
+.modal__expense-title {
+  grid-column: 1/ 2;
+  grid-row: 1 / 3;
+}
+.modal__expense-categories {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+.modal__expense-desc {
   grid-column: 1 / 3;
-  grid-row: 4/ 5;
-  justify-self: start;
+  grid-row: 3 / 4;
+}
+.modal__expense-amount {
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+  justify-self: center;
 }
 .modal__expense-nec-select {
   grid-column: 1 / 3;
   grid-row: 5 / 6;
   justify-self: center;
 }
-.input-expense__title {
-  grid-column: 1/ 2;
-  grid-row: 2 / 3;
-}
-.input-expense__categories {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-.input-expense__desc {
+
+.modal__expense-submit-btn {
   grid-column: 1 / 3;
-  grid-row: 3 / 4;
-}
-.input-expense__amount {
-  grid-column: 1 / 3;
-  grid-row: 4 / 5;
+  grid-row: 6/ 7;
   justify-self: center;
 }
-.input-recurring__amount {
+
+/* ADD RECURRING GRID   */
+.modal__recurring-title {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.modal__recurring-categories {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.modal__recurring-amount {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  justify-self: center;
+}
+.modal__recurring-nec-select {
   grid-column: 1 / 3;
   grid-row: 3 / 4;
+  justify-self: center;
+}
+
+.modal__recurring-submit-btn {
+  grid-column: 1 / 3;
+  grid-row: 5/ 6;
   justify-self: center;
 }

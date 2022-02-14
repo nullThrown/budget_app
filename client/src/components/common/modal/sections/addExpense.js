@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { createExpense } from '../../../../features/expenses/middleware';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../../../common/loading/loading';
+import Loading from '../../loading/loading';
 import Success from '../../../alert/success';
 import { Alert } from '../../../alert/alert';
-import NecessitySelect from './necessitySelect';
-const ExpenseSection = ({ categories, closeModal }) => {
+import NecessitySelect from '../necessitySelect';
+import { BsArrowReturnLeft } from 'react-icons/bs';
+const Expense = ({ categories, closeModal, setCurrentSect }) => {
   const dispatch = useDispatch();
   const expenseStatus = useSelector((state) => state.expenses.status);
 
@@ -33,6 +34,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
     e.preventDefault();
     dispatch(createExpense(expense));
   };
+
   if (expenseStatus === 'loading') {
     return (
       <div className='center-container'>
@@ -40,6 +42,7 @@ const ExpenseSection = ({ categories, closeModal }) => {
       </div>
     );
   }
+
   if (expenseStatus === 'success') {
     return (
       <Success
@@ -51,13 +54,15 @@ const ExpenseSection = ({ categories, closeModal }) => {
   }
 
   return (
-    <section className='modal-expense-sect'>
+    <section className='modal__form-sect'>
       {expenseStatus === 'error' && <Alert msg='Something went wrong' />}
-      <form onSubmit={handleSubmit} className='modal__payment-form'>
-        <p className='heading-6 text-center modal__payment-title'>One Time</p>
+      <button className='btn' onClick={() => setCurrentSect('Add Payment')}>
+        <BsArrowReturnLeft className='modal__return-btn' />
+      </button>
+      <form onSubmit={handleSubmit} className='modal__form'>
         <input
           type='text'
-          className='input-border-bottom input-expense__title'
+          className='input-border-bottom modal__expense-title'
           name='title'
           placeholder='title'
           onChange={onInputChange}
@@ -68,24 +73,24 @@ const ExpenseSection = ({ categories, closeModal }) => {
           name='category'
           list='payment-categories'
           placeholder='category'
-          className='input-border-bottom input-expense__categories'
+          className='input-border-bottom modal__expense-categories'
           onChange={onInputChange}
           value={expense.category}
           required
         />
         <input
           type='text'
-          className='input-border-bottom input-expense__desc'
+          className='input-border-bottom modal__expense-desc'
           name='description'
           placeholder='description'
           onChange={onInputChange}
           value={expense.description}
         />
-        <span className='flex align-center input-expense__amount'>
+        <span className='flex align-center modal__expense-amount'>
           <p className='dollar-symbol'>$</p>
           <input
             type='text'
-            className='input-border-bottom align-'
+            className='input-border-bottom align-center'
             name='amount'
             placeholder='amount'
             onChange={onInputChange}
@@ -114,4 +119,4 @@ const ExpenseSection = ({ categories, closeModal }) => {
   );
 };
 
-export default ExpenseSection;
+export default Expense;

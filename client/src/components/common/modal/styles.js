@@ -1,5 +1,6 @@
 const customStyles = {
   content: {
+    padding: '0',
     top: '40%',
     left: '50%',
     right: 'auto',
@@ -9,7 +10,6 @@ const customStyles = {
     maxWidth: '600px',
     width: '96%',
     height: '450px',
-    padding: '2.6em',
     borderRadius: '40px',
     border: '1px solid var(--grey-2)',
   },

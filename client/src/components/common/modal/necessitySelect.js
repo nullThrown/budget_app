@@ -15,7 +15,7 @@ const NecessitySelect = ({ necessity, onInputChange, className }) => {
       <div className='widget-container'>
         <div
           className={`widget ${
-            necessity === true ? 'necessity-selected' : 'indulgent-selected'
+            necessity ? 'necessity-selected' : 'indulgent-selected'
           } `}></div>
       </div>
 
@@ -23,7 +23,7 @@ const NecessitySelect = ({ necessity, onInputChange, className }) => {
         type='button'
         name='indulgent'
         className={`btn btns-default ${
-          necessity === false ? 'indulgent-selected-btn' : ''
+          !necessity ? 'indulgent-selected-btn' : ''
         }`}
         onClick={onInputChange}>
         Indulgent
