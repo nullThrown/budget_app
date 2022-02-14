@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TableCell from './tableCell';
-import ExpenseModal from '../../common/modal/expense/modal';
+import ExpenseModal from '../../common/modal/sections/editExpense';
 export const Table = ({ expenses }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [expenseItemId, setExpenseItemId] = useState('');
