@@ -1,59 +1,102 @@
+import { useState, useEffect } from 'react';
 import './overview.css';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-
+import BudgetItem from './budgetItem';
 const Overview = ({ doughnutData }) => {
-  // eslint-disable-next-line
-  // const selectRecurringTotal = (state) => {
-  //   return state.finance.recurringPayments.reduce((acc, current) => {
-  //     return acc + current.total;
-  //   }, 0);
-  // };
-  // // eslint-disable-next-line
-  // const selectExpNecessityTotal = (state) => {
-  //   return state.finance.expenses.reduce((acc, current) => {
-  //     if (current.necessity) return acc + current.amount;
-  //     return acc;
-  //   }, 0);
-  // };
-  // // eslint-disable-next-line
-  // const selectExpIndulgentTotal = (state) => {
-  //   return state.finance.expenses.reduce((acc, current) => {
-  //     if (!current.necessity) return acc + current.amount;
-  //     return acc;
-  //   }, 0);
-  // };
   const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome);
-  // eslint-disable-next-line
-  // const expNecessityTotal = useSelector(selectExpNecessityTotal);
-  // const expIndulgentTotal = useSelector(selectExpIndulgentTotal);
-  // const recurringTotal = useSelector(selectRecurringTotal);
+  const [data, setData] = useState({
+    takeHomeAmount: takeHomeAmount || 0,
+    necessitySpent: 0,
+    indulgentSpent: 0,
+  });
+  const [remaining, setRemaining] = useState(0);
+
+  // returns sum total of recurring payments
+  const recurringPayments = useSelector((state) =>
+    state.recurring.data?.reduce((acc, current) => {
+      return (
+        acc + current.payments.reduce((acc, current) => acc + current.amount, 0)
+      );
+    }, 0)
+  );
+
+  const dividedExpenses = useSelector((state) => {
+    let expensesTuple = [0, 0];
+    state.expenses.data?.forEach((exp) => {
+      if (exp.necessity) {
+        expensesTuple[0] += exp.amount;
+      } else {
+        expensesTuple[1] += exp.amount;
+      }
+    });
+    return expensesTuple;
+  });
+
+  useEffect(() => {
+    setData({
+      ...data,
+      takeHomeAmount: takeHomeAmount,
+    });
+  }, [takeHomeAmount]);
+
+  useEffect(() => {
+    setData({
+      ...data,
+      necessitySpent: recurringPayments + dividedExpenses[0] || 0,
+      indulgentSpent: dividedExpenses[1] || 0,
+    });
+  }, [recurringPayments, dividedExpenses[0], dividedExpenses[1]]);
+
+  useEffect(() => {
+    setRemaining((prev) => {
+      return (prev =
+        data.takeHomeAmount - (data.necessitySpent + data.indulgentSpent));
+    });
+  }, [data]);
+
+  useEffect(() => {
+    console.log(data);
+    console.log(remaining);
+  }, [data, remaining]);
 
   return (
     <section className='card budget'>
       <h3 className='heading-4 text-center'>Overview</h3>
       <div className='budget-box'>
-        <BudgetItem
-          title={'Take-home pay'}
-          amountClass={'item-amount--green'}
-          amount={takeHomeAmount}
-        />
+        <div className='budget-item-box'>
+          <BudgetItem
+            title={'Take-home pay'}
+            amountClass={'item-amount--green'}
+            amount={data.takeHomeAmount}
+          />
+          <BudgetItem
+            title={'Necessity Spent: '}
+            amountClass={'item-amount--red'}
+            amount={data.necessitySpent}
+          />
+          <BudgetItem
+            title={'Indugent Spent:'}
+            amountClass={'item-amount--red'}
+            amount={data.indulgentSpent}
+          />
+        </div>
         {/* nec, indulg, rem */}
-        <Doughnut data={doughnutData([100, 200, 300])} className='pie-chart' />
+        <Doughnut
+          data={doughnutData([
+            data.necessitySpent,
+            data.indulgentSpent,
+            remaining,
+          ])}
+          className='pie-chart'
+        />
+        <BudgetItem
+          title={'Remaining'}
+          amountClass={'item-amount--green'}
+          amount={remaining}
+        />
       </div>
     </section>
-  );
-};
-
-//choose better name than item
-// keep this in case all amounts are to be presented explicitly
-const BudgetItem = (props) => {
-  const { title, amountClass, amount } = props;
-  return (
-    <div className='budget-item'>
-      <p className='item-title'>{title}</p>
-      <span className={amountClass}>$ {amount}</span>
-    </div>
   );
 };
 
