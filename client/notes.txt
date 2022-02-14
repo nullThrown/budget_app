@@ -6,15 +6,9 @@ CSS STRUCTURE
 
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
-
-          
-
-        *keep one modal component 
-        and place the other sections into their own container
-          *props.children is built for this purpose
-        *add a colored top bar with title, close button, and return 
-        *add color to overlay -- soft gray to focus user's attention
-
+        *fix all errors/warnings
+        *fix overview graph 
+          *remaining section should be set to zero when -> remaining < 0
         *fix data population for graphs
         *move thru each component on home 
         *fix UI of each component
