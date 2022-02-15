@@ -274,13 +274,48 @@ router.post(
         },
       ],
       categories: [
-        'housing',
-        'vehicle',
-        'utilites',
-        'childcare',
-        'health',
-        'debt',
-        'retirement',
+        {
+          title: 'housing',
+          budget: 0,
+          isDisplayed: false,
+          spent: 0,
+        },
+        {
+          title: 'vehicle',
+          budget: 0,
+          isDisplayed: true,
+          spent: 0,
+        },
+        {
+          title: 'utilities',
+          budget: 0,
+          isDisplayed: true,
+          spent: 0,
+        },
+        {
+          title: 'childcare',
+          budget: 0,
+          isDisplayed: true,
+          spent: 0,
+        },
+        {
+          title: 'health',
+          budget: 0,
+          isDisplayed: true,
+          spent: 0,
+        },
+        {
+          title: 'debt',
+          budget: 0,
+          isDisplayed: true,
+          spent: 0,
+        },
+        {
+          title: 'retirement',
+          budget: 0,
+          isDisplayed: true,
+          spent: 0,
+        },
       ],
     };
 
