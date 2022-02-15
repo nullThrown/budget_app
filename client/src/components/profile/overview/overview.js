@@ -55,11 +55,6 @@ const Overview = ({ doughnutData }) => {
     });
   }, [data]);
 
-  useEffect(() => {
-    console.log(data);
-    console.log(remaining);
-  }, [data, remaining]);
-
   return (
     <section className='card budget'>
       <h3 className='heading-4 text-center'>Overview</h3>
