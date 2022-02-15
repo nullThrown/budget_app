@@ -1,20 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-const defaultedStr = { type: String, default: '' };
-const defaultedNum = { type: Number, default: 0 };
+const {
+  requiredStr,
+  requiredNum,
+  defaultedStr,
+  defaultedNum,
+  requiredBool,
+} = require('./fieldTypes');
 
 const profileSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'user' },
-    createdAt: { type: Date, default: Date.now() },
-    updatedAt: { type: Date },
 
     paycheckAmount: defaultedNum,
     salarySchedule: defaultedStr,
     recurringPayments: [
       {
-        total: { type: Number },
+        total: defaultedNum,
         budget: defaultedNum,
         category: defaultedStr,
         payments: [
@@ -25,9 +27,16 @@ const profileSchema = new Schema(
         ],
       },
     ],
-    categories: [{ type: String }],
+    categories: [
+      {
+        title: requiredStr,
+        budget: requiredNum,
+        isDisplayed: requiredBool,
+        spent: defaultedNum,
+      },
+    ],
   },
-  { toJSON: { virtuals: true }, toObject: { virtuals: true } }
+  { toJSON: { virtuals: true }, toObject: { virtuals: true }, timestamps: true }
 );
 
 profileSchema.virtual('monthlyTakeHome').get(function () {
