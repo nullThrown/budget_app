@@ -1,18 +1,30 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const {
+  requiredStr,
+  requiredNum,
+  defaultedStr,
+  requiredBool,
+  dateNow,
+} = require('./fieldTypes');
 
-const expensesSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'user' },
-  data: [
-    {
-      title: { type: String, maxlength: 30, required: true },
-      amount: { type: Number, required: true },
-      description: String,
-      necessity: { type: Boolean, default: false, required: true },
-      category: { type: String, maxlength: 30, required: true },
-      date: { type: Date, default: Date.now() },
-    },
-  ],
-});
+const expensesSchema = new Schema(
+  {
+    user: { type: Schema.Types.ObjectId, ref: 'user' },
+    data: [
+      {
+        title: { ...requiredStr, maxlength: 30 },
+        amount: requiredNum,
+        description: { ...defaultedStr, maxlength: 50 },
+        necessity: requiredBool,
+        category: defaultedStr,
+        date: dateNow,
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model('expense', expensesSchema);
