@@ -13,7 +13,7 @@ const {
   resource_not_found,
 } = require('../../util/responseTypes');
 
-// ROUTE    POST api/exp/create-new
+// ROUTE    POST api/exp/create
 // DESC     create new expenditure
 // ACCESS   Private
 router.post(
