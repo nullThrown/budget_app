@@ -6,13 +6,37 @@ CSS STRUCTURE
 
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
+
+    USER INTERFACE
+      general
+        *line up first row of home components
+
+
+      nav
+
+      recurring
+             
+        *expenses 
+          *allow horizontal scroll
+          *add pagination as well 
+
+      REACT FUNCTIONALITY
+
         *fix all errors/warnings
-        *fix overview graph 
+        *remove category creation in createRecurring/ createExpense
+        *category creation will be separate route that is called in Add New Payment component
+        *fix overview graph
           *remaining section should be set to zero when -> remaining < 0
-        *fix data population for graphs
-        *move thru each component on home 
-        *fix UI of each component
+        
+        *fix data population for budget graph
+        
         *categories for modals should be pulled from profile.categories in store 
+        
+        *move thru each component on home and fix UI 
+        
+        *remove dollar symbol on all input items
+          *make $ class a prop
+
         *complete year page
 
     *type checking for all database post methods
