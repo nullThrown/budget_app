@@ -9,7 +9,13 @@ const BudgetGraph = ({ barData }) => {
   return (
     <section className='card monthly-specifics'>
       <h2 className='heading-4 text-center'>Budget</h2>
-      <Bar data={barData(categories)} className='monthly-graph' />
+      <div className='card-main-content-box budget-graph-box'>
+        <Bar
+          data={barData(categories)}
+          className='budget-graph'
+          options={{ maintainAspectRatio: false }}
+        />
+      </div>
     </section>
   );
 };
