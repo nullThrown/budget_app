@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BsArrowReturnLeft } from 'react-icons/bs';
+import { BsArrowReturnLeft, BsLightbulb } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
 import ModalInstance from '../modal';
 import Expense from './addExpense';
@@ -10,7 +10,9 @@ const AddPayment = ({ isOpen, closeModal }) => {
 
   const [currentSect, setCurrentSect] = useState('Add Payment');
 
-  const categories = useSelector((state) => state.profile.categories);
+  const categories = useSelector((state) =>
+    state.profile.categories.map((cat) => cat.title)
+  );
 
   const onRequestClose = () => {
     setCurrentSect('Add Payment');
