@@ -31,7 +31,7 @@ const profileSchema = new Schema(
       {
         title: requiredStr,
         budget: requiredNum,
-        isDisplayed: requiredBool,
+        isDisplayed: { type: Boolean, default: true },
         spent: defaultedNum,
       },
     ],
