@@ -128,13 +128,14 @@ li {
       440px,
       700px
     );
-  grid-template-rows: 100px repeat(3, min-content);
+  grid-template-rows: 100px min-content 440px repeat(1, min-content);
   column-gap: 1em;
   row-gap: 1em;
 }
 @media (max-width: 1150px) {
   .main-container {
     grid-template-columns: repeat(2, minmax(200px, 240px)) minmax(440px, 700px);
+    grid-template-rows: repeat(2, fit-content) 400px;
     width: 98%;
     margin: 1em auto 10em;
   }
@@ -178,10 +179,13 @@ li {
 
 .card {
   /* padding should most likely be component specific */
-  padding: 1.4em;
+  padding-top: 1.2em;
   box-shadow: 5px 5px 10px var(--grey-2);
   background-color: white;
   border-radius: 10px;
+}
+.card-main-content-box {
+  margin: 1em 0 1em;
 }
 .text-default {
   font-size: 1rem;
