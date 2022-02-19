@@ -1,13 +1,34 @@
 .recurring {
   grid-column: 3 / 4;
   grid-row: 3 / 4;
+  height: 440px;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
 }
 @media (max-width: 1150px) {
   .recurring {
     grid-column: 2 / 3;
+    height: fit-content;
   }
 }
-
+@media (max-width: 900px) {
+  .recurring {
+    grid-column: 2 / 3;
+    height: fit-content;
+    align-self: stretch;
+  }
+}
+.payment__box {
+  height: 390px;
+  overflow-y: scroll;
+}
+.payment__pages {
+  padding: 0.4em;
+  text-align: center;
+}
+.payment__pages > a {
+  margin: 0 0.4em;
+}
 .payment__category {
   padding: 0.5em;
   border-bottom: 1px solid var(--grey-4);
