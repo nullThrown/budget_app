@@ -3,6 +3,7 @@ import './overview.css';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import BudgetItem from './budgetItem';
+
 const Overview = ({ doughnutData }) => {
   const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome);
   const [data, setData] = useState({
@@ -58,7 +59,7 @@ const Overview = ({ doughnutData }) => {
   return (
     <section className='card budget'>
       <h3 className='heading-4 text-center'>Overview</h3>
-      <div className='budget-box'>
+      <div className='card-main-content-box'>
         <div className='budget-item-box'>
           <BudgetItem
             title={'Take-home pay'}
