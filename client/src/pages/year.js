@@ -1,6 +1,6 @@
 import React from 'react';
 import BudgetGraph from '../components/profile/budget/budgetGraph';
-import Expenditures from '../components/profile/expenditures/expenditures';
+import Expenses from '../components/profile/expenses/expenses';
 import Header from '../components/profile/header/header';
 import Overview from '../components/profile/overview/overview';
 import Banner from '../components/profile/banner/banner';
@@ -13,7 +13,7 @@ const Home = () => {
       <Banner />
       <BudgetGraph data={budgetData} />
       <Overview data={barData} categories={categories} />
-      <Expenditures data={expData} />
+      <Expenses data={expData} />
     </main>
   );
 };
