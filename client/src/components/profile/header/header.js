@@ -3,13 +3,16 @@ import './header.css';
 import { BiUserCircle } from 'react-icons/bi';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { GiHamburgerMenu } from 'react-icons/gi';
-const Header = () => {
+const Header = ({ toggleNav }) => {
   // eslint-disable-next-line no-unused-vars
   const [isNotification, setIsNotification] = useState(false);
 
   return (
     <header className='header'>
-      <button type='button' className='btn header__menu-icon'>
+      <button
+        type='button'
+        className='btn header__menu-icon'
+        onClick={toggleNav}>
         <GiHamburgerMenu />
       </button>
       <h2 className='heading-2 header__title'>Dashboard</h2>
