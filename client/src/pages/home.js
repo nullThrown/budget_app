@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Loading from '../components/common/loading/loading';
 import ServerError from '../components/alert/serverError';
 import Overview from '../components/profile/overview/overview';
-import Expenditures from '../components/profile/expenditures/expenditures';
+import Expenses from '../components/profile/expenses/expenses';
 import BudgetGraph from '../components/profile/budget/budgetGraph';
 import Recurring from '../components/profile/recurring/recurring';
 import { barData, categories, doughnutData } from '../data/currentMonth';
@@ -30,7 +30,7 @@ const Home = () => {
       <Overview doughnutData={doughnutData} />
       <Recurring />
       <BudgetGraph barData={barData} categories={categories} />
-      <Expenditures />
+      <Expenses />
     </>
   );
 };
