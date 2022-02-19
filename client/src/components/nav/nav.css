@@ -17,10 +17,11 @@
     transform: translateX(-100%);
   }
 }
-.sidebar__open {
+
+.sidebar--open {
   animation: openMenu 250ms ease-out forwards;
 }
-.sidebar__close {
+.sidebar--close {
   animation: closeMenu 250ms ease-out forwards;
 }
 .sidebar__title-box {
