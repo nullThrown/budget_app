@@ -1,27 +1,22 @@
 .budget {
-  padding: 1em;
   grid-column: 2 / 3;
   grid-row: 3 / 4;
   align-self: start;
+  height: 440px;
 }
 @media (max-width: 1150px) {
   .budget {
     grid-column: 1 / 2;
+    /* height: fit-content; */
   }
 }
 @media (max-width: 900px) {
   .budget {
     grid-column: 1 / 2;
+    height: fit-content;
   }
 }
 
-.budget-title {
-  text-align: center;
-}
-/* this should be abstracted out to global container -- all component contents shold be wrap in this */
-.budget-box {
-  margin: 1em 0 0;
-}
 .budget-box div:last-child {
   grid-column: 1 /3;
   grid-row: 3 / 4;
@@ -39,7 +34,6 @@
 }
 .item-title {
   font-size: 0.8rem;
-  margin-bottom: 0.2em;
   margin-right: 0.4em;
 }
 .item-amount--red {
