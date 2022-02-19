@@ -4,11 +4,15 @@ import './nav.css';
 import { AiFillHome, AiFillCalendar } from 'react-icons/ai';
 import { GiTreeGrowth, GiTwoCoins, GiHamburgerMenu } from 'react-icons/gi';
 import { BiHelpCircle } from 'react-icons/bi';
-const Nav = () => {
+
+const Nav = ({ isNavOpen, toggleNav }) => {
   return (
-    <aside className='sidebar'>
+    <aside
+      className={`sidebar ${isNavOpen ? 'sidebar--open' : 'sidebar--close'}`}>
       <div className='sidebar__title-box'>
-        <GiHamburgerMenu className='sidebar__menu-icon' />
+        <button type='button' className='btn' onClick={toggleNav}>
+          <GiHamburgerMenu className='sidebar__menu-icon' />
+        </button>
         <h2 className='heading-5 sidebar__header'>
           <GiTwoCoins /> CoinDrop
         </h2>
