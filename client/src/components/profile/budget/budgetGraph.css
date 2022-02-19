@@ -4,6 +4,7 @@
   grid-row: 3 / 4;
   align-self: start;
   justify-self: center;
+  height: 440px;
 }
 @media (max-width: 1150px) {
   .monthly-specifics {
@@ -16,8 +17,11 @@
     grid-row: 4/ 5;
   }
 }
-
-.monthly-graph {
-  margin-top: 1.4em;
-  width: 100%;
+.budget-graph-box {
+  height: 80%;
+}
+.budget-graph {
+  height: 400px;
+  font-size: 1rem;
+  width: 50%;
 }
