@@ -128,14 +128,14 @@ li {
       440px,
       700px
     );
-  grid-template-rows: 100px min-content 440px repeat(1, min-content);
+  grid-template-rows: repeat(2, min-content) 440px min-content;
   column-gap: 1em;
   row-gap: 1em;
 }
 @media (max-width: 1150px) {
   .main-container {
     grid-template-columns: repeat(2, minmax(200px, 240px)) minmax(440px, 700px);
-    grid-template-rows: repeat(2, fit-content) 400px;
+    grid-template-rows: repeat(2, min-content) 440px min-content;
     width: 98%;
     margin: 1em auto 10em;
   }
