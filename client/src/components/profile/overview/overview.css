@@ -1,19 +1,15 @@
 .budget {
   grid-column: 2 / 3;
   grid-row: 3 / 4;
-  align-self: start;
-  height: 440px;
 }
 @media (max-width: 1150px) {
   .budget {
     grid-column: 1 / 2;
-    /* height: fit-content; */
   }
 }
 @media (max-width: 900px) {
   .budget {
     grid-column: 1 / 2;
-    height: fit-content;
   }
 }
 
