@@ -2,9 +2,6 @@
   width: 100%;
   grid-column: 4 / -1;
   grid-row: 3 / 4;
-  align-self: start;
-  justify-self: center;
-  height: 440px;
 }
 @media (max-width: 1150px) {
   .monthly-specifics {
