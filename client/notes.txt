@@ -9,22 +9,19 @@ TODO LIST
 
     USER INTERFACE
       general
-        *line up first row of home components
-
-
-      nav
-
-      recurring
-             
-        *expenses 
+        *fix all errors/warnings
+        *overview/recurring components should be on own line
+        *create breakpoint variables                      
+        
+        *remove category creation in createRecurring/ createExpense
+        *category creation will be separate route that is called in Add New Payment component
+        
+        expenses 
           *allow horizontal scroll
           *add pagination as well 
 
       REACT FUNCTIONALITY
 
-        *fix all errors/warnings
-        *remove category creation in createRecurring/ createExpense
-        *category creation will be separate route that is called in Add New Payment component
         *fix overview graph
           *remaining section should be set to zero when -> remaining < 0
         
