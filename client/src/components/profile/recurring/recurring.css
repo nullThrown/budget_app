@@ -1,28 +1,51 @@
 .recurring {
   grid-column: 3 / 4;
   grid-row: 3 / 4;
-  padding: 0 0.8em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
 }
 @media (max-width: 1150px) {
   .recurring {
     grid-column: 2 / 3;
   }
 }
-
-.payment__box {
-  height: 300px;
-  overflow-y: scroll;
-}
-@media (max-width: 900px) {
-  .payment__box {
-    height: 460px;
+@media (max-width: 677px) {
+  .recurring {
+    /* grid-column: 1 / 2;
+    grid-row: 4 / 5; */
   }
 }
+@media (max-width: 505px) {
+  .recurring {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+  }
+}
+.recurring__content {
+  height: 70%;
+}
+@media (max-width: 900px) {
+  .recurring__content {
+    height: 75%;
+  }
+}
+
+.payment__box {
+  height: 100%;
+  overflow-y: scroll;
+}
+@media (max-width: 505px) {
+  .payment__box {
+    height: 340px;
+    overflow-y: scroll;
+  }
+}
+
 .payment__pages {
   margin-top: 0.5em;
   text-align: center;
 }
-.payment__pages > a {
+.payment__pages > button {
   margin: 0 0.4em;
 }
 .payment__category {
