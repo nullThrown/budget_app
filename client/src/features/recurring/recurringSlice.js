@@ -42,7 +42,6 @@ export default function recurringReducer(state = initialState, action) {
       };
 
     case 'recurring/deleteRecurring':
-      const { id, category } = payload;
       return {
         ...state,
         status: 'delete_success',
