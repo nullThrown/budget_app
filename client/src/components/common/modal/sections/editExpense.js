@@ -107,7 +107,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
             </span>
             <datalist id='payment-categories'>
               {categories.map((cat) => {
-                return <option value={cat}></option>;
+                return <option key={cat._id} value={cat.title}></option>;
               })}
             </datalist>
             <NecessitySelect
