@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './recurring.css';
 import { useSelector, useDispatch } from 'react-redux';
 import PaymentItem from './paymentItem';
+import usePagination from '../../../hooks/usePagination';
 import {
   createRecurring,
   editRecurring,
@@ -11,42 +12,16 @@ import {
 
 const Recurring = () => {
   const dispatch = useDispatch();
-  const [numOfPages, setNumOfPages] = useState(null);
-  const [pagesArray, setPagesArray] = useState([]);
-  const [currentCategories, setCurrentCategories] = useState([]);
-  const [categoriesPerPage, setCategoriesPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
-
   const payments = useSelector((state) => state.recurring.data);
-  const numOfCategories = useSelector((state) => state.recurring.data.length);
 
-  useEffect(() => {
-    setNumOfPages(Math.ceil(numOfCategories / categoriesPerPage));
-  }, [numOfCategories]);
-
-  useEffect(() => {
-    // array will be used to created numbered page links. See line: 59
-    const arr = [];
-    for (let i = 0; i < numOfPages; i++) {
-      arr.push(i);
-    }
-    setPagesArray(arr);
-  }, [numOfPages]);
-
-  useEffect(() => {
-    const endIndex = currentPage * categoriesPerPage;
-    const startIndex = endIndex - categoriesPerPage;
-    setCurrentCategories(() => {
-      return payments.slice(startIndex, endIndex);
-    });
-  }, [currentPage, payments]);
-
+  const { currentItems, pagesArray } = usePagination(payments, 3, currentPage);
   return (
     <section className='card recurring'>
       <h2 className='heading-4 text-center'>Recurring</h2>
       <div className='card-main-content-box recurring__content'>
         <div className='payment__box'>
-          {currentCategories.map((cat, _id) => {
+          {currentItems.map((cat, _id) => {
             const { category, payments } = cat;
             return (
               <PaymentItem key={_id} category={category} payments={payments} />
