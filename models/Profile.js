@@ -16,20 +16,20 @@ const profileSchema = new Schema(
     salarySchedule: defaultedStr,
     recurringPayments: [
       {
-        total: defaultedNum,
         budget: defaultedNum,
         category: defaultedStr,
         payments: [
           {
             amount: defaultedNum,
             name: defaultedStr,
+            necessity: requiredBool,
           },
         ],
       },
     ],
     categories: [
       {
-        title: requiredStr,
+        name: requiredStr,
         budget: requiredNum,
         isDisplayed: { type: Boolean, default: true },
         spent: defaultedNum,
