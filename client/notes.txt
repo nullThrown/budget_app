@@ -11,9 +11,10 @@ TODO LIST
         *fix dispatch for edit/add-expense & add-recurring  
     USER INTERFACE
       general
-        *place pagination in separate custom hook   
-        *fix remaining display in overview -- padding-top                
         
+        *fix category creation for all expenses
+          *categories should not be created with add Payment
+          *categories must be created in separate section so a budget can be created
         *remove category creation in createRecurring/ createExpense
         *category creation will be separate route that is called in Add New Payment component
         
