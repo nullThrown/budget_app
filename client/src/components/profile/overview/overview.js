@@ -78,7 +78,6 @@ const Overview = ({ doughnutData }) => {
             amount={data.indulgentSpent}
           />
         </div>
-        {/* nec, indulg, rem */}
         <Doughnut
           data={doughnutData([
             data.necessitySpent,
