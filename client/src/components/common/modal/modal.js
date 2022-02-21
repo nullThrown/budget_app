@@ -33,9 +33,3 @@ const ModalInstance = ({
 };
 
 export default ModalInstance;
-
-{
-  /* <button type='button' className='modal__return-btn'>
-<BsArrowReturnLeft />
-</button> */
-}
