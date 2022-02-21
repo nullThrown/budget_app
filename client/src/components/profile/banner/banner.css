@@ -11,9 +11,19 @@
     grid-column: 1 / -1;
   }
 }
-
+@media (max-width: 677px) {
+  .banner {
+    justify-content: space-around;
+    grid-column: 1 / -1;
+  }
+}
 .banner-box {
   margin-left: 4em;
+}
+@media (max-width: 677px) {
+  .banner-box {
+    margin-left: 0em;
+  }
 }
 .banner-date {
   margin: 0 0.6em;
