@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import './recurring.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,15 +20,12 @@ const Recurring = () => {
   const payments = useSelector((state) => state.recurring.data);
   const numOfCategories = useSelector((state) => state.recurring.data.length);
 
-  const handlePageChange = (e) => {};
-  useEffect(() => {
-    console.log('component mounted');
-  }, [currentPage]);
   useEffect(() => {
     setNumOfPages(Math.ceil(numOfCategories / categoriesPerPage));
   }, [numOfCategories]);
 
   useEffect(() => {
+    // array will be used to created numbered page links. See line: 59
     const arr = [];
     for (let i = 0; i < numOfPages; i++) {
       arr.push(i);
@@ -42,14 +40,11 @@ const Recurring = () => {
       return payments.slice(startIndex, endIndex);
     });
   }, [currentPage, payments]);
-  useEffect(() => {
-    console.log(currentCategories);
-  }, [currentCategories]);
 
   return (
     <section className='card recurring'>
       <h2 className='heading-4 text-center'>Recurring</h2>
-      <div className='card-main-content-box'>
+      <div className='card-main-content-box recurring__content'>
         <div className='payment__box'>
           {currentCategories.map((cat, _id) => {
             const { category, payments } = cat;
