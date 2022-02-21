@@ -38,7 +38,12 @@ const Table = ({ expenses }) => {
             const readableDate = newDate.toLocaleDateString('en-US');
 
             return (
-              <TableCell exp={exp} date={readableDate} openModal={openModal} />
+              <TableCell
+                key={exp._id}
+                exp={exp}
+                date={readableDate}
+                openModal={openModal}
+              />
             );
           })}
         </tbody>
