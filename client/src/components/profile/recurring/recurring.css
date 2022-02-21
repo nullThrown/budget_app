@@ -9,12 +9,7 @@
     grid-column: 2 / 3;
   }
 }
-@media (max-width: 677px) {
-  .recurring {
-    /* grid-column: 1 / 2;
-    grid-row: 4 / 5; */
-  }
-}
+
 @media (max-width: 505px) {
   .recurring {
     grid-row: 4 / 5;
