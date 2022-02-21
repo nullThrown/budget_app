@@ -1,8 +1,9 @@
+/* eslint-disable */
 import { useState, useEffect } from 'react';
 import './overview.css';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import BudgetItem from './budgetItem';
+import OverviewItem from './overviewItem';
 
 const Overview = ({ doughnutData }) => {
   const takeHomeAmount = useSelector((state) => state.profile.monthlyTakeHome);
@@ -57,23 +58,23 @@ const Overview = ({ doughnutData }) => {
   }, [data]);
 
   return (
-    <section className='card budget'>
+    <section className='card overview'>
       <h3 className='heading-4 text-center'>Overview</h3>
       <div className='card-main-content-box'>
-        <div className='budget-item-box'>
-          <BudgetItem
-            title={'Take-home pay'}
-            amountClass={'item-amount--green'}
+        <div className='overview-item-box'>
+          <OverviewItem
+            title='Take-home pay:'
+            amountClass='item-amount--green'
             amount={data.takeHomeAmount}
           />
-          <BudgetItem
-            title={'Necessity Spent: '}
-            amountClass={'item-amount--red'}
+          <OverviewItem
+            title='Necessity Spent: '
+            amountClass='item-amount--red'
             amount={data.necessitySpent}
           />
-          <BudgetItem
-            title={'Indugent Spent:'}
-            amountClass={'item-amount--red'}
+          <OverviewItem
+            title='Indugent Spent:'
+            amountClass='item-amount--red'
             amount={data.indulgentSpent}
           />
         </div>
@@ -86,9 +87,10 @@ const Overview = ({ doughnutData }) => {
           ])}
           className='pie-chart'
         />
-        <BudgetItem
-          title={'Remaining'}
-          amountClass={'item-amount--green'}
+        <OverviewItem
+          title={'Remaining:'}
+          amountClass={'item-amount--green text-md'}
+          titleClass='text-md'
           amount={remaining}
         />
       </div>
