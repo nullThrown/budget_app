@@ -9,9 +9,7 @@ const AddPayment = ({ isOpen, closeModal }) => {
 
   const [currentSect, setCurrentSect] = useState('Add Payment');
 
-  const categories = useSelector((state) =>
-    state.profile.categories.map((cat) => cat.title)
-  );
+  const categories = useSelector((state) => state.profile.categories);
 
   const onRequestClose = () => {
     setCurrentSect('Add Payment');
