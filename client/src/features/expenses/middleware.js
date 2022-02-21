@@ -9,9 +9,8 @@ export const createExpense = (expense) => async (dispatch) => {
       expense,
       { withCredentials: true }
     );
-    const [newExpense, categories] = res.data;
-    dispatch({ type: 'expenses/createExpense', payload: newExpense });
-    dispatch({ type: 'profile/updateCategories', payload: categories });
+    const { data } = res;
+    dispatch({ type: 'expenses/createExpense', payload: data });
   } catch (err) {
     handleErrors(err, 'expenses', dispatch);
   }
