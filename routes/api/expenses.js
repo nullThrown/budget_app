@@ -33,30 +33,13 @@ router.post(
     };
 
     try {
-      let expense = await Expense.findOne({ user: req.user.id });
-      if (expense) {
-        expense = await Expense.findOneAndUpdate(
-          { user: req.user.id },
-          { $push: { data: newExpense } },
-          { returnOriginal: false, useFindAndModify: false }
-        );
-      } else {
-        expense = new Expense({
-          user: req.user.id,
-          data: newExpense,
-        });
-        await expense.save();
-      }
+      const expense = await Expense.findOneAndUpdate(
+        { user: req.user.id },
+        { $push: { data: newExpense } },
+        { returnOriginal: false, useFindAndModify: false }
+      );
 
-      const profile = await Profile.findOne({ user: req.user.id });
-      const categoryExists = profile.categories.some((cat) => cat === category);
-
-      if (!categoryExists) {
-        profile.categories.push(category);
-      }
-      await profile.save();
-
-      res.json([expense.data[expense.data.length - 1], profile.categories]);
+      res.json(expense.data[expense.data.length - 1]);
     } catch (err) {
       console.log({ err: [err.message, err.stack] });
       res.status(500).json({ error: server_error });
