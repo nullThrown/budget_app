@@ -6,12 +6,13 @@ CSS STRUCTURE
 
 ------------------------------------------------------------------------------------------------------------ 
 TODO LIST
-
+        *fix all errors/warnings
+          *remove res binding var for redux middleware
+        *fix dispatch for edit/add-expense & add-recurring  
     USER INTERFACE
       general
-        *fix all errors/warnings
-        *overview/recurring components should be on own line
-        *create breakpoint variables                      
+        *place pagination in separate custom hook   
+        *fix remaining display in overview -- padding-top                
         
         *remove category creation in createRecurring/ createExpense
         *category creation will be separate route that is called in Add New Payment component
