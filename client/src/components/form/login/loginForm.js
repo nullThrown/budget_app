@@ -32,7 +32,7 @@ const LoginForm = () => {
       navigate('/profile/home');
       dispatch({ type: 'user/returnToIdle' });
     }
-  }, [userStatus, navigate]);
+  }, [userStatus, navigate, dispatch]);
 
   if (userStatus === 'loading') {
     return (
