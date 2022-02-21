@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PasswordCheck } from './passwordCheck';
 import { useDispatch, useSelector } from 'react-redux';
