@@ -27,45 +27,75 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-// ROUTE    POST api/profile/
+// ROUTE    POST api/profile/recurring/create
 // DESC     Create recurring payment
 // ACCESS   Private
 router.post('/recurring/create', verifyToken, async (req, res) => {
+  const { amount, name, category, necessity } = req.body;
+  const newRecurring = {
+    name,
+    amount,
+    necessity,
+  };
   try {
-    let { amount, name, category, budget } = req.body;
-    category = category.toLowerCase();
-    const profile = await Profile.findOne({ user: req.user.id });
-    let categoryMatch = false;
+    const profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      {
+        $push: {
+          'recurringPayments.$[i].payments': newRecurring,
+        },
+      },
+      {
+        arrayFilters: [
+          {
+            'i.category': category,
+          },
+        ],
 
-    profile.recurringPayments.forEach((rec) => {
-      if (rec.category === category) {
-        categoryMatch = true;
-        rec.payments.push({ name, amount });
+        returnOriginal: false,
+        useFindAndModify: false,
       }
-    });
+    );
 
-    if (!categoryMatch) {
-      profile.recurringPayments.push({
-        budget,
-        category,
-        payments: [{ amount, name }],
-      });
-      profile.categories.push(category.toLowerCase());
-    }
-    profile.save();
-    res.status(201).json(profile);
+    res.status(201).json(profile.recurringPayments);
   } catch (err) {
     console.error({ err: [err.message, err.stack] });
     res.status(500).json({ error: server_error });
   }
 });
 
-// ROUTE    POST api/profile/
+// ROUTE    POST api/profile/category/create
+// DESC     Update recurring payment
+// ACCESS   Private
+router.post('/category/create', verifyToken, async (req, res) => {
+  let { name, budget, isDisplayed } = req.body;
+  name = name.toLowerCase();
+  const newCategory = {
+    name,
+    budget,
+    isDisplayed,
+  };
+  try {
+    const profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      {
+        $push: { categories: newCategory },
+      },
+      { returnOriginal: false, useFindAndModify: false }
+    );
+    res.status(201).json(profile.categories[profile.categories.length - 1]);
+  } catch (err) {
+    console.error({ err: [err.message, err.stack] });
+    res.status(500).json({ error: server_error });
+  }
+});
+
+// ROUTE    POST api/profile/recurring/edit
 // DESC     Update recurring payment
 // ACCESS   Private
 
 router.put('/recurring/edit', verifyToken, async (req, res) => {
-  const { paymentId, name, amount, category } = req.body;
+  const { paymentId, name, amount, category, necessity } = req.body;
   try {
     const profile = await Profile.findOneAndUpdate(
       { user: req.user.id },
@@ -73,6 +103,7 @@ router.put('/recurring/edit', verifyToken, async (req, res) => {
         $set: {
           'recurringPayments.$[i].payments.$[j].name': name,
           'recurringPayments.$[i].payments.$[j].amount': amount,
+          'recurringPayments.$[i].payments.$[j].necessity': necessity,
         },
       },
       {
@@ -158,7 +189,6 @@ router.post(
       recurringPayments: [
         {
           // housing expenses
-          total: Number(housingPayment) + Number(housingInsurance),
           category: 'housing',
           payments: [
             {
@@ -173,7 +203,6 @@ router.post(
         },
         {
           // vehicle expenses
-          total: Number(vehicleLoan) + Number(vehicleInsurance),
           category: 'vehicle',
           payments: [
             {
@@ -188,7 +217,6 @@ router.post(
         },
         {
           // utility expenses
-          total: Number(cellPlan) + Number(cellLoan) + Number(internetPlan),
           category: 'utilities',
           payments: [
             {
@@ -207,7 +235,6 @@ router.post(
         },
         {
           // childcare expenses
-          total: Number(childcareTuition) + Number(childcareDaycare),
           category: 'childcare',
           payments: [
             {
@@ -222,7 +249,6 @@ router.post(
         },
         {
           // health expenses
-          total: Number(healthInsurance) + Number(healthFitness),
           category: 'health',
           payments: [
             {
@@ -237,7 +263,6 @@ router.post(
         },
         {
           // debt payment expenses
-          total: Number(debtStudent) + Number(debtCredit),
           category: 'debt',
           payments: [
             {
@@ -252,10 +277,7 @@ router.post(
         },
         {
           // retirement expenses
-          total:
-            Number(retirement401k) +
-            Number(retirementIra) +
-            Number(retirementBrokerage),
+
           category: 'retirement',
           payments: [
             {
@@ -275,43 +297,43 @@ router.post(
       ],
       categories: [
         {
-          title: 'housing',
+          name: 'housing',
           budget: 0,
           isDisplayed: false,
           spent: 0,
         },
         {
-          title: 'vehicle',
+          name: 'vehicle',
           budget: 0,
           isDisplayed: true,
           spent: 0,
         },
         {
-          title: 'utilities',
+          name: 'utilities',
           budget: 0,
           isDisplayed: true,
           spent: 0,
         },
         {
-          title: 'childcare',
+          name: 'childcare',
           budget: 0,
           isDisplayed: true,
           spent: 0,
         },
         {
-          title: 'health',
+          name: 'health',
           budget: 0,
           isDisplayed: true,
           spent: 0,
         },
         {
-          title: 'debt',
+          name: 'debt',
           budget: 0,
           isDisplayed: true,
           spent: 0,
         },
         {
-          title: 'retirement',
+          name: 'retirement',
           budget: 0,
           isDisplayed: true,
           spent: 0,
