@@ -14,11 +14,7 @@ export const createRecurring = (recurring) => async (dispatch) => {
     const { data } = res;
     dispatch({
       type: 'recurring/createRecurring',
-      payload: data.recurringPayments,
-    });
-    dispatch({
-      type: 'profile/updateCategories',
-      payload: data.categories,
+      payload: data,
     });
   } catch (err) {
     handleErrors(err, 'recurring', dispatch);
