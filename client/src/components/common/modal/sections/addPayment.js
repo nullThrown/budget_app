@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { BsArrowReturnLeft, BsLightbulb } from 'react-icons/bs';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ModalInstance from '../modal';
 import Expense from './addExpense';
