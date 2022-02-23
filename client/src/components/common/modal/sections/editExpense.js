@@ -22,9 +22,9 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
   const onInputChange = (e) => {
     const name = e.target.name;
 
-    if (name === 'necessity' && expense.necessity === false) {
+    if (name === 'boolean-select-true') {
       setExpense({ ...expense, necessity: true });
-    } else if (name === 'indulgent' && expense.necessity === true) {
+    } else if (name === 'boolean-select-false') {
       setExpense({ ...expense, necessity: false });
     } else {
       setExpense({ ...expense, [name]: e.target.value });
@@ -111,9 +111,15 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
               })}
             </datalist>
             <NecessitySelect
-              necessity={expense.necessity}
+              value={expense.necessity}
               onInputChange={onInputChange}
               className='modal__expense-nec-select'
+              btnsConfig={[
+                'Necessity',
+                'fade-in-green',
+                'Indulgent',
+                'fade-in-red',
+              ]}
             />
 
             <button
