@@ -76,15 +76,22 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
               value={expense.title}
               required
             />
-            <input
+            <select
               name='category'
-              list='payment-categories'
-              placeholder='category'
               className='input-border-bottom modal__expense-categories'
               onChange={onInputChange}
               value={expense.category}
-              required
-            />
+              required>
+              <option value=''>Choose a category</option>
+              {categories.map((cat) => {
+                console.log(cat);
+                return (
+                  <option key={cat._id} value={cat.name}>
+                    {cat.name}
+                  </option>
+                );
+              })}
+            </select>
             <input
               type='text'
               className='input-border-bottom modal__expense-desc'
@@ -105,11 +112,7 @@ const ExpenseModal = ({ isOpen, closeModal, expenseId }) => {
                 required
               />
             </span>
-            <datalist id='payment-categories'>
-              {categories.map((cat) => {
-                return <option key={cat._id} value={cat.title}></option>;
-              })}
-            </datalist>
+
             <NecessitySelect
               value={expense.necessity}
               onInputChange={onInputChange}
