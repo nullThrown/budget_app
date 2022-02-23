@@ -41,10 +41,21 @@ export default function ProfileReducer(state = initialState, action) {
         paycheckAmount: payload.paycheckAmount,
         categories: payload.categories,
       };
-    case 'profile/updateCategories':
+    case 'profile/categoryCreateLoading':
       return {
         ...state,
-        categories: payload,
+        status: 'cat_loading',
+      };
+    case 'profile/categoryCreated':
+      return {
+        ...state,
+        status: 'cat_success',
+        categories: [...state.categories, payload],
+      };
+    case 'profile/categoryCreateError':
+      return {
+        ...state,
+        status: 'cat_error',
       };
 
     default:
