@@ -68,15 +68,22 @@ const Recurring = ({ categories, closeModal, setCurrentSect }) => {
           onChange={onInputChange}
           required
         />
-        <input
-          list='payment-categories'
+        <select
           name='category'
           className='input-border-bottom modal__recurring-categories'
-          placeholder='Category'
           value={recurring.category}
           onChange={onInputChange}
-          required
-        />
+          required>
+          <option value=''>Choose a category</option>
+          {categories.map((cat) => {
+            console.log(cat);
+            return (
+              <option key={cat._id} value={cat.name}>
+                {cat.name}
+              </option>
+            );
+          })}
+        </select>
         <span className='flex align-center modal__recurring-amount '>
           <p className='dollar-symbol'>$</p>
           <input
@@ -89,11 +96,7 @@ const Recurring = ({ categories, closeModal, setCurrentSect }) => {
             required
           />
         </span>
-        <datalist id='payment-categories'>
-          {categories.map((cat) => {
-            return <option key={cat._id} value={cat.title}></option>;
-          })}
-        </datalist>
+
         <NecessitySelect
           value={recurring.necessity}
           onInputChange={onInputChange}
