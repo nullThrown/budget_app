@@ -1,32 +1,29 @@
 import './necessitySelect.css';
 
-const NecessitySelect = ({ necessity, onInputChange, className }) => {
+const NecessitySelect = ({ value, onInputChange, className, btnsConfig }) => {
+  const [trueBtnName, trueBtnClass, falseBtnName, falseBtnClass] = btnsConfig;
   return (
     <div className={`flex select-container ${className ? className : ''}`}>
       <button
         type='button'
-        name='necessity'
-        className={`btn btns-default ${
-          necessity === true ? 'necessity-selected-btn' : ''
-        }`}
+        name='boolean-select-true'
+        className={`btn btns-default ${value ? trueBtnClass : ''}`}
         onClick={onInputChange}>
-        Necessity
+        {trueBtnName}
       </button>
       <div className='widget-container'>
         <div
           className={`widget ${
-            necessity ? 'necessity-selected' : 'indulgent-selected'
+            value ? 'true-selected' : 'false-selected'
           } `}></div>
       </div>
 
       <button
         type='button'
-        name='indulgent'
-        className={`btn btns-default ${
-          !necessity ? 'indulgent-selected-btn' : ''
-        }`}
+        name='boolean-select-false'
+        className={`btn btns-default ${!value ? falseBtnClass : ''}`}
         onClick={onInputChange}>
-        Indulgent
+        {falseBtnName}
       </button>
     </div>
   );
