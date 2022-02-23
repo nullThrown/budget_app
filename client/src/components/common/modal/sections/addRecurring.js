@@ -21,9 +21,9 @@ const Recurring = ({ categories, closeModal, setCurrentSect }) => {
   const onInputChange = (e) => {
     const name = e.target.name;
 
-    if (name === 'necessity' && recurring.necessity === false) {
+    if (name === 'boolean-select-true') {
       setRecurring({ ...recurring, necessity: true });
-    } else if (name === 'indulgent' && recurring.necessity === true) {
+    } else if (name === 'boolean-select-false') {
       setRecurring({ ...recurring, necessity: false });
     } else {
       setRecurring({ ...recurring, [name]: e.target.value });
@@ -95,9 +95,15 @@ const Recurring = ({ categories, closeModal, setCurrentSect }) => {
           })}
         </datalist>
         <NecessitySelect
-          necessity={recurring.necessity}
+          value={recurring.necessity}
           onInputChange={onInputChange}
           className='modal__recurring-nec-select'
+          btnsConfig={[
+            'Necessity',
+            'fade-in-green',
+            'Indulgent',
+            'fade-in-red',
+          ]}
         />
         <button
           type='submit'
