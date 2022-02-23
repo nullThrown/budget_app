@@ -8,13 +8,11 @@ CSS STRUCTURE
 TODO LIST
         *fix all errors/warnings
           *remove res binding var for redux middleware
+        *set isSidebarOpen initial state = true  
     USER INTERFACE
       general
 
         Create New Category
-            *boolean toggle component should be more abstracted
-            *fix boolean selector for add new category
-            *describe isDisplayed as being shown on budget component
           *create dispatch for createCategory endpoint
             *add all error/success handling and/loading states  
             *
