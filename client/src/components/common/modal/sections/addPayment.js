@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ModalInstance from '../modal';
 import Expense from './addExpense';
 import Recurring from './addRecurring';
+import Category from './addCategory';
 
 const AddPayment = ({ isOpen, closeModal }) => {
   const dispatch = useDispatch();
@@ -27,13 +28,20 @@ const AddPayment = ({ isOpen, closeModal }) => {
         <div className='modal__add-pay-btn-box'>
           <button
             type='button'
-            className='btn mr-1 modal__add-pay-btn'
+            className='btn modal__add-pay-btn'
+            onClick={() => setCurrentSect('Add Category')}>
+            Add Category
+          </button>
+
+          <button
+            type='button'
+            className='btn mr-1 ml-1 modal__add-pay-btn'
             onClick={() => setCurrentSect('Add Recurring')}>
             Recurring
           </button>
           <button
             type='button'
-            className='btn modal__add-pay-btn'
+            className='btn  modal__add-pay-btn'
             onClick={() => setCurrentSect('Add Expense')}>
             One Time
           </button>
@@ -48,6 +56,13 @@ const AddPayment = ({ isOpen, closeModal }) => {
       )}
       {currentSect === 'Add Expense' && (
         <Expense
+          categories={categories}
+          closeModal={closeModal}
+          setCurrentSect={setCurrentSect}
+        />
+      )}
+      {currentSect === 'Add Category' && (
+        <Category
           categories={categories}
           closeModal={closeModal}
           setCurrentSect={setCurrentSect}
