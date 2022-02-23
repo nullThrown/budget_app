@@ -8,18 +8,20 @@ CSS STRUCTURE
 TODO LIST
         *fix all errors/warnings
           *remove res binding var for redux middleware
-        *fix dispatch for edit/add-expense & add-recurring  
     USER INTERFACE
       general
-        
-        *fix category creation for all expenses
-          *categories should not be created with add Payment
-          *categories must be created in separate section so a budget can be created
-        *remove category creation in createRecurring/ createExpense
-        *category creation will be separate route that is called in Add New Payment component
-        
+
+        Create New Category
+            *boolean toggle component should be more abstracted
+            *fix boolean selector for add new category
+            *describe isDisplayed as being shown on budget component
+          *create dispatch for createCategory endpoint
+            *add all error/success handling and/loading states  
+            *
         expenses 
           *allow horizontal scroll
+          *fix padding issues
+          *fix sizing on smaller screens
           *add pagination as well 
 
       REACT FUNCTIONALITY
