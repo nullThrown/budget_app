@@ -8,14 +8,14 @@ CSS STRUCTURE
 TODO LIST
         *fix all errors/warnings
           *remove res binding var for redux middleware
-        *set isSidebarOpen initial state = true  
+        *set isSidebarOpen initial state = true 
+        *fix pagination on expense component 
     USER INTERFACE
       general
 
         Create New Category
           *create dispatch for createCategory endpoint
             *add all error/success handling and/loading states  
-            *
         expenses 
           *allow horizontal scroll
           *fix padding issues
