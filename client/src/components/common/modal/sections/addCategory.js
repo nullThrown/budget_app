@@ -21,9 +21,9 @@ const Category = ({ categories, closeModal, setCurrentSect }) => {
   const onInputChange = (e) => {
     const name = e.target.name;
 
-    if (name === 'necessity' && category.isDisplayed === false) {
+    if (name === 'boolean-select-true') {
       setCategory({ ...category, isDisplayed: true });
-    } else if (name === 'indulgent' && category.isDisplayed === true) {
+    } else if (name === 'boolean-select-false') {
       setCategory({ ...category, isDisplayed: false });
     } else {
       setCategory({ ...category, [name]: e.target.value });
@@ -91,10 +91,25 @@ const Category = ({ categories, closeModal, setCurrentSect }) => {
             required
           />
         </span>
+        <span className='modal__category-display-msg text-sm'>
+          <p>
+            If set to 'Display', The category will be visible in the budget
+            graph.
+          </p>
+          <p className='mt-1-2'>
+            Which categories are displayed can always be changed in settings.
+          </p>
+        </span>
         <NecessitySelect
-          necessity={category.necessity}
+          value={category.isDisplayed}
           onInputChange={onInputChange}
           className='modal__category-nec-select'
+          btnsConfig={[
+            'Display',
+            'fade-in-green',
+            "Don't Display",
+            'fade-in-red',
+          ]}
         />
         {isCatMatch && <Alert msg='category name already exists!' />}
         <button
