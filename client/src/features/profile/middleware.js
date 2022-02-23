@@ -19,3 +19,20 @@ export const createProfile = (profile) => async (dispatch) => {
     handleErrors(err, 'profile', dispatch);
   }
 };
+
+export const createCategory = (category) => async (dispatch) => {
+  dispatch({ type: 'profile/categoryCreateLoading' });
+  try {
+    const res = await axios.post(
+      'http://localhost:4000/api/profile/category/create',
+      category,
+      {
+        withCredentials: true,
+      }
+    );
+    const { data } = res;
+    dispatch({ type: 'profile/categoryCreated', payload: data });
+  } catch (err) {
+    handleErrors(err, 'profile', dispatch);
+  }
+};
