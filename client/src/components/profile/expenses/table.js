@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import TableCell from './tableCell';
 import ExpenseModal from '../../common/modal/sections/editExpense';
-
+import usePagination from '../../../hooks/usePagination';
 const Table = ({ expenses }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [expenseItemId, setExpenseItemId] = useState('');
-
+  const [currentPage, setCurrentPage] = useState(1);
   const openModal = (id) => {
     setExpenseItemId(id);
     setIsOpen(true);
   };
   const closeModal = () => setIsOpen(false);
+
+  const { currentItems, pagesArray } = usePagination(expenses, 5, currentPage);
 
   return (
     <>
@@ -33,20 +35,35 @@ const Table = ({ expenses }) => {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((exp) => {
+          {currentItems.map((exp) => {
             const newDate = new Date(exp.date);
             const readableDate = newDate.toLocaleDateString('en-US');
 
             return (
-              <TableCell
-                key={exp._id}
-                exp={exp}
-                date={readableDate}
-                openModal={openModal}
-              />
+              <>
+                <TableCell
+                  key={exp._id}
+                  exp={exp}
+                  date={readableDate}
+                  openModal={openModal}
+                />
+              </>
             );
           })}
         </tbody>
+        <div className='payment__pages'>
+          {pagesArray.map((page, i) => {
+            return (
+              <button
+                type='button'
+                key={i}
+                className='btn link mr-1-2'
+                onClick={() => setCurrentPage(page + 1)}>
+                {page + 1}
+              </button>
+            );
+          })}
+        </div>
       </table>
     </>
   );
