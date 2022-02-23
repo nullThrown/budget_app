@@ -17,6 +17,19 @@
   border-radius: 50%;
   background-color: rgb(40, 76, 117);
 }
+.true-selected {
+  animation: slideLeft 250ms ease-out forwards;
+}
+.false-selected {
+  animation: slideRight 250ms ease-out forwards;
+}
+
+.fade-in-green {
+  animation: fadeInGreen 250ms ease-out forwards;
+}
+.fade-in-red {
+  animation: fadeInRed 250ms ease-out forwards;
+}
 
 @keyframes slideRight {
   to {
@@ -31,12 +44,7 @@
     transform: translateX(0);
   }
 }
-.indulgent-selected {
-  animation: slideRight 250ms ease-out forwards;
-}
-.necessity-selected {
-  animation: slideLeft 250ms ease-out forwards;
-}
+
 @keyframes fadeInGreen {
   from {
     color: var(--grey-7);
@@ -60,11 +68,4 @@
   padding: 0.3em;
   border-radius: 5px;
   font-size: 0.9rem;
-}
-
-.necessity-selected-btn {
-  animation: fadeInGreen 250ms ease-out forwards;
-}
-.indulgent-selected-btn {
-  animation: fadeInRed 250ms ease-out forwards;
 }
